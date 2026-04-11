@@ -420,17 +420,17 @@
                 </div>
 
                 <!-- Contenedor Principal: Split entre Código y Risk Gauge -->
-                <div
-                    class="p-6 bg-[#030303] flex flex-col md:flex-row gap-6 relative z-10 scanlines-bg transition-colors duration-1000 flex-1">
+                <div id="breach-lab-content"
+                    class="p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-colors duration-1000">
 
                     <!-- Area de Código de Casos (Renderizado Dinámico) -->
-                    <div id="dynamic-lab-container" class="flex-1 relative min-h-[350px] overflow-hidden">
+                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[350px] overflow-hidden">
                         <!-- El contenido se inyecta desde JS -->
                     </div>
 
                     <!-- Risk Gauge (SVG Dinámico) -->
                     <div
-                        class="w-full md:w-56 flex flex-col items-center justify-center p-6 bg-black/60 rounded-xl border border-red-900/30 transition-colors duration-1000 lab-gauge-container relative overflow-hidden">
+                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-6 bg-black/60 rounded-xl border border-red-900/30 transition-colors duration-1000 lab-gauge-container relative overflow-hidden">
 
                         <div class="text-xs uppercase tracking-widest text-slate-400 mb-6 font-mono font-bold z-10">
                             System Risk Level</div>
@@ -470,36 +470,35 @@
 
             <!-- SECCIÓN 6: Recomendaciones -->
             <section class="glass-panel bg-dynamic md:col-span-12 mt-4">
-                <h2 class="text-2xl font-display text-title-dynamic mb-6">6. Recomendaciones Concretas (Mejores
-                    Prácticas)</h2>
-                <p class="text-sm opacity-80 mb-6 border-b border-dynamic pb-4">Las configuraciones manuales fallan. La
-                    automatización es una solución escalable:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-xs leading-relaxed">
-                    <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-colors">
-                        <strong class="text-title-dynamic block mb-2 underline text-sm">Validación de comportamiento
-                            activo</strong>
-                        Utilizar sondas ligeras para verificar si una alerta de seguridad en la gestión de la nube es
-                        realmente explotable,
-                        lo que reduce los falsos positivos en un 93%.
-                    </div>
-                    <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-colors">
-                        <strong class="text-title-dynamic block mb-2 underline text-sm">IaC y Shift-Left</strong>
-                        Utilizar herramientas como <strong>Terraform</strong> e integrar escáneres (Checkov/Terrascan)
-                        en el pipeline de desarrollo para detectar configuraciones inseguras antes del despliegue.
-                    </div>
-                    <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-colors">
-                        <strong class="text-title-dynamic block mb-2 underline text-sm">Gestión Postura (CSPM)</strong>
-                        Habilitar servicios nativos (AWS Security Hub, Microsoft Defender) para monitorear desviaciones
-                        de la norma (Configuration Drift).
-                    </div>
-                    <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-colors">
-                        <strong class="text-title-dynamic block mb-2 underline text-sm">Auditoría de "Buckets
-                            Colgantes"</strong>
-                        Verificar constantemente los registros DNS CNAME para evitar secuestros de subdominios
-                        abandonados.
-                    </div>
-                </div>
-            </section>
+    <h2 class="text-2xl font-display text-title-dynamic mb-6">6. Gobernanza Proactiva y Automatización</h2>
+    <p class="text-sm opacity-80 mb-6 border-b border-dynamic pb-4">Las configuraciones manuales fallan por naturaleza humana. La automatización es la única solución escalable para mantener el Hardening:</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs leading-relaxed">
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">IaC y Shift-Left</strong>
+            Utilizar herramientas como <strong>Terraform</strong> e integrar escáneres (Checkov/Terrascan) en el pipeline para detectar riesgos antes del despliegue[cite: 451, 601].
+        </div>
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">Validación de Comportamiento</strong>
+            Uso de sondas para verificar si una alerta es realmente explotable, reduciendo los falsos positivos en un <strong>93%</strong> y optimizando el SOC[cite: 447, 661].
+        </div>
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">Monitoreo y Auditoría</strong>
+            Vigilancia continua con <strong>AWS CloudTrail</strong> o <strong>Azure Monitor</strong> para detectar quién y cuándo alteró una configuración crítica.
+        </div>
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">Detección de Desviación (Drift)</strong>
+            Alerta inmediata ante cambios manuales (ClickOps) para forzar la autoremediación y volver al estado seguro original.
+        </div>
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">Patch Management IaaS</strong>
+            Hardening del Sistema Operativo en instancias virtuales para cerrar vulnerabilidades internas y mantener parches al día.
+        </div>
+        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
+            <strong class="text-emerald-400 block mb-2 underline text-sm">Auditoría de DNS</strong>
+            Verificación constante de registros DNS CNAME para evitar el secuestro de subdominios abandonados vinculados a la nube[cite: 462].
+        </div>
+    </div>
+</section>
         </div>
 
         <!-- ========================================= -->

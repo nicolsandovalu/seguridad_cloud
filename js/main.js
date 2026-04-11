@@ -130,37 +130,34 @@ function enterDashboard() {
             });
         });
 
-// --- CLOUD BREACH LAB SOC LOGIC ---
+// --- CLOUD BREACH LAB SOC LOGIC (FINAL UPDATED) ---
 const incidentData = {
     microsoft: {
-        title: "Microsoft AI Research (Sept 2023)",
-        service: "Azure Blob Storage & SAS Tokens",
-        desc: "Investigadores publicaron accidentalmente un token SAS con alcance a nivel de cuenta y permisos de control total, exponiendo datos internos en lugar de solo los modelos de IA previstos.",
-        impact: "Exposición de 38 TB de datos privados, incluyendo backups de workstations y mensajes de Teams.",
-        vulnCode: "# PROBLEMA (ROJO): Token SAS con permisos excesivos y larga duración\naz storage container generate-sas --permissions rwl --expiry 2033-01-01",
-        hardCode: "# SOLUCIÓN (VERDE): Implementar RBAC y Azure Managed Identity\naz role assignment create --role 'Storage Blob Data Reader' --scope /subscriptions/<sub-id>/...",
-        analysis: "Falla en el Mínimo Privilegio. La remediación exige eliminar el uso de tokens compartidos en favor de identidades administradas.",
-        doc: "Microsoft MSRC & Wiz Research Analysis"
+        title: "Microsoft AI Research (Azure SAS Token)",
+        desc: "Falla de 38TB por Token SAS permisivo",
+        impact: "Exposición masiva de 38 TB de datos internos, mensajes de Teams y secretos de empleados.",
+        vulnCode: "az storage container generate-sas --permissions rwl",
+        hardCode: "Azure RBAC + Managed Identity",
+        analysis: "Remediación: Se eliminó el uso de tokens compartidos. Se implementó RBAC (Control de Acceso Basado en Roles).",
+        riskStatus: "RIESGO POR CONFIGURACIÓN EXCESIVA"
     },
     att: {
-        title: "AT&T / Snowflake (Julio 2024)",
-        service: "Snowflake Data Warehouse & IAM",
-        desc: "Atacantes utilizaron credenciales robadas para acceder a entornos que no tenían la autenticación multifactor (MFA) impuesta, ni restricciones de red (Network Policies) habilitadas.",
-        impact: "Exfiltración de registros de llamadas y mensajes de más de 100 millones de clientes.",
-        vulnCode: "-- PROBLEMA (ROJO): MFA Opcional y acceso de red abierto a Internet\nALTER USER 'admin' SET MIN_MFA_DAYS = 0;\nCREATE NETWORK POLICY 'open' ALLOWED_IP_LIST = ('0.0.0.0/0');",
-        hardCode: "-- SOLUCIÓN (VERDE): Forzar MFA obligatorio y restringir acceso a la VPC\nALTER USER 'admin' SET MIN_MFA_DAYS = 1;\nCREATE NETWORK POLICY 'att_only' ALLOWED_IP_LIST = ('10.2.0.0/16');",
-        analysis: "Falla de Identidad. El endurecimiento de la configuración de acceso es responsabilidad del cliente según el Modelo de Responsabilidad Compartida.",
-        doc: "Mandiant (UNC5537) & Snowflake IR Report"
+        title: "AT&T / Snowflake (Identidad & MFA)",
+        desc: "Robo de 100M de registros por falta de MFA",
+        impact: "Exfiltración de registros de llamadas de más de 100 millones de clientes.",
+        vulnCode: "ALTER USER SET MIN_MFA_DAYS = 0",
+        hardCode: "MFA Enforced + Network Policy",
+        analysis: "Remediación: Cierre de acceso a nivel de red y obligatoriedad de MFA para todo administrador.",
+        riskStatus: "RIESGO POR FALLA DE IDENTIDAD"
     },
     latimes: {
-        title: "Los Angeles Times (2018)",
-        service: "Amazon S3 & ACLs",
-        desc: "Un bucket de S3 que alojaba archivos JavaScript críticos fue configurado con una ACL que otorgaba permisos de escritura al grupo global 'AllUsers', permitiendo inyecciones de código malicioso.",
-        impact: "Cryptojacking masivo: los navegadores de los lectores fueron secuestrados para minar criptomonedas (Monero).",
-        vulnCode: "# PROBLEMA (ROJO): Permisos de escritura otorgados al mundo (AllUsers)\naws s3api put-bucket-acl --bucket assets --grant-write uri=http://acs.amazonaws.com/groups/global/AllUsers",
-        hardCode: "# SOLUCIÓN (VERDE): Activar S3 Block Public Access a nivel de cuenta\naws s3control put-public-access-block --public-access-block-configuration 'BlockPublicAcls=true,BlockPublicPolicy=true'",
-        analysis: "Falla de Superficie de Ataque. Las ACLs públicas son un método heredado; el hardening moderno requiere el bloqueo centralizado de acceso público.",
-        doc: "AWS Security Blog: 'Amazon S3 Block Public Access'"
+        title: "Los Angeles Times (AWS S3)",
+        desc: "Minería en S3 por ACL pública",
+        impact: "Cryptojacking masivo: los navegadores de los lectores fueron usados para minar Monero.",
+        vulnCode: "put-bucket-acl --grant-write AllUsers",
+        hardCode: "Block Public Access = True",
+        analysis: "Remediación: Se activó el bloqueo centralizado de AWS para anular cualquier permiso público manual.",
+        riskStatus: "RIESGO POR EXPOSICIÓN DE RED"
     }
 };
 
@@ -170,17 +167,15 @@ let currentLab = 'microsoft';
 function renderDynamicLab() {
     const data = incidentData[currentLab];
     const container = document.getElementById('dynamic-lab-container');
-    
-    const vulnClasses = isLabHardened ? "opacity-0 pointer-events-none scale-105" : "opacity-100 pointer-events-auto scale-100";
-    const secClasses = isLabHardened ? "opacity-100 pointer-events-auto scale-100" : "opacity-0 pointer-events-none scale-95";
+    const vulnClasses = isLabHardened ? "opacity-0 scale-105 pointer-events-none" : "opacity-100 scale-100 pointer-events-auto";
+    const secClasses = isLabHardened ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none";
 
     container.innerHTML = `
         <div class="absolute inset-0 transition-opacity duration-300">
-            <div id="view-vuln" class="absolute inset-0 transition-all duration-700 border border-red-500/40 bg-red-950/20 rounded-xl p-4 md:p-6 flex flex-col z-20 ${vulnClasses}">
+            <div id="view-vuln" class="absolute inset-0 transition-all duration-700 border border-red-500/40 bg-red-950/20 rounded-xl p-6 flex flex-col z-20 ${vulnClasses}">
                 <h4 class="text-red-500 font-bold mb-3 flex items-center gap-2">⚠️ ESTADO: VULNERABLE</h4>
                 <div class="overflow-y-auto mb-3 pr-2 custom-scroll">
                     <p class="text-xs text-slate-300 leading-relaxed">
-                        <strong class="text-red-400">Incidente:</strong> ${data.title}<br>
                         <strong class="text-red-400">Falla:</strong> ${data.desc}<br>
                         <strong class="text-red-400">Impacto:</strong> ${data.impact}
                     </p>
@@ -190,15 +185,15 @@ function renderDynamicLab() {
                 </div>
             </div>
 
-            <div id="view-sec" class="absolute inset-0 transition-all duration-700 border border-emerald-500/40 bg-emerald-950/20 rounded-xl p-4 md:p-6 flex flex-col z-10 ${secClasses}">
-                <h4 class="text-emerald-500 font-bold mb-3 flex items-center gap-2">🛡️ ESTADO: FORTIFICADO (HARDENING)</h4>
+            <div id="view-sec" class="absolute inset-0 transition-all duration-700 ease-in-out rounded-xl p-6 flex flex-col z-10 ${secClasses} laser-transition shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                <h4 class="text-safe-title font-bold mb-3 flex items-center gap-2">🛡️ ESTADO: FORTIFICADO (HARDENING)</h4>
                 <div class="overflow-y-auto mb-3 pr-2 custom-scroll">
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        <strong class="text-emerald-400">Remediación:</strong> ${data.analysis}<br>
-                        <strong class="text-emerald-400">Referencia:</strong> ${data.doc}
+                    <p class="text-sm text-slate-100 leading-relaxed font-medium">
+                        <strong class="text-emerald-400">Riesgo Mitigado:</strong> ${data.riskStatus}<br>
+                        <strong class="text-emerald-400">Análisis:</strong> ${data.analysis}
                     </p>
                 </div>
-                <div class="bg-black/90 flex-1 p-4 rounded-xl font-mono text-sm text-emerald-300 border border-emerald-900/50 relative overflow-y-auto shadow-inner">
+                <div class="bg-black/80 flex-1 p-4 rounded-xl font-mono text-sm text-emerald-300 border border-emerald-900/50 relative overflow-y-auto shadow-inner">
                     <pre class="whitespace-pre-wrap leading-loose">${data.hardCode}</pre>
                 </div>
             </div>
@@ -247,20 +242,21 @@ function switchLab(shortId) {
     
     // Reset Risk Gauge
     document.getElementById('lab-risk-needle').style.transform = "rotate(70deg)";
+    const shield = document.getElementById('shield-icon');
+    if(shield) { shield.classList.add('opacity-0', 'scale-50'); shield.classList.remove('opacity-100', 'scale-100'); }
     
     const riskTypes = {
-        'microsoft': 'RIESGO POR CONFIGURACIÓN EXCESIVA',
-        'att': 'RIESGO POR FALLA DE IDENTIDAD',
-        'latimes': 'RIESGO POR EXPOSICIÓN DE RED'
+        'microsoft': 'RIESGO: EXCESO DE PRIVILEGIOS SAS',
+        'att': 'RIESGO: IDENTIDAD SIN MFA Y RED ABIERTA',
+        'latimes': 'RIESGO: ACL GLOBAL EN S3'
     };
     
     const statusText = document.getElementById('lab-risk-status-text');
     statusText.textContent = riskTypes[currentLab] || "CRITICAL";
     statusText.className = "text-red-500 font-bold mt-4 text-xs tracking-widest text-center transition-colors duration-500 animate-pulse z-10";
     
-    const labContainer = document.getElementById('breach-lab');
-    labContainer.classList.remove('ring-emerald-500/20', 'bg-[#022c22]');
-    labContainer.classList.add('ring-red-500/20', 'bg-[#050505]');
+    const labContainer = document.getElementById('breach-lab-content');
+    labContainer.className = 'p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-colors duration-1000 ring-1 rounded-xl ring-red-500/20';
     
     updateLabUI();
     renderDynamicLab();
@@ -269,45 +265,32 @@ function switchLab(shortId) {
 function toggleLabRemediation() {
     isLabHardened = !isLabHardened;
     const toggleBtn = document.getElementById('lab-remediation-btn');
-    const labContainer = document.getElementById('breach-lab');
+    const labContainer = document.getElementById('breach-lab-content');
     const needle = document.getElementById('lab-risk-needle');
     const statusText = document.getElementById('lab-risk-status-text');
 
     if(isLabHardened) {
-        toggleBtn.innerHTML = "HARDENED / SECURED";
-        toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 hover:bg-emerald-700 hover:text-white transition-all shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
+        toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
+        toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
         
-        labContainer.classList.add('ring-emerald-500/20', 'bg-[#022c22]');
-        labContainer.classList.remove('ring-red-500/20', 'bg-[#050505]');
+        labContainer.style.background = ""; 
+        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#020617] to-[#010a13] lab-container-sec';
         
         needle.style.transform = "rotate(-70deg)";
-        statusText.textContent = "SISTEMA SEGURO Y ENDURECIDO";
-        statusText.className = "text-emerald-500 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10";
+        needle.classList.add('pulse-success');
+        setTimeout(() => needle.classList.remove('pulse-success'), 1500);
+        
+        const shield = document.getElementById('shield-icon');
+        if(shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
 
-        // Transicionar DOM
-        const viewVuln = document.getElementById('view-vuln');
-        const viewSec = document.getElementById('view-sec');
-        if(viewVuln) {
-            viewVuln.className = "absolute inset-0 transition-all duration-700 border border-red-500/40 bg-red-950/20 rounded-xl p-4 md:p-6 flex flex-col z-20 opacity-0 pointer-events-none scale-105";
-        }
-        if(viewSec) {
-            viewSec.className = "absolute inset-0 transition-all duration-700 border border-emerald-500/40 bg-emerald-950/20 rounded-xl p-4 md:p-6 flex flex-col z-10 opacity-100 pointer-events-auto scale-100";
-        }
+        statusText.textContent = "SISTEMA FORTIFICADO: CUMPLIMIENTO CIS/NIST DETECTADO";
+        statusText.className = "text-safe-title text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display";
     }
     updateLabUI();
+    renderDynamicLab();
 }
 
 // Iniciar lab
 window.addEventListener('DOMContentLoaded', () => {
     switchLab('microsoft');
 });
-
-// Check touch support to prevent Tilt 3D jumping on mobiles
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    document.querySelectorAll('.tilt-card').forEach(card => {
-        const content = card.querySelector('.tilt-content');
-        if(content) content.style.transform = 'translateZ(0px)';
-        const clone = card.cloneNode(true);
-        card.parentNode.replaceChild(clone, card); 
-    });
-}
