@@ -1,0 +1,389 @@
+/* =========================================
+           SISTEMA DE ESTADOS (STATE MANAGEMENT)
+           ========================================= */
+        :root {
+            /* Variables Modo Vulnerable (Rojo/Oscuro) */
+            --bg-main: #050505;
+            --text-main: #cbd5e1;
+            --card-bg: #111111;
+            --card-border: #333333;
+            --card-hover-border: rgba(239, 68, 68, 0.5);
+            --card-shadow: 0 0 30px rgba(239, 68, 68, 0.15);
+            --title-color: #ef4444;
+            --border-color: rgba(239, 68, 68, 0.3);
+            --icon-color: #ef4444;
+            --icon-shadow: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8));
+            --header-bg: rgba(10, 10, 10, 0.9);
+            --nav-active: #ef4444;
+        }
+
+        body.state-sec {
+            /* Variables Modo Hardened (Verde/Claro) */
+            --bg-main: #f8fafc;
+            --text-main: #475569;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --card-hover-border: rgba(16, 185, 129, 0.5);
+            --card-shadow: 0 15px 40px rgba(16, 185, 129, 0.08);
+            --title-color: #1e293b;
+            --border-color: rgba(16, 185, 129, 0.3);
+            --icon-color: #10b981;
+            --icon-shadow: none;
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --nav-active: #10b981;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 1s ease, color 1s ease;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Clases CSS Dinámicas atadas a las variables nativas */
+        .bg-dynamic {
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
+            transition: all 0.5s ease;
+            border-width: 1px;
+        }
+
+        .bg-dynamic:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: var(--card-shadow);
+            transform: translateY(-2px);
+        }
+
+        .text-title-dynamic {
+            color: var(--title-color);
+            transition: color 0.5s ease;
+        }
+
+        .border-dynamic {
+            border-color: var(--border-color);
+            transition: border-color 0.5s ease;
+        }
+
+        .icon-dynamic {
+            color: var(--icon-color);
+            filter: var(--icon-shadow);
+            transition: all 0.5s ease;
+        }
+
+        .bg-header {
+            background-color: var(--header-bg);
+            border-bottom-color: var(--card-border);
+        }
+
+        /* Clases de visibilidad según estado */
+        body.state-vuln .show-sec {
+            display: none !important;
+        }
+
+        body.state-sec .show-vuln {
+            display: none !important;
+        }
+
+        /* Efectos Especiales: Glassmorphism y CRT */
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Botón Lockdown Premium */
+        .lockdown-btn {
+            position: relative;
+            overflow: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-width: 1px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .lockdown-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .lockdown-btn:hover::before {
+            transform: translateY(0);
+        }
+
+        .lockdown-btn .relative {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Efecto 3D Tilt */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .tilt-content {
+            transform: translateZ(30px);
+            transition: transform 0.1s;
+        }
+
+        /* Tabs de Componentes Internos */
+        .tab-btn {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+            border-bottom-width: 2px;
+            border-color: transparent;
+        }
+
+        .tab-btn.active {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            border-color: #ef4444;
+        }
+
+        body.state-sec .tab-btn.active {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            border-color: #10b981;
+        }
+
+        /* Navegación Principal (NUEVO) */
+        .nav-link {
+            color: var(--text-main);
+            font-weight: 600;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-link:hover {
+            color: var(--nav-active);
+            opacity: 0.8;
+        }
+
+        .nav-link.active {
+            color: var(--nav-active);
+            border-bottom-color: var(--nav-active);
+        }
+
+        /* Overlay y Animaciones */
+        #lockdown-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        #lockdown-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .progress-bar {
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #intro-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s;
+        }
+
+        #intro-screen.dismissed {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .reveal-text p {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .reveal-text p:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .reveal-text p:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .reveal-text p:nth-child(3) {
+            animation-delay: 2.5s;
+        }
+
+        .reveal-text p:nth-child(4) {
+            animation-delay: 4.0s;
+        }
+
+        .reveal-text p:nth-child(5) {
+            animation-delay: 4.5s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }\n
+/* SOC Breach Lab Redesign */
+.scanlines-bg {
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    background-size: 100% 2px;
+}
+
+.scanline-element {
+    background: linear-gradient(to bottom, transparent 50%, rgba(239, 68, 68, 0.1) 51%, transparent 100%);
+    background-size: 100% 4px;
+    animation: scanlineScroll 6s linear infinite;
+}
+
+@keyframes scanlineScroll {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.lab-code-glitch span {
+    animation: textFlicker 4s infinite step-end;
+}
+
+@keyframes textFlicker {
+    0%, 100% { opacity: 1; }
+    98% { opacity: 0.8; }
+    99% { opacity: 0.5; }
+}
+
+/* Hardened State Lab Variations */
+.lab-container-sec {
+    background-color: #022c22 !important; /* emerald-950/30 */
+    box-shadow: inset 0 0 50px rgba(16, 185, 129, 0.1);
+}
+
+.lab-view-sec {
+    transform: scale(1) !important;
+}
+
+.lab-view-vuln {
+    opacity: 0 !important;
+    pointer-events: none;
+    transform: scale(1.05);
+}
+
+.active-sec {
+    border-color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    color: #a7f3d0 !important;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Animations extra Intro SOC */
+@keyframes scan-bar {
+    0% { left: -20%; }
+    100% { left: 100%; }
+}
+
+.animate-scan-bar {
+    animation: scan-bar 2s linear infinite;
+}
+
+.btn-data-flow {
+    position: relative;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: dataFlow 2s infinite linear;
+}
+
+@keyframes dataFlow {
+    0% { background-position: 100% center; }
+    100% { background-position: -100% center; }
+}
