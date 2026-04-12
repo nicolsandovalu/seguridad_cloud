@@ -1,4 +1,49 @@
-/* =========================================
+
+/* --- ADN VISUAL Y ESCALA TIPOGRÁFICA CONTROLADA (UI/UX Engineering) --- */
+:root {
+    --font-size-base: 16px; /* Punto de Oro de Legibilidad */
+    --bg-main: #000000;
+}
+
+html, body { 
+    font-size: var(--font-size-base) !important; 
+    background-color: var(--bg-main) !important;
+    color: #f1f5f9;
+}
+
+/* Títulos con impacto y autoridad (Degradado Cian-Esmeralda) */
+h1 { 
+    font-size: 2.2rem !important; 
+    font-weight: 700; 
+    letter-spacing: 0.05em; 
+    background: linear-gradient(90deg, #22d3ee, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+h2 { 
+    font-size: 1.5rem !important; 
+    font-weight: 700; 
+    margin-bottom: 1rem; 
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+} 
+h3 { font-size: 1.15rem !important; font-weight: 600; } 
+
+/* Texto de cuerpo: Legible a distancia */
+p, li, .text-sm { 
+    font-size: 0.95rem !important; 
+    line-height: 1.6 !important; 
+    color: #cbd5e1 !important; 
+}
+
+/* Terminal y Código: Compacto pero claro */
+.font-mono, pre, code { 
+    font-size: 0.85rem !important; 
+    line-height: 1.5 !important;
+}
+
+/* Etiquetas y estados */
+.text-xs { font-size: 0.8rem !important; letter-spacing: 0.05em; }
+\n/* =========================================
            SISTEMA DE ESTADOS (STATE MANAGEMENT)
            ========================================= */
         :root {
@@ -19,10 +64,10 @@
 
         body.state-sec {
             /* Variables Modo Hardened (Verde/Claro) */
-            --bg-main: #000000;
+            --bg-main: linear-gradient(to bottom right, #064e3b, #010a13);
             --text-main: #f1f5f9;
             --card-bg: #02120e;
-            --card-border: #064e3b;
+            --card-border: #10b981; /* Borde verde esmeralda sólido */
             --card-hover-border: rgba(16, 185, 129, 0.5);
             --card-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
             --title-color: #10b981;
@@ -34,9 +79,9 @@
         }
 
         body {
-            background-color: var(--bg-main);
+            background: var(--bg-main);
             color: var(--text-main);
-            transition: background-color 1s ease, color 1s ease;
+            transition: background 1s ease, color 1s ease;
             font-family: 'Inter', sans-serif;
             font-size: 18px;
             overflow-x: hidden;
@@ -105,6 +150,22 @@
             padding: 1.5rem;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Layout Grid System Base */
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* VISTA SEGURA: Glow esmeralda para Base de Conocimientos */
+        body.state-sec #section-glosario .glass-panel,
+        body.state-sec #section-referencias .glass-panel {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
+            background-color: rgba(6, 78, 59, 0.15) !important;
+            transition: all 1s ease-in-out;
         }
 
         .crt::before {

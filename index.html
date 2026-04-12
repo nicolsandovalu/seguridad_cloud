@@ -7,9 +7,7 @@
     <title>Cloud SecOps - Hardening y Prevención de Brechas</title>
 
     <!-- Fuentes para UI y Terminal -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&family=Fira+Code:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Script de Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,75 +17,52 @@
     <!-- SEO & Social Meta Tags -->
     <meta name="description" content="Simulador Interactivo de Hardening y Prevención de Brechas en la Nube.">
     <meta property="og:title" content="Cloud SecOps - Hardening y Prevención de Brechas">
-    <meta property="og:description"
-        content="Aprende y experimenta el proceso de Hardening a través de un panel interactivo.">
+    <meta property="og:description" content="Aprende y experimenta el proceso de Hardening a través de un panel interactivo.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
-<body class="state-vuln">
+<body class="state-vuln bg-[#000000] text-[#f1f5f9]">
 
     <!-- ========================================= -->
     <!-- PANTALLA DE INTRODUCCIÓN CRT (GANCHO)     -->
     <!-- ========================================= -->
     <div id="intro-screen" class="crt">
-        <div
-            class="max-w-4xl w-full p-8 md:p-12 border border-cyan-900/50 bg-[#060a0f] rounded-2xl shadow-[0_0_50px_rgba(34,211,238,0.1)] relative z-10 mx-4">
+        <div class="max-w-4xl w-full p-8 md:p-12 border border-cyan-900/50 bg-[#060a0f] rounded-2xl shadow-[0_0_50px_rgba(34,211,238,0.1)] relative z-10 mx-4">
             <!-- Icono SOC en header -->
             <div class="flex flex-col items-center justify-center mb-8 reveal-text">
-                <div
-                    class="p-4 rounded-full bg-cyan-900/20 border border-cyan-500/30 mb-6 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-                    <svg class="w-10 h-10 text-cyan-400 animate-pulse" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                        </path>
+                <div class="p-4 rounded-full bg-cyan-900/20 border border-cyan-500/30 mb-6 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+                    <svg class="w-10 h-10 text-cyan-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                     </svg>
                 </div>
 
-                <h1
-                    class="text-3xl md:text-5xl font-display font-bold text-center mb-3 tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
-                    CONFIGURACIÓN SEGURA:<br /><span
-                        class="text-2xl md:text-4xl text-slate-200 drop-shadow-none">Hardening de Infraestructura
-                        Cloud</span>
+                <h1 class="font-display font-bold text-center mb-3 tracking-widest uppercase drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
+                    CONFIGURACIÓN SEGURA:<br /><span class="text-slate-200 drop-shadow-none" style="-webkit-text-fill-color: #f1f5f9;">Hardening de Infraestructura Cloud</span>
                 </h1>
-                <p
-                    class="text-cyan-500/80 mt-2 font-mono text-sm md:text-base tracking-widest uppercase bg-cyan-950/40 px-4 py-1 rounded-full border border-cyan-900/50">
+                <p class="text-cyan-500/90 mt-2 font-mono font-medium tracking-widest uppercase bg-cyan-950/40 px-4 py-2 rounded-full border border-cyan-900/50">
                     Reduciendo la superficie de ataque en la frontera digital.</p>
             </div>
 
             <!-- SOC INFO PANE -->
-            <div
-                class="font-mono text-[13px] md:text-sm text-cyan-50 space-y-6 mb-12 leading-relaxed bg-[#02060d] p-6 border border-cyan-900/30 rounded-lg shadow-inner reveal-text">
+            <div class="font-mono font-medium text-cyan-50 space-y-6 mb-12 bg-[#02060d] p-6 border border-cyan-900/30 rounded-lg shadow-inner reveal-text">
                 <p style="animation-delay: 0.2s">
-                    <span class="text-cyan-500 font-bold">ESCENARIO:</span> El <span
-                        class="text-orange-500 font-bold bg-orange-950/40 px-1 rounded shadow-[0_0_10px_rgba(249,115,22,0.4)]">79%</span>
-                    de las grandes empresas operan en entornos Multi-Cloud. La agilidad del despliegue ha superado la
-                    capacidad de gestión, dejando la puerta abierta a fallas sistémicas.
+                    <span class="text-cyan-500 font-bold">ESCENARIO:</span> El <span class="text-orange-500 font-bold bg-orange-950/40 px-1 rounded shadow-[0_0_10px_rgba(249,115,22,0.4)]">79%</span> de las grandes empresas operan en entornos Multi-Cloud. La agilidad del despliegue ha superado la capacidad de gestión, dejando la puerta abierta a fallas sistémicas.
                 </p>
                 <p style="animation-delay: 1.0s">
-                    <span class="text-cyan-500 font-bold">RIESGO:</span> No son incidentes aislados; un activo
-                    promedio en la nube nace con <span
-                        class="text-red-500 font-bold bg-red-950/40 px-1 rounded shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse">115
-                        vulnerabilidades abiertas</span>. La velocidad ha sacrificado la gobernanza.
+                    <span class="text-cyan-500 font-bold">RIESGO:</span> No son incidentes aislados; un activo promedio en la nube nace con <span class="text-red-500 font-bold bg-red-950/40 px-1 rounded shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse">115 vulnerabilidades abiertas</span>. La velocidad ha sacrificado la gobernanza.
                 </p>
                 <p style="animation-delay: 1.8s">
-                    <span class="text-cyan-500 font-bold">OBJETIVO:</span> El Hardening no es opcional. Es el
-                    proceso de blindar identidades, redes y almacenamiento, eliminando cada función innecesaria para
-                    recuperar el control bajo el Modelo de Responsabilidad Compartida.
+                    <span class="text-cyan-500 font-bold">OBJETIVO:</span> El Hardening no es opcional. Es el proceso de blindar identidades, redes y almacenamiento, eliminando cada función innecesaria para recuperar el control bajo el Modelo de Responsabilidad Compartida.
                 </p>
             </div>
 
             <!-- BUTTON -->
-            <button onclick="playClickSound(); enterDashboard()"
-                class="w-full relative group overflow-hidden bg-[#0d141f] border-2 border-cyan-500/30 hover:border-cyan-400 rounded transition-all shadow-[0_0_20px_rgba(34,211,238,0.1)] hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] btn-data-flow">
+            <button onclick="playClickSound(); enterDashboard()" class="w-full relative group overflow-hidden bg-[#0d141f] border-2 border-cyan-500/30 hover:border-cyan-400 rounded transition-all shadow-[0_0_20px_rgba(34,211,238,0.1)] hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] btn-data-flow">
                 <div class="absolute inset-0 bg-cyan-900/20 group-hover:bg-cyan-800/30 transition-colors"></div>
-                <span
-                    class="relative z-10 flex items-center justify-center gap-3 font-display font-bold uppercase tracking-widest text-cyan-400 group-hover:text-cyan-200 py-4">
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <span class="relative z-10 flex items-center justify-center gap-3 font-display font-bold uppercase tracking-widest text-cyan-400 group-hover:text-cyan-200 py-4" style="font-size: 1.2rem;">
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     INGRESAR AL PANEL DE HARDENING
                 </span>
@@ -96,13 +71,10 @@
             <!-- FOOTER STATUS -->
             <div class="mt-8 pt-4">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="font-mono text-[10px] md:text-xs text-cyan-600 tracking-widest opacity-80">> ESTADO DEL
-                        SISTEMA: ANALIZANDO SUPERFICIE DE ATAQUE...</span>
+                    <span class="font-mono font-medium text-cyan-600 tracking-widest">> ESTADO DEL SISTEMA: ANALIZANDO SUPERFICIE DE ATAQUE...</span>
                 </div>
                 <div class="h-[2px] w-full bg-cyan-950/50 overflow-hidden relative rounded-full">
-                    <div
-                        class="absolute top-0 left-0 h-full bg-cyan-500 w-[20%] animate-scan-bar blur-[1px] shadow-[0_0_10px_rgba(34,211,238,1)]">
-                    </div>
+                    <div class="absolute top-0 left-0 h-full bg-cyan-500 w-[20%] animate-scan-bar blur-[1px] shadow-[0_0_10px_rgba(34,211,238,1)]"></div>
                 </div>
             </div>
         </div>
@@ -111,49 +83,41 @@
     <!-- OVERLAY DE HARDENING (PANTALLA DE CARGA) -->
     <div id="lockdown-overlay">
         <div class="w-full max-w-md p-6 glass-panel bg-[#111] border-[#333]">
-            <h2 class="font-display text-emerald-400 text-xl mb-4 flex items-center gap-2">
+            <h2 class="font-display text-emerald-400 font-bold mb-4 flex items-center gap-2">
                 <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                    </path>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Iniciando Securización (Hardening)...
+                Iniciando Securización...
             </h2>
             <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
                 <div id="progress-fill" class="h-full bg-emerald-500 progress-bar"></div>
             </div>
-            <p id="progress-text" class="font-mono text-xs text-slate-400 mt-3">> Aplicando políticas Deny-All y Cifrado
-                KMS...</p>
+            <p id="progress-text" class="font-mono font-medium text-slate-300 mt-3">> Aplicando políticas Deny-All y Cifrado KMS...</p>
         </div>
     </div>
 
     <!-- HEADER Y SISTEMA DE NAVEGACIÓN -->
-    <header class="sticky top-0 z-40 bg-header border-b backdrop-blur-xl transition-colors duration-500">
+    <header class="sticky top-0 z-40 bg-black/80 border-b border-red-900/30 backdrop-blur-xl transition-colors duration-500" id="main-header">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex flex-col md:flex-row items-center gap-6">
                 <!-- Logotipo -->
-                <div
-                    class="flex items-center gap-4 border-b md:border-b-0 md:border-r border-dynamic pb-4 md:pb-0 pr-0 md:pr-6 w-full md:w-auto justify-center md:justify-start">
+                <div class="flex items-center gap-4 border-b md:border-b-0 md:border-r border-dynamic pb-4 md:pb-0 pr-0 md:pr-6 w-full md:w-auto justify-center md:justify-start">
                     <div class="p-2 rounded-lg border border-dynamic bg-dynamic">
                         <svg class="w-6 h-6 icon-dynamic" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h1 class="text-xl font-bold text-title-dynamic">Cloud SecOps</h1>
+                    <h2 class="text-title-dynamic font-bold mb-0">Cloud SecOps</h2>
                 </div>
-                <!-- Menú de Navegación (NUEVO) -->
-                <nav class="flex flex-wrap justify-center gap-4 md:gap-6 font-display text-sm mt-4 md:mt-0">
-                    <button onclick="showSection('dashboard')" id="nav-dashboard"
-                        class="nav-link active">Dashboard</button>
+                <!-- Menú de Navegación -->
+                <nav class="flex flex-wrap justify-center gap-4 md:gap-6 font-display mt-4 md:mt-0">
+                    <button onclick="showSection('dashboard')" id="nav-dashboard" class="nav-link active">Dashboard</button>
                     <button onclick="showSection('glosario')" id="nav-glosario" class="nav-link">Glosario</button>
-                    <button onclick="showSection('referencias')" id="nav-referencias"
-                        class="nav-link">Referencias</button>
+                    <button onclick="showSection('referencias')" id="nav-referencias" class="nav-link">Referencias</button>
                 </nav>
             </div>
-
+            
             <!-- Botón Interruptor Global -->
             <div class="flex items-center gap-4 mt-4 md:mt-0">
                 <button id="toggleBtn" onclick="triggerLockdown()"
@@ -189,316 +153,187 @@
         <!-- ========================================= -->
         <div id="section-dashboard" class="content-section grid grid-cols-1 md:grid-cols-12 gap-8">
 
-            <div class="absolute left-1/2 top-0 bottom-0 w-px border-dynamic border-l hidden lg:block opacity-20 -z-10">
-            </div>
+            <div class="absolute left-1/2 top-0 bottom-0 w-px border-dynamic border-l hidden lg:block opacity-20 -z-10"></div>
 
             <!-- SECCIÓN 1: Explicación del Concepto -->
             <section class="glass-panel bg-dynamic md:col-span-7">
-                <h2 class="text-2xl font-display text-title-dynamic mb-4 flex items-center gap-2">1. Explicación del
-                    Concepto (Fundamento Teórico)</h2>
-                <p class="mb-4 text-sm leading-relaxed">
+                <h2 class="font-display text-title-dynamic font-bold flex items-center gap-2">1. Explicación del Concepto</h2>
+                <p>
                     El <strong>Hardening</strong> es el proceso de asegurar un sistema reduciendo su superficie de
                     ataque eliminando funciones, puertos, permisos o servicios innecesarios. Se fundamenta en el
                     <strong>Modelo de Responsabilidad Compartida</strong>, donde el proveedor asegura la infraestructura
                     física (la "nube"), pero el cliente es responsable de asegurar los datos, las identidades y la
                     configuración de los recursos (lo que está "en la nube").
                 </p>
-                <p class="mb-6 text-sm leading-relaxed opacity-80 italic">
-                    Muchos incidentes ocurren por "fatiga de configuración" o porque las interfaces facilitan otorgar
-                    permisos globales en lugar de granulares.
-                </p>
-                <div class="border border-dynamic rounded-xl p-5 relative overflow-hidden bg-black/5">
+                <div class="border border-dynamic rounded-xl p-6 mt-6 relative overflow-hidden bg-black/40">
                     <div class="absolute inset-0 bg-gradient-to-r from-transparent to-dynamic opacity-10"></div>
-                    <h3 class="text-xs font-bold uppercase tracking-wider mb-3 text-title-dynamic">Modelo de
-                        Responsabilidad Compartida</h3>
-                    <div
-                        class="flex h-12 rounded-lg overflow-hidden text-xs font-bold text-white text-center shadow-inner">
-                        <div class="w-1/3 bg-slate-700 flex items-center justify-center border-r border-slate-800">
-                            Proveedor (Infraestructura)</div>
-                        <div class="w-2/3 flex items-center justify-center transition-all show-vuln bg-red-600/80">
-                            Cliente (Datos, IAM, Red) - VULNERABLE</div>
-                        <div class="w-2/3 flex items-center justify-center transition-all show-sec bg-emerald-600/90">
-                            Cliente (Datos, IAM, Red) - ASEGURADO</div>
+                    <h3 class="font-bold uppercase tracking-wider mb-4 text-title-dynamic">Modelo de Responsabilidad Compartida</h3>
+                    <div class="flex h-12 rounded-lg overflow-hidden font-bold text-white text-center shadow-inner">
+                        <div class="w-1/3 bg-slate-800 flex items-center justify-center border-r border-slate-700">Proveedor (Infraestructura)</div>
+                        <div class="w-2/3 flex items-center justify-center transition-all show-vuln bg-red-600/80 shadow-[0_0_15px_rgba(239,68,68,0.5)]">Cliente (Datos, IAM) - VULNERABLE</div>
+                        <div class="w-2/3 flex items-center justify-center transition-all show-sec bg-emerald-600/90 shadow-[0_0_15px_rgba(16,185,129,0.5)]">Cliente (Datos, IAM) - ASEGURADO</div>
                     </div>
                 </div>
             </section>
 
             <!-- SECCIÓN 4: Relación con Normativas -->
             <section class="glass-panel bg-dynamic md:col-span-5 flex flex-col justify-center">
-                <h2 class="text-2xl font-display text-title-dynamic mb-6">4. Relación con ISO / NIST / CIS</h2>
-                <p class="text-xs opacity-80 mb-4 border-b border-dynamic pb-4">Las configuraciones seguras se alinean
-                    con estos estándares globales:</p>
-                <ul class="space-y-4 text-xs">
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-2 h-2 rounded-full bg-blue-500"></div>
-                        <div><strong class="text-title-dynamic block">CIS Benchmarks</strong> La guía de oro para el
-                            Hardening. Proporcionan la base técnica con pasos exactos para el endurecimiento de AWS,
-                            Azure y GCP.</div>
+                <h2 class="font-display text-title-dynamic font-bold">4. Relación con Normativas</h2>
+                <p class="border-b border-dynamic pb-4 mb-6">Las configuraciones seguras se alinean con estos estándares globales:</p>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <div class="mt-2 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
+                        <div><strong class="text-title-dynamic block mb-1">CIS Benchmarks</strong> La guía de oro. Pasos exactos para el endurecimiento de configuraciones en AWS, Azure y GCP.</div>
                     </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-2 h-2 rounded-full bg-purple-500"></div>
-                        <div><strong class="text-title-dynamic block">NIST SP 800-53 y SP 800-144</strong> Definen los
-                            controles de gestión de configuración (CM) y control de acceso (AC) para nubes públicas.
-                        </div>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-2 w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div>
+                        <div><strong class="text-title-dynamic block mb-1">NIST SP 800-53</strong> Definen los controles de gestión de configuración (CM) y control de acceso (AC).</div>
                     </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 w-2 h-2 rounded-full bg-amber-500"></div>
-                        <div><strong class="text-title-dynamic block">ISO/IEC 27017</strong> Extensión de la ISO 27001
-                            que aborda el aislamiento de datos y gestión de activos virtualizados.</div>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-2 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
+                        <div><strong class="text-title-dynamic block mb-1">ISO/IEC 27017</strong> Aborda el aislamiento de datos y gestión de activos virtualizados.</div>
                     </li>
                 </ul>
             </section>
 
             <!-- SECCIÓN 2: Implementación Técnica -->
             <section class="glass-panel bg-dynamic md:col-span-12">
-                <h2 class="text-2xl font-display text-title-dynamic mb-6">2. Cómo se Implementa en Cloud (Capas
-                    Críticas)</h2>
+                <h2 class="font-display text-title-dynamic font-bold">2. Cómo se Implementa en Cloud (Capas Críticas)</h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 text-sm">
-                    <div class="p-4 border border-dynamic rounded bg-black/10">
-                        <strong class="text-title-dynamic block mb-2 border-b border-dynamic pb-2">🛡️ Capa de
-                            Almacenamiento</strong>
-                        <ul class="list-disc pl-4 opacity-80 space-y-1">
-                            <li><strong>AWS:</strong> S3 Block Public Access a nivel de cuenta y políticas de Bucket
-                                (JSON).</li>
-                            <li><strong>Azure:</strong> Deshabilitar acceso público (allow-blob-public-access false) y
-                                Tokens SAS estrictos.</li>
+                <!-- Aumento de Padding para evitar solapamientos (Punto 2) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 mt-6">
+                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
+                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3">🛡️ Capa de Almacenamiento</strong>
+                        <ul class="list-disc pl-5 opacity-90 space-y-2">
+                            <li><strong>AWS:</strong> S3 Block Public Access a nivel de cuenta.</li>
+                            <li><strong>Azure:</strong> Deshabilitar acceso público y usar Tokens SAS estrictos.</li>
                             <li><strong>GCP:</strong> Habilitar UBLA para evitar ACLs antiguas.</li>
                         </ul>
                     </div>
-                    <div class="p-4 border border-dynamic rounded bg-black/10">
-                        <strong class="text-title-dynamic block mb-2 border-b border-dynamic pb-2">🔑 Capa de Identidad
-                            (IAM)</strong>
-                        <ul class="list-disc pl-4 opacity-80 space-y-1">
-                            <li>Implementar <strong>Principio de Mínimo Privilegio (PoLP)</strong>.</li>
-                            <li>Reemplazar Access Keys permanentes por credenciales temporales asumiendo <strong>Roles
-                                    (AWS) o Managed Identities (Azure)</strong>.</li>
+                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
+                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3">🔑 Capa de Identidad (IAM)</strong>
+                        <ul class="list-disc pl-5 opacity-90 space-y-2">
+                            <li>Implementar Principio de Mínimo Privilegio (PoLP).</li>
+                            <li>Reemplazar Access Keys permanentes por credenciales temporales.</li>
                         </ul>
                     </div>
-                    <div class="p-4 border border-dynamic rounded bg-black/10">
-                        <strong class="text-title-dynamic block mb-2 border-b border-dynamic pb-2">🌐 Capa de
-                            Red</strong>
-                        <ul class="list-disc pl-4 opacity-80 space-y-1">
-                            <li>Cierre de puertos con <strong>Security Groups (AWS) / NSG (Azure)</strong>.</li>
-                            <li>Asegurar que <strong>SSH (22) o RDP (3389)</strong> nunca estén abiertos a Internet
-                                (0.0.0.0/0).</li>
+                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
+                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3">🌐 Capa de Red</strong>
+                        <ul class="list-disc pl-5 opacity-90 space-y-2">
+                            <li>Cierre de puertos con Security Groups / NSG apuntando a IPs específicas.</li>
+                            <li>Asegurar que SSH/RDP nunca estén abiertos a Internet.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="flex gap-1 border-b border-dynamic mb-4">
-                    <button class="tab-btn active" onclick="switchTab('aws', event)">AWS CLI (Storage)</button>
-                    <button class="tab-btn opacity-60" onclick="switchTab('azure', event)">Azure CLI (Storage)</button>
-                    <button class="tab-btn opacity-60" onclick="switchTab('gcp', event)">GCP CLI (Storage)</button>
+                <div class="flex gap-2 border-b border-dynamic mb-4">
+                    <button class="tab-btn active px-4 py-2 bg-black/60 rounded-t-lg border-t border-l border-r border-dynamic text-title-dynamic font-bold" onclick="switchTab('aws', event)">AWS CLI</button>
+                    <button class="tab-btn opacity-60 px-4 py-2 hover:opacity-100 transition-opacity" onclick="switchTab('azure', event)">Azure CLI</button>
                 </div>
-                <div class="bg-[#0D1117] border border-[#30363D] rounded-xl p-5 relative group overflow-hidden">
-                    <div id="code-aws" class="tab-content text-sm font-mono leading-relaxed text-slate-300">
-                        <span class="text-slate-500"># Implementación de S3 Block Public Access a nivel de
-                            cuenta</span><br>
-                        <span class="text-pink-400">aws</span> s3control put-public-access-block --account-id <span
-                            class="text-yellow-300">&lt;tu-id-cuenta&gt;</span> \<br>
-                        &nbsp;&nbsp;--public-access-block-configuration <span
-                            class="text-green-300">"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"</span>
+                <div class="bg-[#0D1117] border border-[#30363D] rounded-xl p-6 relative group overflow-hidden shadow-inner font-mono">
+                    <div id="code-aws" class="tab-content">
+                        <span class="text-slate-400"># Implementación de S3 Block Public Access a nivel de cuenta</span><br>
+                        <span class="text-pink-400">aws</span> s3control put-public-access-block --account-id <span class="text-yellow-300">&lt;tu-id-cuenta&gt;</span> \<br>
+                        &nbsp;&nbsp;--public-access-block-configuration <span class="text-green-300">"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true"</span>
                     </div>
-                    <div id="code-azure" class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300">
-                        <span class="text-slate-500"># Deshabilitar el acceso público a los Blob Storage</span><br>
-                        <span class="text-pink-400">az</span> storage account update --name <span
-                            class="text-yellow-300">"mystorageaccount"</span> \<br>
-                        &nbsp;&nbsp;--resource-group myResourceGroup --allow-blob-public-access <span
-                            class="text-red-400">false</span>
-                    </div>
-                    <div id="code-gcp" class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300">
-                        <span class="text-slate-500"># Habilitar Uniform Bucket-Level Access (UBLA)</span><br>
-                        <span class="text-pink-400">gcloud</span> storage buckets update gs://<span
-                            class="text-yellow-300">mi-bucket-sensible</span> \<br>
-                        &nbsp;&nbsp;--uniform-bucket-level-access
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 3: Riesgos 3D -->
-            <section class="md:col-span-12 mt-4">
-                <h2 class="text-2xl font-display text-title-dynamic mb-6">3. Riesgos si se Implementa Mal
-                    (Vulnerabilidades)</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                    <div class="tilt-card group lg:col-span-2">
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-                            <h3 class="font-bold mb-2 text-title-dynamic">Exfiltración Masiva de Datos</h3>
-                            <p class="text-[11px] opacity-80 leading-relaxed">Un bucket público o un token SAS mal
-                                configurado permite a cualquier persona descargar terabytes de información sin
-                                autenticación. Filtración de material sensible (.pem, .sql, .bak).</p>
-                        </div>
-                    </div>
-                    <div class="tilt-card group lg:col-span-3">
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-                            <h3 class="font-bold mb-2 text-title-dynamic">Escalamiento y Movimiento Lateral</h3>
-                            <p class="text-[11px] opacity-80 leading-relaxed">Si a un servidor web se le asigna un rol
-                                de IAM con permisos de administrador, un atacante que vulnere el servidor web podrá
-                                controlar toda la cuenta en la nube.</p>
-                        </div>
-                    </div>
-                    <div class="tilt-card group lg:col-span-2">
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-                            <h3 class="font-bold mb-2 text-title-dynamic">Cryptojacking</h3>
-                            <p class="text-[11px] opacity-80 leading-relaxed">Instancias con puertos expuestos (como el
-                                22) son escaneadas por bots, vulneradas por fuerza bruta e infectadas con mineros,
-                                disparando costos de facturación.</p>
-                        </div>
-                    </div>
-                    <div class="tilt-card group lg:col-span-1">
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-                            <h3 class="font-bold mb-2 text-title-dynamic">Infección</h3>
-                            <p class="text-[11px] opacity-80 leading-relaxed">Sobrescribir archivos en buckets para
-                                inyectar mineros en webs legítimas.</p>
-                        </div>
-                    </div>
-                    <div class="tilt-card group lg:col-span-2">
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-                            <h3 class="font-bold mb-2 text-title-dynamic">Fatiga de Alertas</h3>
-                            <p class="text-[11px] opacity-80 leading-relaxed">Exceso de "ruido" de falsos positivos CSPM
-                                que reduce la productividad de analistas en un 93%.</p>
-                        </div>
+                    <div id="code-azure" class="tab-content hidden">
+                        <span class="text-slate-400"># Deshabilitar el acceso público a Blob Storage</span><br>
+                        <span class="text-pink-400">az</span> storage account update --name <span class="text-yellow-300">"mystorageaccount"</span> \<br>
+                        &nbsp;&nbsp;--resource-group myResourceGroup --allow-blob-public-access <span class="text-red-400">false</span>
                     </div>
                 </div>
             </section>
 
             <!-- SECCIÓN 5: REDISEÑO CLOUD BREACH LAB SOC -->
-            <section id="breach-lab"
-                class="glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-colors duration-1000 bg-[#050505]">
-                <div
-                    class="p-6 border-b border-red-900/50 bg-black/40 flex justify-between items-center relative z-10 backdrop-blur-md transition-colors duration-1000 lab-header">
-                    <h2
-                        class="text-xl font-display text-red-500 flex items-center gap-2 transition-colors duration-1000 lab-title">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                            </path>
-                        </svg>
+            <section id="breach-lab" class="glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-colors duration-1000 bg-[#050505]">
+                <div class="p-6 border-b border-red-900/50 bg-black/40 flex justify-between items-center relative z-10 backdrop-blur-md transition-colors duration-1000 lab-header">
+                    <h2 class="font-display text-red-500 font-bold flex items-center gap-3 transition-colors duration-1000 lab-title mb-0 drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]">
                         5. Cloud Breach Lab (SOC Terminal)
                     </h2>
-
-                    <!-- Botón Interruptor Global Central (Before/After) -->
-                    <button onclick="toggleLabRemediation()" id="lab-remediation-btn"
-                        class="font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-red-500 bg-red-900/40 text-red-100 hover:bg-red-700 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.5)]">
+                    <!-- Botón Interruptor Global Central -->
+                    <button onclick="toggleLabRemediation()" id="lab-remediation-btn" class="font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-900/40 text-red-100 hover:bg-red-700 transition-all shadow-[0_0_15px_rgba(239,68,68,0.5)]">
                         APLICAR HARDENING
                     </button>
                 </div>
 
-                <!-- Lista de Alertas Dinámicas (TABS) -->
-                <div
-                    class="flex flex-col md:flex-row gap-2 p-4 bg-black/60 border-b border-red-900/30 relative z-10 font-mono text-xs transition-colors duration-1000 lab-tabs-container">
-                    <button onclick="switchLab('msft')" id="btn-lab-msft"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:w-auto px-4 py-3 rounded border transition-all active-vuln border-red-500 bg-red-950/40 text-red-200 shadow-[0_0_10px_rgba(239,68,68,0.3)]">
-                        <span>[ ALERTA ] Microsoft AI</span>
-                        <svg class="w-4 h-4 ml-3 flex-shrink-0 animate-pulse text-red-500 lab-icon" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                            </path>
-                        </svg>
+                <!-- Lista de Alertas Dinámicas (TABS) con font-size: 0.8rem adaptado -->
+                <div class="flex flex-col md:flex-row gap-3 p-4 bg-black/60 border-b border-red-900/30 relative z-10 font-mono font-medium transition-colors duration-1000 lab-tabs-container">
+                    <button onclick="switchLab('msft')" id="btn-lab-msft" class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all active-vuln border-red-500 bg-red-950/40 text-red-200 shadow-[0_0_10px_rgba(239,68,68,0.3)]">
+                        <span style="font-size: 0.8rem;">[ ALERTA ] Microsoft AI</span>
+                        <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
                     </button>
-                    <button onclick="switchLab('att')" id="btn-lab-att"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:w-auto px-4 py-3 rounded border transition-all border-transparent text-slate-500 hover:bg-white/5 opacity-70">
-                        <span>[ ALERTA ] AT&T / Snowflake</span>
-                        <svg class="w-4 h-4 ml-3 flex-shrink-0 text-slate-600 lab-icon" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                            </path>
-                        </svg>
+                    <button onclick="switchLab('att')" id="btn-lab-att" class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all border-transparent text-slate-300 hover:bg-white/5 opacity-80">
+                        <span style="font-size: 0.8rem;">[ ALERTA ] AT&T / Snowflake</span>
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
                     </button>
-                    <button onclick="switchLab('lat')" id="btn-lab-lat"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:w-auto px-4 py-3 rounded border transition-all border-transparent text-slate-500 hover:bg-white/5 opacity-70">
-                        <span>[ ALERTA ] LA Times (S3)</span>
-                        <svg class="w-4 h-4 ml-3 flex-shrink-0 text-slate-600 lab-icon" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                            </path>
-                        </svg>
+                    <button onclick="switchLab('lat')" id="btn-lab-lat" class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all border-transparent text-slate-300 hover:bg-white/5 opacity-80">
+                        <span style="font-size: 0.8rem;">[ ALERTA ] LA Times (S3)</span>
+                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
                     </button>
                 </div>
 
-                <!-- Contenedor Principal: Split entre Código y Risk Gauge -->
-                <div id="breach-lab-content"
-                    class="p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-colors duration-1000">
+                <!-- Contenedor Principal: Split 70% Código / 30% Risk Gauge -->
+                <div id="breach-lab-content" class="p-6 grid grid-cols-1 md:grid-cols-10 gap-8 relative z-10 scanlines-bg transition-colors duration-1000">
 
-                    <!-- Area de Código de Casos (Renderizado Dinámico) -->
-                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[350px] overflow-hidden">
+                    <!-- Area de Código de Casos (Renderizado Dinámico 70%) -->
+                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[360px] overflow-hidden p-2">
                         <!-- El contenido se inyecta desde JS -->
                     </div>
 
-                    <!-- Risk Gauge (SVG Dinámico) -->
-                    <div
-                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-6 bg-black/60 rounded-xl border border-red-900/30 transition-colors duration-1000 lab-gauge-container relative overflow-hidden">
-
-                        <div class="text-xs uppercase tracking-widest text-slate-400 mb-6 font-mono font-bold z-10">
-                            System Risk Level</div>
-
-                        <div class="relative w-40 h-20 overflow-hidden z-10">
+                    <!-- Risk Gauge (SVG Dinámico 30%) -->
+                    <div class="md:col-span-3 w-full flex flex-col items-center justify-center p-8 bg-[#0a0a0a] rounded-xl border border-red-900/40 transition-colors duration-1000 lab-gauge-container relative overflow-hidden shadow-xl">
+                        <div class="uppercase tracking-widest text-slate-400 mb-8 font-mono font-bold z-10" style="font-size: 0.8rem;">
+                            Nivel de Riesgo
+                        </div>
+                        <div class="relative w-48 h-24 overflow-hidden z-10">
                             <!-- Arco base -->
                             <svg class="w-full h-full" viewBox="0 0 100 50">
-                                <path d="M 5 50 A 45 45 0 0 1 95 50" fill="none" stroke="#222" stroke-width="10"
-                                    stroke-linecap="round"></path>
-                                <!-- Sección Verde (Safe) -->
-                                <path d="M 5 50 A 45 45 0 0 1 50 5" fill="none" class="stroke-emerald-600"
-                                    stroke-width="10" opacity="0.9"></path>
-                                <!-- Sección Roja (Critical) -->
-                                <path d="M 50 5 A 45 45 0 0 1 95 50" fill="none" class="stroke-red-600"
-                                    stroke-width="10" opacity="0.9"></path>
+                                <path d="M 5 50 A 45 45 0 0 1 95 50" fill="none" stroke="#222" stroke-width="10" stroke-linecap="round"></path>
+                                <path d="M 5 50 A 45 45 0 0 1 50 5" fill="none" class="stroke-emerald-600" stroke-width="10" opacity="0.9"></path>
+                                <path d="M 50 5 A 45 45 0 0 1 95 50" fill="none" class="stroke-red-600 drop-shadow-[0_0_5px_rgba(239,68,68,0.8)]" stroke-width="10" opacity="0.9"></path>
                             </svg>
-                            <!-- Pila Pivot/Aguja -->
-                            <div id="lab-risk-needle"
-                                class="absolute bottom-0 left-1/2 w-[3px] h-[45px] bg-[#ddd] rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-md z-10"
-                                style="transform: rotate(70deg);"></div>
-                            <div
-                                class="absolute bottom-0 left-1/2 w-4 h-4 bg-slate-200 rounded-full -translate-x-1/2 translate-y-[40%] z-20 shadow-lg border border-slate-900">
-                            </div>
+                            <!-- Aguja Inercial -->
+                            <div id="lab-risk-needle" class="absolute bottom-0 left-1/2 w-[4px] h-[50px] bg-[#fff] rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10" style="transform: rotate(70deg);"></div>
+                            <div class="absolute bottom-0 left-1/2 w-6 h-6 bg-slate-200 rounded-full -translate-x-1/2 translate-y-[40%] z-20 shadow-lg border-2 border-slate-900"></div>
                         </div>
-
-                        <div id="lab-risk-status-text"
-                            class="text-red-500 font-bold font-mono mt-4 text-base tracking-widest transition-colors duration-500 animate-pulse z-10">
-                            CRITICAL</div>
-
-                        <!-- Scanline sutil que cruza solo por detrás del medidor -->
-                        <div class="absolute inset-0 scanline-element pointer-events-none opacity-30"></div>
+                        <div id="lab-risk-status-text" class="text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10" style="font-size: 0.9rem;">
+                            CRITICAL
+                        </div>
                     </div>
-
                 </div>
             </section>
 
-
-            <!-- SECCIÓN 6: Recomendaciones -->
-            <section class="glass-panel bg-dynamic md:col-span-12 mt-4">
-    <h2 class="text-2xl font-display text-title-dynamic mb-6">6. Gobernanza Proactiva y Automatización</h2>
-    <p class="text-sm opacity-80 mb-6 border-b border-dynamic pb-4">Las configuraciones manuales fallan por naturaleza humana. La automatización es la única solución escalable para mantener el Hardening:</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs leading-relaxed">
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">IaC y Shift-Left</strong>
-            Utilizar herramientas como <strong>Terraform</strong> e integrar escáneres (Checkov/Terrascan) en el pipeline para detectar riesgos antes del despliegue[cite: 451, 601].
-        </div>
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">Validación de Comportamiento</strong>
-            Uso de sondas para verificar si una alerta es realmente explotable, reduciendo los falsos positivos en un <strong>93%</strong> y optimizando el SOC[cite: 447, 661].
-        </div>
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">Monitoreo y Auditoría</strong>
-            Vigilancia continua con <strong>AWS CloudTrail</strong> o <strong>Azure Monitor</strong> para detectar quién y cuándo alteró una configuración crítica.
-        </div>
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">Detección de Desviación (Drift)</strong>
-            Alerta inmediata ante cambios manuales (ClickOps) para forzar la autoremediación y volver al estado seguro original.
-        </div>
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">Patch Management IaaS</strong>
-            Hardening del Sistema Operativo en instancias virtuales para cerrar vulnerabilidades internas y mantener parches al día.
-        </div>
-        <div class="p-5 border border-dynamic rounded-xl bg-black/10 hover:bg-black/20 transition-all hover:scale-[1.02]">
-            <strong class="text-emerald-400 block mb-2 underline text-sm">Auditoría de DNS</strong>
-            Verificación constante de registros DNS CNAME para evitar el secuestro de subdominios abandonados vinculados a la nube[cite: 462].
-        </div>
-    </div>
-</section>
+            <!-- SECCIÓN 6: Recomendaciones (Gobernanza Proactiva) -->
+            <section class="glass-panel bg-dynamic md:col-span-12 mt-6 p-8">
+                <h2 class="font-display text-title-dynamic font-bold mb-6">6. Gobernanza Proactiva y Automatización</h2>
+                <p class="mb-8 border-b border-dynamic pb-6">Las configuraciones manuales fallan por naturaleza humana. La automatización es la única solución escalable frente a la fatiga de configuración:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">⚡ IaC y Shift-Left</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Utilizar herramientas como Terraform e integrar escáneres en el pipeline M para vulnerabilidades antes del despliegue.</p>
+                    </div>
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">🎯 Validación de Comportamiento</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Uso de sondas para verificar si una alerta es explotable, reduciendo falsos positivos en un 93%.</p>
+                    </div>
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">👀 Monitoreo y Auditoría</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Vigilancia con AWS CloudTrail o Azure Monitor para detectar quién alteró configuraciones críticas.</p>
+                    </div>
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">🔄 Drift Detection</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Alerta inmediata ante cambios manuales (ClickOps) para forzar autoremediación.</p>
+                    </div>
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">🛡️ Patch Management</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Hardening del OS en instancias virtuales para cerrar vulnerabilidades críticas de red.</p>
+                    </div>
+                    <div class="p-6 border border-dynamic rounded-xl bg-[#09090b] hover:bg-[#18181b] transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2">🌐 Auditoría de DNS</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Verificación constante de registros DNS CNAME evitando secuestros por subdominios inactivos.</p>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- ========================================= -->
@@ -506,176 +341,130 @@
         <!-- ========================================= -->
         <div id="section-glosario" class="content-section hidden">
             <div class="mb-8 border-b border-dynamic pb-4">
-                <h2 class="text-3xl font-display text-title-dynamic uppercase tracking-tighter">Glosario de Seguridad
-                    Cloud</h2>
-                <p class="text-sm opacity-80 mt-2">Definiciones críticas requeridas para entender la arquitectura y
-                    prevención de brechas (Se adaptan al estado del sistema).</p>
+                <h2 class="text-3xl font-display text-title-dynamic uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">Glosario de Seguridad Cloud</h2>
+                <p class="text-sm opacity-80 mt-2 text-[#cbd5e1]">Definiciones críticas requeridas para entender la arquitectura y prevención de brechas.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Conceptos Generales -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Hardening</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Proceso de reducir la superficie de ataque de un
-                        sistema eliminando configuraciones innecesarias, aplicando restricciones y siguiendo guías de
-                        mejores prácticas de seguridad.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- 1-7: Fundamentos y Arquitectura -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">1. Hardening</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso estricto de reducir la superficie de ataque eliminando configuraciones y puertos innecesarios.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Superficie de ataque</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Conjunto de todos los puntos de entrada por los que un
-                        atacante podría intentar acceder a un sistema. Más configuraciones abiertas = mayor superficie
-                        de ataque.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">2. Superficie de Ataque</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Conjunto de todas las vulnerabilidades expuestas. A menor superficie, menor probabilidad de brecha exitosa.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Principio de menor privilegio</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Regla de seguridad que indica que cada usuario,
-                        proceso o sistema debe tener solo los permisos mínimos necesarios para realizar su tarea, y nada
-                        más.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">3. PoLP</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Principle of Least Privilege. Dar a usuarios e identidades solo los permisos mínimos indispensables.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">4. Modelo Resp. Compartida</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">El proveedor asegura el datacenter físico; el cliente asegura los datos, accesos y configuraciones.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">5. Zero Trust</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Arquitectura que asume riesgo permanente: "Nunca confíes, siempre verifica" en cada petición interna.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">6. Shadow IT</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Sistemas levantados sin control ni auditoría por desarrolladores, fuera del rango del firewall SOC.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">7. Configuration Drift</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Desviación gradual y peligrosa entre la infraestructura actual y su diseño seguro original.</p>
                 </div>
 
-                <!-- BUCKETS & Riesgos Públicos (Extensión Jerárquica) -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 md:col-span-2 lg:col-span-2 shadow-lg">
-                    <h3 class="text-title-dynamic font-bold font-mono text-lg border-b border-dynamic pb-2">
-                        Buckets/Blobs</h3>
-                    <p class="text-sm opacity-90 font-medium">Es el contenedor lógico básico que se utiliza en los
-                        servicios de almacenamiento de objetos en la nube, como Amazon S3 (Simple Storage Service) o
-                        Google Cloud Storage.</p>
-
-                    <div class="mt-2 pl-4 border-l-4 border-dynamic bg-black/20 p-4 rounded">
-                        <strong class="text-sm text-title-dynamic uppercase block mb-2">⚠️ Extensión Crítica: Buckets
-                            Públicos</strong>
-                        <p class="text-xs opacity-80 mb-2">El riesgo más común. Exponer datos sensibles al mundo por no
-                            cambiar la visibilidad de "pública" a "privada".</p>
-                        <p class="text-xs opacity-80"><strong>Brechas por buckets expuestos:</strong> se refieren a que
-                            el administrador configuró mal este contenedor principal, permitiendo que cualquier persona
-                            con acceso a Internet pueda ver (y a veces descargar o modificar) todos los archivos que hay
-                            dentro de él, sin necesidad de contraseñas.</p>
-                    </div>
+                <!-- 8-14: Componentes Core -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">8. Buckets / Blobs</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Contenedores de almacenamiento masivo. El principal vector de fuga si se dejan como "Público".</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">9. Endpoints API</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Puertas de entrada digitales. Deben estar cifradas y enmascaradas detrás de gateways o WAFs.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">10. IAM</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identity & Access Management. El nuevo perímetro de seguridad donde se decide quién entra.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Managed Identities</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identidad sin contraseña otorgada a las máquinas, encriptando su acceso internamente.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">12. Bucket Policies (AWS)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Reglas JSON anexadas a S3 que dictan controles absolutos sobre quién puede interactuar con los datos.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">13. Block Public Access</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor maestro en la cuenta (AWS/Azure) que impide exponer recursos al internet global.</p>
+                </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">14. UBLA (GCP)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Uniform Bucket-Level Access. Evita Listas de Control de Acceso obsoletas priorizando IAM central.</p>
                 </div>
 
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Shadow IT</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Servicios levantados por desarrolladores sin pasar por
-                        el proceso de hardening (ej. bases de datos sin contraseña).</p>
+                <!-- 15-21: Defensa y Validación -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">15. CSPM</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management. Radares que escanean la nube detectando fallas automáticamente.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Endpoints</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Cualquier dispositivo o punto de conexión que se
-                        comunica con una red (URL de API, IP de EC2). Si está "expuesto", cualquiera en Internet podría
-                        intentar "tocar la puerta".</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">16. CNAPP</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Plataformas que unifican defensa perimetral, código y monitor de cargas (Todo en Uno).</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">CSPM</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Cloud Security Posture Management. Categoría de
-                        herramientas que escanean continuamente la nube para detectar malas configuraciones y riesgos de
-                        cumplimiento (ISO/NIST).</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">17. MFA</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Multi-Factor Authentication. Evitó miles de ataques corporativos, requiere 2+ métodos de validación.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">CNAPP</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Cloud-Native Application Protection Platforms.
-                        Evolución del CSPM que unifica seguridad de contenedores y cargas en una sola plataforma para
-                        todo el ciclo de vida.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">18. Security Groups</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Firewalls de instancia virtual (Stateful). Solo lo que permitas explícitamente atravesará.</p>
                 </div>
-
-                <!-- Conceptos de AWS / Azure / GCP -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Bucket Policies (AWS)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Documentos JSON adjuntos a un bucket S3 que definen
-                        reglas a nivel general (ej. "Denegar subidas no cifradas"), evitando configurar archivos uno por
-                        uno.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">19. NSG</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Network Security Groups (Azure). Filtros de red aplicados por subred o tarjetas de interfaz.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Block Public Access (AWS)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Interruptor de máxima prioridad. Al activarse, bloquea
-                        instantáneamente accesos públicos, anulando políticas o ACLs previas permisivas.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">20. RBAC</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Asignar permisos basados estrictamente en el "Rol" y responsabilidades del usuario, no en la persona.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Blob Storage & config (Azure)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Almacenamiento de Binary Large Objects en Azure. El
-                        comando <code>allow-blob-public-access false</code> desactiva accesos anónimos a todos los
-                        contenedores.</p>
-                </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Shared Access Signatures / Tokens SAS (Azure)
-                    </h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Token o URL firmada criptográficamente que otorga
-                        acceso temporal y limitado a recursos sin exponer las claves maestras. Vector del caso Microsoft
-                        AI.</p>
-                </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Uniform Bucket-Level Access (UBLA - GCP)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Configuración que unifica el control de acceso en GCP,
-                        deshabilitando ACLs antiguas y forzando la seguridad exclusivamente a través del sistema IAM.
-                    </p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">21. Tokens SAS</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Firmas temporales en Azure. Si se generan sin fecha de vencimiento y amplios permisos, son letales.</p>
                 </div>
 
-                <!-- IAM, Redes y Conceptos de Ataque -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">IAM / Managed Identities</h3>
-                    <p class="text-xs opacity-80 leading-relaxed"><strong>IAM</strong> es la capa fundamental de acceso.
-                        Las <strong>Identidades Administradas (Azure)</strong> le dan a una app su propia identidad,
-                        eliminando contraseñas en el código.</p>
+                <!-- 22-28: Ataques y DevOps -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">22. Movimiento Lateral</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso donde un hacker se esparce desde una máquina débil hacia la base de datos central.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">MFA</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Multi-Factor Authentication. Requiere dos o más
-                        pruebas para verificar identidad. Su ausencia fue clave en el hackeo de AT&T/Snowflake.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">23. Exfiltración</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Extracción encriptada o masiva de data hacia servidores bajo control atacante u oscuros.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Security Groups & NSG</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Firewalls virtuales. AWS Security Groups operan a
-                        nivel de instancia (stateful). Azure Network Security Groups (NSG) pueden asociarse a subredes
-                        completas.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">24. Cryptojacking</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secuestro silencioso de poder de CPU en la nube empresarial para minar criptomonedas.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Puertos 22 (SSH) y 3389 (RDP)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Protocolos remotos para Linux y Windows. Si se dejan
-                        expuestos a todo Internet (0.0.0.0/0), son vectores principales para fuerza bruta y Ransomware.
-                    </p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">25. ClickOps</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Práctica obsoleta de configurar la nube con clicks manuales, propenso a errores humanos.</p>
                 </div>
-
-                <!-- Prácticas y Vectores -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Infraestructura como Código (IaC)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Aprovisionar infraestructura cloud usando archivos de
-                        código (Terraform, ARM) en lugar de configuración manual por web (ClickOps).</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">26. IaC</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Infraestructura como Código (Terraform). Levantar la nube usando un script 100% auditable.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Shift-Left</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Mover controles de seguridad a la "izquierda" en el
-                        ciclo de desarrollo. Integrar analizadores (Checkov, tfsec) desde que el desarrollador escribe
-                        el código IaC.</p>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">27. Shift-Left</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Empujar la seguridad "a la izquierda" del ciclo de software, auditando en el momento de crear el código.</p>
                 </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Modelo de Responsabilidad Compartida</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Define quién es responsable de qué, dividiendo el
-                        trabajo entre el proveedor de la nube (el dueño del edificio) y tú (el inquilino).</p>
-                </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">ACL (Access Control List)</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Mecanismo de seguridad heredado. Lista adjunta a un
-                        archivo que dice quién tiene permisos. Hoy es mejor usar IAM/Políticas de Bucket. Vector del
-                        caso LA Times.</p>
-                </div>
-                <div class="glass-panel bg-dynamic flex flex-col gap-2 md:col-span-2">
-                    <h3 class="text-title-dynamic font-bold font-mono">Vectores de Ataque Comunes</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                        <div class="border-l-2 border-dynamic pl-2">
-                            <strong class="text-xs">Exfiltración:</strong>
-                            <p class="text-[10px] opacity-70">Robo no autorizado de datos. En buckets expuestos, se
-                                descargan bases enteras.</p>
-                        </div>
-                        <div class="border-l-2 border-dynamic pl-2">
-                            <strong class="text-xs">Movimiento Lateral:</strong>
-                            <p class="text-[10px] opacity-70">Saltar de un servidor comprometido hacia otros críticos al
-                                no haber hardening de red.</p>
-                        </div>
-                        <div class="border-l-2 border-dynamic pl-2">
-                            <strong class="text-xs">Cryptojacking:</strong>
-                            <p class="text-[10px] opacity-70">Uso ilícito de CPU/GPU en la nube para minar criptomonedas
-                                tras acceder a puertos expuestos.</p>
-                        </div>
-                    </div>
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">28. ACL</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Access Control List. Forma antigua y riesgosa de dar permisos directamente ligados al objeto.</p>
                 </div>
 
             </div>
@@ -685,59 +474,50 @@
         <!-- VISTA 3: REFERENCIAS                      -->
         <!-- ========================================= -->
         <div id="section-referencias" class="content-section hidden">
-            <div class="glass-panel bg-dynamic p-10 max-w-4xl mx-auto">
-                <h2 class="text-2xl font-display text-title-dynamic mb-8 border-b border-dynamic pb-4 uppercase">
-                    Referencias Bibliográficas (Formato APA)</h2>
-                <ul class="space-y-6 text-sm opacity-90 leading-relaxed italic">
-                    <li class="pl-8 -indent-8">
-                        Center for Internet Security (CIS). (s.f.). CIS Benchmarks. Recuperado de
-                        <a href="https://www.cisecurity.org/cis-benchmarks"
-                            class="text-blue-500 hover:text-blue-400 not-italic">https://www.cisecurity.org/cis-benchmarks</a>
+            <div class="glass-panel bg-[#064e3b]/10 border-emerald-900/30 border p-10 max-w-4xl mx-auto rounded-xl shadow-[0_0_20px_rgba(6,78,59,0.2)]">
+                <h2 class="font-display font-bold mb-8 border-b border-emerald-900/50 pb-4 uppercase drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" style="color: #10b981; font-size: 1.8rem;">
+                    Referencias Bibliográficas (APA)
+                </h2>
+                <ul class="space-y-6 text-sm opacity-90 leading-relaxed italic" style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #e2e8f0;">
+                    <!-- 1 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span> 
+                        <div>Center for Internet Security (CIS). (s.f.). <em>CIS Benchmarks</em>. Recuperado de <a href="https://www.cisecurity.org/cis-benchmarks" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">https://www.cisecurity.org/cis-benchmarks</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        Continella, A., Polino, M., Pogliani, M., & Zanero, S. (2018). There’s a hole in that bucket! A
-                        large-scale analysis of misconfigured S3 buckets. In Proceedings of the 34th Annual Computer
-                        Security Applications Conference (ACSAC '18). Association for Computing Machinery, New York, NY,
-                        USA, 702–711.
-                        <a href="https://doi.org/10.1145/3274694.3274736"
-                            class="text-blue-500 hover:text-blue-400 not-italic">https://doi.org/10.1145/3274694.3274736</a>
+                    <!-- 2 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Continella, A., Polino, M., Pogliani, M., & Zanero, S. (2018). There’s a hole in that bucket! A large-scale analysis of misconfigured S3 buckets. <em>Proceedings of the 34th Annual Computer Security Applications Conference</em>, 702–711. <a href="https://doi.org/10.1145/3274694.3274736" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">https://doi.org/10.1145/3274694.3274736</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        Dikshant, & Verma, G. (2025). Alert or noise? Reducing false positives with active behavioral
-                        analysis for cloud security. arXiv.
-                        <a href="https://arxiv.org/abs/2508.12584"
-                            class="text-blue-500 hover:text-blue-400 not-italic">https://arxiv.org/abs/2508.12584</a>
+                    <!-- 3 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Dikshant, & Verma, G. (2025). Alert or noise? Reducing false positives with active behavioral analysis for cloud security. <em>arXiv</em>. <a href="https://arxiv.org/abs/2508.12584" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">https://arxiv.org/abs/2508.12584</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        Hashmi, S. I., Kashif, S., Grober, L., Krombholz, K., & Javed, M. (2026). Mapping the cloud: A
-                        mixed-methods study of cloud security and privacy configuration challenges. Network and
-                        Distributed System Security (NDSS) Symposium 2026, San Diego, CA, Estados Unidos.
-                        <a href="https://doi.org/10.14722/ndss.2026.241302"
-                            class="text-blue-500 hover:text-blue-400 not-italic">https://doi.org/10.14722/ndss.2026.241302</a>
+                    <!-- 4 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Hashmi, S. I., Kashif, S., Grober, L., Krombholz, K., & Javed, M. (2026). Mapping the cloud: A mixed-methods study of cloud security and privacy configuration challenges. <em>Network and Distributed System Security (NDSS) Symposium 2026</em>, San Diego, CA. <a href="https://doi.org/10.14722/ndss.2026.241302" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">https://doi.org/10.14722/ndss.2026.241302</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        Jansen, W., & Grance, T. (2011). Guidelines on security and privacy in public cloud computing
-                        (NIST Special Publication 800-144). National Institute of Standards and Technology.
+                    <!-- 5 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Jansen, W., & Grance, T. (2011). <em>Guidelines on security and privacy in public cloud computing (NIST Special Publication 800-144)</em>. National Institute of Standards and Technology.</div>
                     </li>
-
-                    <li class="pl-8 -indent-8">
-                        Microsoft Security Response Center (MSRC) - "Microsoft mitigates exposure of internal
-                        information" (Septiembre 2023).
-                        <a href="https://www.microsoft.com/en-us/msrc/blog/2023/09/microsoft-mitigated-exposure-of-internal-information-in-a-storage-account-due-to-overly-permissive-sas-token"
-                            class="text-blue-500 hover:text-blue-400 not-italic">Link</a>
+                    <!-- 6 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Microsoft Security Response Center (MSRC). (2023). <em>Microsoft mitigates exposure of internal information</em>. <a href="https://www.microsoft.com/en-us/msrc/blog/2023/09/microsoft-mitigated-exposure-of-internal-information-in-a-storage-account-due-to-overly-permissive-sas-token" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link Oficial MSRC</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        Snowflake Official Security Advisory & Mandiant Threat Intelligence Report - "UNC5537
-                        Investigating Data Theft Campaigns Targeting Snowflake Customer Environments" (Junio/Julio
-                        2024).
-                        <a href="https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion"
-                            class="text-blue-500 hover:text-blue-400 not-italic">Link</a>
+                    <!-- 7 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Snowflake / Mandiant Threat Intelligence. (2024). <em>UNC5537 Investigating Data Theft Campaigns Targeting Snowflake Customer Environments</em>. <a href="https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link Oficial Mandiant</a></div>
                     </li>
-                    <li class="pl-8 -indent-8">
-                        AWS Security Blog - "Amazon S3 Block Public Access – Another Layer of Protection for Your
-                        Accounts and Buckets" (Noviembre 2018).
-                        <a href=" https://aws.amazon.com/es/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/"
-                            class="text-blue-500 hover:text-blue-400 not-italic">Link</a>
+                    <!-- 8 -->
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>AWS Security Blog. (2018). <em>Amazon S3 Block Public Access – Another Layer of Protection for Your Accounts and Buckets</em>. <a href="https://aws.amazon.com/es/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link Oficial AWS</a></div>
                     </li>
                 </ul>
             </div>
@@ -748,5 +528,4 @@
     <!-- LOGICA JAVASCRIPT -->
     <script src="js/main.js"></script>
 </body>
-
 </html>

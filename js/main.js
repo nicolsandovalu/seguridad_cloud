@@ -134,7 +134,7 @@ function enterDashboard() {
 const incidentData = {
     microsoft: {
         title: "Microsoft AI Research (Azure SAS Token)",
-        desc: "Falla de 38TB por Token SAS permisivo",
+        desc: "38 TB expuestos por un Token SAS con permisos de \"control total\" y sin caducidad.",
         impact: "Exposición masiva de 38 TB de datos internos, mensajes de Teams y secretos de empleados.",
         vulnCode: "az storage container generate-sas --permissions rwl",
         hardCode: "Azure RBAC + Managed Identity",
@@ -143,7 +143,7 @@ const incidentData = {
     },
     att: {
         title: "AT&T / Snowflake (Identidad & MFA)",
-        desc: "Robo de 100M de registros por falta de MFA",
+        desc: "100 millones de registros robados por falta de MFA y políticas de red abiertas (0.0.0.0/0).",
         impact: "Exfiltración de registros de llamadas de más de 100 millones de clientes.",
         vulnCode: "ALTER USER SET MIN_MFA_DAYS = 0",
         hardCode: "MFA Enforced + Network Policy",
@@ -152,7 +152,7 @@ const incidentData = {
     },
     latimes: {
         title: "Los Angeles Times (AWS S3)",
-        desc: "Minería en S3 por ACL pública",
+        desc: "Cryptojacking masivo debido a un Bucket S3 con permisos de escritura pública para \"AllUsers\".",
         impact: "Cryptojacking masivo: los navegadores de los lectores fueron usados para minar Monero.",
         vulnCode: "put-bucket-acl --grant-write AllUsers",
         hardCode: "Block Public Access = True",
@@ -172,29 +172,29 @@ function renderDynamicLab() {
 
     container.innerHTML = `
         <div class="absolute inset-0 transition-opacity duration-300">
-            <div id="view-vuln" class="absolute inset-0 transition-all duration-700 border border-red-500/40 bg-red-950/20 rounded-xl p-6 flex flex-col z-20 ${vulnClasses}">
-                <h4 class="text-red-500 font-bold mb-3 flex items-center gap-2">⚠️ ESTADO: VULNERABLE</h4>
-                <div class="overflow-y-auto mb-3 pr-2 custom-scroll">
-                    <p class="text-xs text-slate-300 leading-relaxed">
+            <div id="view-vuln" class="absolute inset-0 transition-all duration-700 border border-red-500/50 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20 ${vulnClasses}">
+                <h4 class="text-red-500 font-bold mb-4 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">⚠️ ESTADO: VULNERABLE</h4>
+                <div class="overflow-y-auto mb-4 pr-2 custom-scroll">
+                    <p class="leading-relaxed mb-2 text-[#cbd5e1]">
                         <strong class="text-red-400">Falla:</strong> ${data.desc}<br>
                         <strong class="text-red-400">Impacto:</strong> ${data.impact}
                     </p>
                 </div>
-                <div class="bg-black/90 flex-1 p-4 rounded-xl font-mono text-sm text-red-300 border border-red-900/50 relative overflow-y-auto shadow-inner">
-                    <pre class="whitespace-pre-wrap leading-loose">${data.vulnCode}</pre>
+                <div class="bg-[#050505] flex-1 p-6 rounded-xl font-mono font-bold text-red-500 border border-red-900/50 relative overflow-y-auto shadow-inner">
+                    <pre class="whitespace-pre-wrap leading-loose drop-shadow-[0_0_3px_rgba(239,68,68,0.5)]">${data.vulnCode}</pre>
                 </div>
             </div>
 
-            <div id="view-sec" class="absolute inset-0 transition-all duration-700 ease-in-out rounded-xl p-6 flex flex-col z-10 ${secClasses} laser-transition shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-                <h4 class="text-safe-title font-bold mb-3 flex items-center gap-2">🛡️ ESTADO: FORTIFICADO (HARDENING)</h4>
-                <div class="overflow-y-auto mb-3 pr-2 custom-scroll">
-                    <p class="text-sm text-slate-100 leading-relaxed font-medium">
+            <div id="view-sec" class="absolute inset-0 transition-all duration-700 ease-in-out rounded-xl p-8 flex flex-col z-10 ${secClasses} laser-transition shadow-[0_0_40px_rgba(16,185,129,0.3)] bg-gradient-to-br from-[#064e3b] to-[#010a13] border-2 border-emerald-500">
+                <h4 class="text-emerald-400 font-bold mb-4 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🛡️ ESTADO: FORTIFICADO (HARDENING)</h4>
+                <div class="overflow-y-auto mb-4 pr-2 custom-scroll">
+                    <p class="leading-relaxed font-medium mb-2 text-slate-100">
                         <strong class="text-emerald-400">Riesgo Mitigado:</strong> ${data.riskStatus}<br>
                         <strong class="text-emerald-400">Análisis:</strong> ${data.analysis}
                     </p>
                 </div>
-                <div class="bg-black/80 flex-1 p-4 rounded-xl font-mono text-sm text-emerald-300 border border-emerald-900/50 relative overflow-y-auto shadow-inner">
-                    <pre class="whitespace-pre-wrap leading-loose">${data.hardCode}</pre>
+                <div class="bg-[#020617] flex-1 p-6 rounded-xl font-mono font-bold text-emerald-400 border border-emerald-800/80 relative overflow-y-auto shadow-inner">
+                    <pre class="whitespace-pre-wrap leading-loose drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">${data.hardCode}</pre>
                 </div>
             </div>
         </div>
@@ -206,9 +206,10 @@ function updateLabUI() {
     document.querySelectorAll('.lab-btn').forEach(btn => {
         btn.classList.remove('active-vuln', 'active-sec', 'border-red-500', 'bg-red-950/40', 'border-emerald-500', 'bg-emerald-950/40', 'text-red-200', 'text-emerald-200');
         btn.classList.add('border-transparent', 'text-slate-500', 'opacity-70');
-        btn.querySelector('.lab-icon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>';
-        btn.querySelector('.lab-icon').classList.remove('text-red-500', 'text-emerald-500', 'animate-pulse');
-        btn.querySelector('.lab-icon').classList.add('text-slate-600');
+        const dot = btn.querySelector('div');
+        if (dot) {
+            dot.className = 'w-2 h-2 rounded-full bg-slate-600';
+        }
     });
 
     const activeMap = { 'microsoft': 'msft', 'att': 'att', 'latimes': 'lat' };
@@ -217,15 +218,13 @@ function updateLabUI() {
     
     if(activeBtn) {
         activeBtn.classList.remove('border-transparent', 'text-slate-500', 'opacity-70');
+        const dot = activeBtn.querySelector('div');
         if(!isLabHardened) {
             activeBtn.classList.add('active-vuln', 'border-red-500', 'bg-red-950/40', 'text-red-200');
-            activeBtn.querySelector('.lab-icon').classList.remove('text-slate-600');
-            activeBtn.querySelector('.lab-icon').classList.add('text-red-500', 'animate-pulse');
+            if (dot) dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]';
         } else {
             activeBtn.classList.add('active-sec', 'border-emerald-500', 'bg-emerald-950/40', 'text-emerald-200');
-            activeBtn.querySelector('.lab-icon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>';
-            activeBtn.querySelector('.lab-icon').classList.remove('text-slate-600');
-            activeBtn.querySelector('.lab-icon').classList.add('text-emerald-500');
+            if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]';
         }
     }
 }
@@ -255,8 +254,13 @@ function switchLab(shortId) {
     statusText.textContent = riskTypes[currentLab] || "CRITICAL";
     statusText.className = "text-red-500 font-bold mt-4 text-xs tracking-widest text-center transition-colors duration-500 animate-pulse z-10";
     
+    const breachLabMain = document.getElementById('breach-lab');
+    if (breachLabMain) {
+        breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-all duration-1000 bg-[#050505]';
+    }
+
     const labContainer = document.getElementById('breach-lab-content');
-    labContainer.className = 'p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-colors duration-1000 ring-1 rounded-xl ring-red-500/20';
+    labContainer.className = 'p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-all duration-1000 rounded-xl border-t border-red-900/40';
     
     updateLabUI();
     renderDynamicLab();
@@ -273,8 +277,13 @@ function toggleLabRemediation() {
         toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
         toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
         
+        const breachLabMain = document.getElementById('breach-lab');
+        if (breachLabMain) {
+            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-[#10b981] shadow-[0_0_20px_rgba(16,185,129,0.3)] shadow-[#10b981]';
+        }
+
         labContainer.style.background = ""; 
-        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#020617] to-[#010a13] lab-container-sec';
+        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
         
         needle.style.transform = "rotate(-70deg)";
         needle.classList.add('pulse-success');
@@ -283,8 +292,8 @@ function toggleLabRemediation() {
         const shield = document.getElementById('shield-icon');
         if(shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
 
-        statusText.textContent = "SISTEMA FORTIFICADO: CUMPLIMIENTO CIS/NIST DETECTADO";
-        statusText.className = "text-safe-title text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display";
+        statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
+        statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
     }
     updateLabUI();
     renderDynamicLab();
