@@ -259,6 +259,12 @@ function switchLab(shortId) {
         breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-all duration-1000 bg-[#050505]';
     }
 
+    const scrollBar = document.getElementById('scroll-progress-bar');
+    if(scrollBar) {
+        scrollBar.classList.remove('bg-emerald-500');
+        scrollBar.classList.add('bg-red-500');
+    }
+
     const labContainer = document.getElementById('breach-lab-content');
     labContainer.className = 'p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-all duration-1000 rounded-xl border-t border-red-900/40';
     
@@ -279,7 +285,13 @@ function toggleLabRemediation() {
         
         const breachLabMain = document.getElementById('breach-lab');
         if (breachLabMain) {
-            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-[#10b981] shadow-[0_0_20px_rgba(16,185,129,0.3)] shadow-[#10b981]';
+            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-[#10b981] shadow-[0_0_50px_rgba(16,185,129,0.3)] border-2 border-emerald-500 lab-container-sec';
+        }
+        
+        const scrollBar = document.getElementById('scroll-progress-bar');
+        if(scrollBar) {
+            scrollBar.classList.remove('bg-red-500');
+            scrollBar.classList.add('bg-emerald-500');
         }
 
         labContainer.style.background = ""; 
@@ -302,4 +314,27 @@ function toggleLabRemediation() {
 // Iniciar lab
 window.addEventListener('DOMContentLoaded', () => {
     switchLab('microsoft');
+    
+    // Configurar scroll progress bar
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const scrollBar = document.getElementById('scroll-progress-bar');
+        if (scrollBar) {
+            scrollBar.style.width = scrolled + '%';
+        }
+    });
+
+    // Inyectar clase glitch-alert a las alertas de riesgo del DOM cada cierto tiempo
+    setInterval(() => {
+        if(!isLabHardened) {
+            const statusText = document.getElementById('lab-risk-status-text');
+            if(statusText) {
+                statusText.classList.remove('glitch-alert');
+                void statusText.offsetWidth; // trigger reflow
+                statusText.classList.add('glitch-alert');
+            }
+        }
+    }, 4000);
 });

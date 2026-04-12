@@ -7,7 +7,7 @@
 
 html, body { 
     font-size: var(--font-size-base) !important; 
-    background-color: var(--bg-main) !important;
+    background: var(--bg-main) !important;
     color: #f1f5f9;
 }
 
@@ -63,18 +63,18 @@ p, li, .text-sm {
         }
 
         body.state-sec {
-            /* Variables Modo Hardened (Verde/Claro) */
-            --bg-main: linear-gradient(to bottom right, #064e3b, #010a13);
+            /* Variables Modo Hardened (Legibilidad Optimizada y Premium) */
+            --bg-main: #020605; /* Negro esmeralda profundo - Máximo Contraste sin saturar el proyector */
             --text-main: #f1f5f9;
-            --card-bg: #02120e;
-            --card-border: #10b981; /* Borde verde esmeralda sólido */
-            --card-hover-border: rgba(16, 185, 129, 0.5);
-            --card-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
+            --card-bg: rgba(6, 20, 15, 0.65); /* Glassmorphism oscuro sutil */
+            --card-border: rgba(16, 185, 129, 0.2); /* Borde sutil que no ahoga el texto */
+            --card-hover-border: #10b981; /* Solo se ilumina on-hover */
+            --card-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
             --title-color: #10b981;
             --border-color: rgba(16, 185, 129, 0.3);
             --icon-color: #10b981;
-            --icon-shadow: none;
-            --header-bg: rgba(255, 255, 255, 0.9);
+            --icon-shadow: drop-shadow(0 0 5px rgba(16, 185, 129, 0.5));
+            --header-bg: rgba(2, 6, 5, 0.85); /* Premium Dark Glass Header */
             --nav-active: #10b981;
         }
 
@@ -112,6 +112,16 @@ p, li, .text-sm {
             box-shadow: var(--card-shadow);
             transform: translateY(-2px);
         }
+        
+        /* Efecto neon en iconos al hacer hover */
+        .bg-dynamic:hover .icon-hover-animate {
+            animation: pulse-icon 1.5s infinite;
+        }
+        @keyframes pulse-icon {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 10px currentColor); }
+            100% { transform: scale(1); }
+        }
 
         .text-title-dynamic {
             color: var(--title-color);
@@ -145,11 +155,14 @@ p, li, .text-sm {
 
         /* Efectos Especiales: Glassmorphism y CRT */
         .glass-panel {
+            background-color: rgba(13, 20, 31, 0.7);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 1rem;
             padding: 1.5rem;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         /* Layout Grid System Base */
@@ -159,14 +172,94 @@ p, li, .text-sm {
             gap: 1.5rem;
         }
 
-        /* VISTA SEGURA: Glow esmeralda para Base de Conocimientos */
-        body.state-sec #section-glosario .glass-panel,
-        body.state-sec #section-referencias .glass-panel {
-            border-color: #10b981 !important;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
-            background-color: rgba(6, 78, 59, 0.15) !important;
-            transition: all 1s ease-in-out;
+        /* --------------------------
+        * ANIMACIONES SCI-FI Y EFECTOS
+        * -------------------------- */
+        
+        /* Barra Progreso de Lectura */
+        #scroll-progress-bar {
+            height: 3px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out, background-color 1s ease;
         }
+
+        /* Título Glitch Fino */
+        .glitch-title {
+            animation: glitch-anim 4s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { transform: translate(0) }
+            2% { transform: translate(-2px, 1px) skewX(0.5deg) }
+            4% { transform: translate(1px, -1px) skewX(-0.5deg) }
+            6% { transform: translate(0) }
+            100% { transform: translate(0) }
+        }
+
+        /* Alertas rojas con glitch sutil */
+        .glitch-alert {
+            animation: glitch-alert-anim 2s infinite ease-in-out alternate-reverse;
+        }
+        @keyframes glitch-alert-anim {
+            0% { opacity: 1; transform: translateX(0); box-shadow: none; }
+            5% { transform: translateX(-1px); box-shadow: var(--card-shadow); }
+            10% { transform: translateX(1px); opacity: 0.9; }
+            15% { transform: translateX(0); opacity: 1; box-shadow: none; }
+            100% { transform: translateX(0); }
+        }
+
+        /* Radar Ping para el escudo/icono */
+        .radar-ping-container { position: relative; display: inline-flex; }
+        .radar-ping {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            animation: radarPingAnim 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes radarPingAnim {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* Scanlines y ruido (Estado Vulnerable) */
+        .lab-container-vuln::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>') repeat;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 50;
+            animation: noiseMove 5s steps(10) infinite;
+        }
+        @keyframes noiseMove { 0% { transform: translate(0,0); } 100% { transform: translate(10%, 10%); } }
+
+        .lab-container-vuln::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(239, 68, 68, 0.05) 3px, rgba(0,0,0,0.1) 4px);
+            pointer-events: none;
+            z-index: 51;
+            animation: scanlineVibrate 0.15s infinite;
+        }
+        @keyframes scanlineVibrate {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(1px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Glow para Safe State (Verde) */
+        .lab-container-sec {
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.3) !important;
+            border: 2px solid #10b981 !important;
+        }
+
 
         .crt::before {
             content: " ";
@@ -281,19 +374,27 @@ p, li, .text-sm {
             font-weight: 600;
             transition: all 0.3s;
             border-bottom: 2px solid transparent;
-            padding-bottom: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-            color: var(--nav-active);
-            opacity: 0.8;
+            color: #f1f5f9;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .nav-link.active {
             color: var(--nav-active);
-            border-bottom-color: var(--nav-active);
+            background-color: rgba(16, 185, 129, 0.1); 
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.1) inset;
+        }
+        
+        body.state-vuln .nav-link.active {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.1) inset;
         }
 
         /* Overlay y Animaciones */
