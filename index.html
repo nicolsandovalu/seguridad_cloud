@@ -347,124 +347,152 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- 1-7: Fundamentos y Arquitectura -->
+                <!-- 1 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">1. Hardening</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso estricto de reducir la superficie de ataque eliminando configuraciones y puertos innecesarios.</p>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso de reducir la superficie de ataque de un sistema eliminando configuraciones innecesarias, aplicando restricciones y siguiendo guías de mejores prácticas de seguridad.</p>
                 </div>
+                <!-- 2 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">2. Superficie de Ataque</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Conjunto de todas las vulnerabilidades expuestas. A menor superficie, menor probabilidad de brecha exitosa.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">2. Superficie de ataque</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Conjunto de todos los puntos de entrada por los que un atacante podría intentar acceder a un sistema. Más configuraciones abiertas = mayor superficie de ataque.</p>
                 </div>
+                <!-- 3 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">3. PoLP</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Principle of Least Privilege. Dar a usuarios e identidades solo los permisos mínimos indispensables.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">3. Principio de menor privilegio</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Regla de seguridad que indica que cada usuario, proceso o sistema debe tener solo los permisos mínimos necesarios para realizar su tarea, y nada más.</p>
                 </div>
+                <!-- 4 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">4. Modelo Resp. Compartida</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">El proveedor asegura el datacenter físico; el cliente asegura los datos, accesos y configuraciones.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">4. Buckets/Blobs</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Es el contenedor lógico básico de almacenamiento en la nube (ej. AWS S3).
+                    <span class="block mt-2"><strong class="text-red-400">Buckets Públicos:</strong> Riesgo muy común de exponer datos sensibles por no cambiar la visibilidad a "privada".</span>
+                    <span class="block mt-2"><strong class="text-red-400">Brechas:</strong> Ocurren por mala configuración del contenedor, permitiendo a quien sea ver o descargar archivos sin contraseñas.</span></p>
                 </div>
+                <!-- 5 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">5. Zero Trust</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Arquitectura que asume riesgo permanente: "Nunca confíes, siempre verifica" en cada petición interna.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">5. Shadow IT</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Servicios levantados por desarrolladores sin pasar por el proceso de hardening (ej. bases de datos sin contraseña).</p>
                 </div>
+                <!-- 6 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">6. Shadow IT</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Sistemas levantados sin control ni auditoría por desarrolladores, fuera del rango del firewall SOC.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">6. Movimiento Lateral</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Si una instancia comprometida no tiene hardening de red, el atacante puede saltar a otros servidores críticos.</p>
                 </div>
+                <!-- 7 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">7. Configuration Drift</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Desviación gradual y peligrosa entre la infraestructura actual y su diseño seguro original.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">7. Endpoints</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cualquier dispositivo o punto de conexión que se comunica con una red. En Cloud piensa en un endpoint como una "puerta de entrada" a tus servicios. Si está "expuesto", cualquiera en Internet podría intentar "tocar la puerta".</p>
                 </div>
-
-                <!-- 8-14: Componentes Core -->
+                <!-- 8 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">8. Buckets / Blobs</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Contenedores de almacenamiento masivo. El principal vector de fuga si se dejan como "Público".</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">8. CSPM</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management: Categoría de herramientas de seguridad que escanean continuamente tu infraestructura en la nube para detectar malas configuraciones y vulnerabilidades.</p>
                 </div>
+                <!-- 9 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">9. Endpoints API</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Puertas de entrada digitales. Deben estar cifradas y enmascaradas detrás de gateways o WAFs.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">9. CNAPP</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud-Native Application Protection Platforms: Evolución del CSPM que unifica múltiples herramientas de seguridad para proteger todo el ciclo de vida de una aplicación en la nube.</p>
                 </div>
+                <!-- 10 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">10. IAM</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identity & Access Management. El nuevo perímetro de seguridad donde se decide quién entra.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">10. MFA</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Multi-Factor Authentication: Seguridad que requiere que el usuario proporcione dos o más pruebas (factores) diferentes para verificar su identidad antes de acceder.</p>
                 </div>
+                <!-- 11 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Managed Identities</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identidad sin contraseña otorgada a las máquinas, encriptando su acceso internamente.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Modelo Resp. Compartida</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Define quién es responsable de qué, dividiendo el trabajo entre el proveedor de la nube (el dueño del edificio) y tú (el inquilino).</p>
                 </div>
+                <!-- 12 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">12. Bucket Policies (AWS)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Reglas JSON anexadas a S3 que dictan controles absolutos sobre quién puede interactuar con los datos.</p>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Documentos JSON que se adjuntan a un contenedor completo en AWS S3. En lugar de dar permisos archivo por archivo, definen reglas a nivel general.</p>
                 </div>
+                <!-- 13 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">13. Block Public Access</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor maestro en la cuenta (AWS/Azure) que impide exponer recursos al internet global.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">13. Block Public Access</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor de máxima prioridad en AWS. Bloquea instantáneamente cualquier acceso público, ignorando y anulando cualquier política o ACL previa.</p>
                 </div>
+                <!-- 14 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">14. UBLA (GCP)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Uniform Bucket-Level Access. Evita Listas de Control de Acceso obsoletas priorizando IAM central.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">14. Blob Storage (Azure)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Servicio de almacenamiento de objetos de Azure. Diseñado para almacenar cantidades masivas de datos no estructurados, como texto, imágenes o videos.</p>
                 </div>
-
-                <!-- 15-21: Defensa y Validación -->
+                <!-- 15 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">15. CSPM</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management. Radares que escanean la nube detectando fallas automáticamente.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">15. allow-blob-public-access false</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Configuración específica en Azure que desactiva el acceso anónimo y público a todos los contenedores. Equivalente al Block Public Access.</p>
                 </div>
+                <!-- 16 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">16. CNAPP</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Plataformas que unifican defensa perimetral, código y monitor de cargas (Todo en Uno).</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">16. SAS (Azure)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Shared Access Signatures: Token o URL firmada criptográficamente para otorgar acceso temporal y limitado a un recurso específico sin exponer la contraseña principal.</p>
                 </div>
+                <!-- 17 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">17. MFA</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Multi-Factor Authentication. Evitó miles de ataques corporativos, requiere 2+ métodos de validación.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">17. UBLA (GCP)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Uniform Bucket-Level Access: Unifica el control de acceso. Al activarla, deshabilita las antiguas ACLs y fuerza a que toda seguridad se gestione mediante IAM.</p>
                 </div>
+                <!-- 18 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">18. Security Groups</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Firewalls de instancia virtual (Stateful). Solo lo que permitas explícitamente atravesará.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">18. (ACL) Access Control List</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Método de seguridad heredado. Lista adjunta a un archivo que dice quién tiene permisos. Es propensa a errores humanos a escala Cloud.</p>
                 </div>
+                <!-- 19 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">19. NSG</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Network Security Groups (Azure). Filtros de red aplicados por subred o tarjetas de interfaz.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">19. Managed Identities</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identidades Administradas (Azure): Da a una aplicación su propia identidad para conectarse a bases de datos sin guardar contraseñas en el código.</p>
                 </div>
+                <!-- 20 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">20. RBAC</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Asignar permisos basados estrictamente en el "Rol" y responsabilidades del usuario, no en la persona.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">20. Security Groups (AWS)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Actúan como firewall virtual a nivel de la instancia. Son stateful: si aprueban la entrada de un dato, aprueban su salida.</p>
                 </div>
+                <!-- 21 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">21. Tokens SAS</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Firmas temporales en Azure. Si se generan sin fecha de vencimiento y amplios permisos, son letales.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">21. NSG (Azure)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Network Security Groups: Asociables a subredes completas o interfaces. Filtran el tráfico determinando qué IPs y puertos pueden comunicarse.</p>
                 </div>
-
-                <!-- 22-28: Ataques y DevOps -->
+                <!-- 22 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">22. Movimiento Lateral</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso donde un hacker se esparce desde una máquina débil hacia la base de datos central.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">22. SSH (Puerto 22)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secure Shell. Si este protocolo para servidores Linux se deja abierto a todo Internet (0.0.0.0/0), atacantes buscarán tomar control por fuerza bruta.</p>
                 </div>
+                <!-- 23 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">23. Exfiltración</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Extracción encriptada o masiva de data hacia servidores bajo control atacante u oscuros.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">23. RDP (Puerto 3389)</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Remote Desktop Protocol de Windows. Si está expuesto públicamente, es uno de los principales vectores de entrada para ataques de Ransomware.</p>
                 </div>
+                <!-- 24 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">24. Cryptojacking</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secuestro silencioso de poder de CPU en la nube empresarial para minar criptomonedas.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">24. Exfiltración</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Transferencia o robo no autorizado de datos desde un sistema hacia el exterior (robando información confidencial masivamente).</p>
                 </div>
+                <!-- 25 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">25. ClickOps</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Práctica obsoleta de configurar la nube con clicks manuales, propenso a errores humanos.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">25. Cryptojacking</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Ciberataque donde el intruso utiliza el poder de procesamiento (CPU/GPU) de servidores Cloud víctimas para minar criptomonedas a expensas de facturas astronómicas.</p>
                 </div>
+                <!-- 26 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">26. IaC</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Infraestructura como Código (Terraform). Levantar la nube usando un script 100% auditable.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">26. IAM</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identity and Access Management: Capa fundamental que se encarga de gestionar quién puede acceder a qué recursos definiendo permisos exactos.</p>
                 </div>
+                <!-- 27 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">27. Shift-Left</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Empujar la seguridad "a la izquierda" del ciclo de software, auditando en el momento de crear el código.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">27. IaC</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Infraestructura como Código (Terraform, AWS CloudFormation). Gestionar y aprovisionar toda la nube utilizando archivos de código legibles, en lugar de clicks manuales.</p>
                 </div>
+                <!-- 28 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">28. ACL</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Access Control List. Forma antigua y riesgosa de dar permisos directamente ligados al objeto.</p>
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">28. Shift-Left</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Mover los controles de seguridad lo más al inicio del desarrollo, integrándolos desde el momento en que se escribe el código (Checkov, tfsec).</p>
+                </div>
+                <!-- 29 -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]" style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">29. Tokens SAS Expuestos</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Tokens (Shared Access Signatures) que al ser compartidos otorgan acceso delegado. Si se malconfiguran, exponen toda la información.</p>
                 </div>
 
             </div>
