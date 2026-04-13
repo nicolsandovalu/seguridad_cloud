@@ -277,41 +277,46 @@ function switchLab(shortId) {
 }
 
 function toggleLabRemediation() {
-    isLabHardened = !isLabHardened;
+    if (isLabHardened) {
+        // Revertir a estado vulnerable reutilizando switchLab
+        switchLab(currentLab);
+        return;
+    }
+
+    isLabHardened = true;
     const toggleBtn = document.getElementById('lab-remediation-btn');
     const labContainer = document.getElementById('breach-lab-content');
     const needle = document.getElementById('lab-risk-needle');
     const statusText = document.getElementById('lab-risk-status-text');
 
-    if (isLabHardened) {
-        toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
-        toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
+    toggleBtn.innerHTML = "REVERTIR A ESTADO VULNERABLE";
+    toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 hover:bg-emerald-700 transition-all shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-pointer pointer-events-auto";
 
-        const breachLabMain = document.getElementById('breach-lab');
-        if (breachLabMain) {
-            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
-        }
-
-        const scrollBar = document.getElementById('scroll-progress-bar');
-        if (scrollBar) {
-            scrollBar.classList.remove('bg-red-500');
-            scrollBar.classList.add('bg-emerald-500');
-        }
-
-        labContainer.style.background = "";
-        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
-
-        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-        needle.style.transform = "rotate(-70deg)";
-        needle.classList.add('pulse-success');
-        setTimeout(() => needle.classList.remove('pulse-success'), 1500);
-
-        const shield = document.getElementById('shield-icon');
-        if (shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
-
-        statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
-        statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
+    const breachLabMain = document.getElementById('breach-lab');
+    if (breachLabMain) {
+        breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
     }
+
+    const scrollBar = document.getElementById('scroll-progress-bar');
+    if (scrollBar) {
+        scrollBar.classList.remove('bg-red-500');
+        scrollBar.classList.add('bg-emerald-500');
+    }
+
+    labContainer.style.background = "";
+    labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
+
+    needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+    needle.style.transform = "rotate(-70deg)";
+    needle.classList.add('pulse-success');
+    setTimeout(() => needle.classList.remove('pulse-success'), 1500);
+
+    const shield = document.getElementById('shield-icon');
+    if (shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
+
+    statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
+    statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
+    
     updateLabUI();
     renderDynamicLab();
 }

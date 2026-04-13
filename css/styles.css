@@ -437,8 +437,15 @@ p, li, .text-sm {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding: 2rem 1rem;
+            overflow-y: auto;
             transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s;
+        }
+        
+        #intro-screen > div {
+            margin: auto; /* Permite centrado perfecto si hay espacio, pero no recorta por arriba si falta */
+            max-height: max-content;
         }
 
         #intro-screen.dismissed {
