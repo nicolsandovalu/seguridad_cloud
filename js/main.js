@@ -139,7 +139,7 @@ const incidentData = {
         vulnCode: "az storage container generate-sas --permissions rwl --expiry 2051-10-06",
         hardCode: "Azure RBAC + Entra ID (Delegation SAS)",
         analysis: "Fallo: El token otorgaba 'Full Control' sobre toda la cuenta en lugar de solo lectura sobre un archivo. \nSolución: Deshabilitar acceso por llave de cuenta y usar RBAC.",
-        riskStatus: "CRÍTICO: ACCESO TOTAL"
+        riskStatus: "Exfiltración de Datos Masivos y Ataque a la Cadena de Suministro."
     },
     att: {
         title: "AT&T / Snowflake (Identidad & MFA)",
@@ -148,7 +148,7 @@ const incidentData = {
         vulnCode: "ALTER USER 'admin_data' SET MIN_MFA_DAYS = 0;\nCREATE NETWORK POLICY 'open_access' ALLOWED_IP_LIST = ('0.0.0.0/0');",
         hardCode: "MFA Obligatorio + Network Allow-listing",
         analysis: "Fallo: El MFA era opcional y la red estaba abierta a todo internet. \nSolución: Forzar MFA global y restringir acceso solo a VPCs autorizadas.",
-        riskStatus: "CRÍTICO: FALLO DE IDENTIDAD"
+        riskStatus: "Acceso No Autorizado por Robo de Credenciales."
     },
     latimes: {
         title: "Los Angeles Times (AWS S3)",
@@ -157,7 +157,7 @@ const incidentData = {
         vulnCode: "aws s3api put-bucket-acl --bucket latimes-assets \n--grant-write uri=http://acs.amazonaws.com/groups/global/AllUsers",
         hardCode: "S3 Block Public Access + Content Integrity (SRI)",
         analysis: "Fallo: Permiso de 'Escritura' para 'Todo el Mundo'. \nSolución: Activar S3 Block Public Access y validar scripts con hashes SRI.",
-        riskStatus: "CRÍTICO: ESCRITURA PÚBLICA (S3)"
+        riskStatus: "Cryptojacking e Inyección de Código Malicioso."
     }
 };
 
@@ -240,7 +240,11 @@ function switchLab(shortId) {
     toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-red-500 bg-red-900/40 text-red-100 hover:bg-red-700 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.5)] pointer-events-auto";
 
     // Reset Risk Gauge
-    document.getElementById('lab-risk-needle').style.transform = "rotate(70deg)";
+    const needle = document.getElementById('lab-risk-needle');
+    if (needle) {
+        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+        needle.style.transform = "rotate(70deg)";
+    }
     const shield = document.getElementById('shield-icon');
     if (shield) { shield.classList.add('opacity-0', 'scale-50'); shield.classList.remove('opacity-100', 'scale-100'); }
 
@@ -285,7 +289,7 @@ function toggleLabRemediation() {
 
         const breachLabMain = document.getElementById('breach-lab');
         if (breachLabMain) {
-            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-[#10b981] shadow-[0_0_50px_rgba(16,185,129,0.3)] border-2 border-emerald-500 lab-container-sec';
+            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
         }
 
         const scrollBar = document.getElementById('scroll-progress-bar');
@@ -297,6 +301,7 @@ function toggleLabRemediation() {
         labContainer.style.background = "";
         labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
 
+        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
         needle.style.transform = "rotate(-70deg)";
         needle.classList.add('pulse-success');
         setTimeout(() => needle.classList.remove('pulse-success'), 1500);

@@ -6,9 +6,14 @@
 }
 
 html, body { 
-    font-size: var(--font-size-base) !important; 
+    font-size: 14px !important; 
     background: var(--bg-main) !important;
     color: #f1f5f9;
+}
+
+/* Texto blanco suave para modo seguro en sección 5 */
+.lab-container-sec p, .lab-container-sec span:not(.text-emerald-400):not(.text-green-300) {
+    color: #f1f5f9 !important;
 }
 
 /* Títulos con impacto y autoridad (Degradado Cian-Esmeralda) */
@@ -160,9 +165,9 @@ p, li, .text-sm {
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 1.5rem !important;
             position: relative;
-            overflow: hidden;
+            overflow: hidden !important;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
