@@ -88,7 +88,7 @@
                 <div class="absolute inset-0 bg-cyan-900/20 group-hover:bg-cyan-800/30 transition-colors"></div>
                 <span
                     class="relative z-10 flex items-center justify-center gap-3 font-display font-bold uppercase tracking-widest text-cyan-400 group-hover:text-cyan-200 py-4"
-                    style="font-size: 1.2rem;">
+                    style="font-size: clamp(0.85rem, 3vw, 1.2rem);">
                     <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -204,8 +204,8 @@
 
             <!-- SECCIÓN 1: Explicación del Concepto -->
             <section class="glass-panel bg-dynamic md:col-span-7">
-                <h2 class="font-display text-title-dynamic font-bold flex items-center gap-2">Explicación del
-                    concepto</h2>
+                <h2 class="font-display text-title-dynamic font-bold flex items-center gap-2">Configuración segura -
+                    Hardening</h2>
                 <p>
                     El <strong>Hardening</strong> es el proceso de asegurar un sistema reduciendo su superficie de
                     ataque eliminando funciones, puertos, permisos o servicios innecesarios. Se fundamenta en el
@@ -261,7 +261,7 @@
 
             <!-- SECCIÓN 2: Implementación Técnica -->
             <section class="glass-panel bg-dynamic md:col-span-12">
-                <h2 class="font-display text-title-dynamic font-bold">Cómo se implementa en Cloud (Capas críticas)
+                <h2 class="font-display text-title-dynamic font-bold">Cómo se implementa en Cloud
                 </h2>
 
                 <!-- Aumento de Padding para evitar solapamientos (Punto 2) -->
@@ -287,8 +287,8 @@
                         <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3">🌐 Capa de
                             Red</strong>
                         <ul class="list-disc pl-5 opacity-90 space-y-2">
-                            <li>Cierre de puertos con Security Groups / NSG apuntando a IPs específicas.</li>
-                            <li>Asegurar que SSH/RDP nunca estén abiertos a Internet.</li>
+                            <li>Cierre de puertos con Security Groups /Network Security Groups para asegurar
+                                que puertos administrativos no estén abiertos a Internet.</li>
                         </ul>
                     </div>
                 </div>
@@ -405,11 +405,11 @@
 
                         <div class="glass-panel bg-dynamic h-full tilt-content p-5">
 
-                            <h3 class="font-bold mb-2 text-title-dynamic">Infección</h3>
+                            <h3 class="font-bold mb-2 text-title-dynamic">Infección de recursos</h3>
 
-                            <p class="text-[11px] opacity-80 leading-relaxed">Sobrescribir archivos en buckets para
-
-                                inyectar mineros en webs legítimas.</p>
+                            <p class="text-[11px] opacity-80 leading-relaxed">Atacantes sobrescriben archivos en buckets
+                                con
+                                acceso de escritura para inyectar código malicioso en webs legítimas.</p>
 
                         </div>
 
@@ -419,11 +419,11 @@
 
                         <div class="glass-panel bg-dynamic h-full tilt-content p-5">
 
-                            <h3 class="font-bold mb-2 text-title-dynamic">Fatiga de alertas</h3>
+                            <h3 class="font-bold mb-2 text-title-dynamic">Logs ausentes o sin alertas</h3>
 
-                            <p class="text-[11px] opacity-80 leading-relaxed">Exceso de "ruido" de falsos positivos CSPM
-
-                                que reduce la productividad de analistas en un 93%.</p>
+                            <p class="text-[11px] opacity-80 leading-relaxed">Ausencia de registros de auditoría, logs
+                                desactivados o sin alertas configuradas.
+                                Sin esta capa el atacante puede operar meses sin ser detectado.</p>
 
                         </div>
 
@@ -517,14 +517,17 @@
                 <h2 class="font-display text-title-dynamic font-bold mb-6">Recomendaciones: Mejores prácticas y
                     mitigación </h2>
                 <p class="mb-8 border-b border-dynamic pb-6">Las configuraciones manuales fallan por naturaleza humana.
-                    La automatización es la única solución escalable frente a la fatiga de configuración:</p>
+                    La automatización es la una solución escalable frente a la fatiga de configuración:</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div
                         class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
                         <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">⚡</span> IaC y Shift-Left</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Utilizar herramientas como Terraform e
-                            integrar escáneres en el pipeline M para vulnerabilidades antes del despliegue.</p>
+                                class="icon-hover-animate inline-block">⚡</span> Evolución hacia la Automatización (IaC
+                            y Shift-Left)</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">Las configuraciones manuales (conocidas
+                            como ClickOps) son la principal causa de errores.Infraestructura como Código (IaC):
+                            Utilizar herramientas como Terraform o AWS CloudFormation para que cada vez que se
+                            despliegue un recurso, este nazca 100% seguro por diseño.</p>
                     </div>
                     <div
                         class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
@@ -560,6 +563,27 @@
                                 class="icon-hover-animate inline-block">🌐</span> Auditoría de DNS</strong>
                         <p style="font-size: 0.85rem;" class="text-slate-300">Verificación constante de registros DNS
                             CNAME evitando secuestros por subdominios inactivos.</p>
+                    </div>
+                    <div
+                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
+                                class="icon-hover-animate inline-block">🎯</span> Gestión Avanzada de Identidades
+                            (IAM)</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">El objetivo es eliminar las credenciales
+                            estáticas que pueden ser filtradas en repositorios de código.Eliminar Access Keys: Sustituir
+                            llaves permanentes por Roles (AWS), Managed Identities (Azure) o Service Accounts (GCP).
+                            Esto permite que la nube autentique las aplicaciones de forma transparente y segura sin
+                            necesidad de guardar contraseñas en el código</p>
+                    </div>
+                    <div
+                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
+                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
+                                class="icon-hover-animate inline-block">👀</span> MFA Obligatorio y Acceso
+                            Condicional:</strong>
+                        <p style="font-size: 0.85rem;" class="text-slate-300">No basta con tener MFA; se deben crear
+                            políticas donde el acceso se bloquee si el
+                            usuario intenta entrar desde una IP o país no autorizado, como se vio necesario en el caso
+                            de Snowflake.</p>
                     </div>
                 </div>
             </section>
@@ -610,11 +634,11 @@
                         style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">4. Buckets/Blobs</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Es el contenedor lógico básico de
                         almacenamiento en la nube (ej. AWS S3).
-                        <span class="block mt-2"><strong class="text-red-400">Buckets Públicos:</strong> Riesgo muy
-                            común de exponer datos sensibles por no cambiar la visibilidad a "privada".</span>
-                        <span class="block mt-2"><strong class="text-red-400">Brechas:</strong> Ocurren por mala
+                        <span class="block mt-2"><strong class="text-red-400">Buckets Públicos / Brechas por buckets
+                                expuestos:</strong> Riesgo muy
+                            común de exponer datos sensibles por no cambiar la visibilidad a "privada". Ocurren por mala
                             configuración del contenedor, permitiendo a quien sea ver o descargar archivos sin
-                            contraseñas.</span>
+                            contraseñas</span>
                     </p>
                 </div>
                 <!-- 5 -->
@@ -644,16 +668,18 @@
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">8. CSPM</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management:
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management
+                        (Gestión de la Postura de Seguridad en la Nube):
                         Categoría de herramientas de seguridad que escanean continuamente tu infraestructura en la nube
-                        para detectar malas configuraciones y vulnerabilidades.</p>
+                        para detectar malas configuraciones, riesgos de cumplimiento y vulnerabilidades.</p>
                 </div>
                 <!-- 9 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">9. CNAPP</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud-Native Application Protection
-                        Platforms: Evolución del CSPM que unifica múltiples herramientas de seguridad para proteger todo
+                        Platforms (Plataformas de Protección de Aplicaciones Nativas de la Nube):
+                        Evolución del CSPM que unifica múltiples herramientas de seguridad para proteger todo
                         el ciclo de vida de una aplicación en la nube.</p>
                 </div>
                 <!-- 10 -->
@@ -661,16 +687,18 @@
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">10. MFA</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Multi-Factor Authentication:
-                        Seguridad que requiere que el usuario proporcione dos o más pruebas (factores) diferentes para
-                        verificar su identidad antes de acceder.</p>
+                        Método de seguridad que requiere que el usuario proporcione dos o más pruebas (factores)
+                        diferentes para
+                        verificar su identidad antes de acceder a una cuenta o sistema.</p>
                 </div>
                 <!-- 11 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Modelo Resp. Compartida
+                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Modelo de responsabilidad
+                        compartida
                     </h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Define quién es responsable de qué,
-                        dividiendo el trabajo entre el proveedor de la nube (el dueño del edificio) y tú (el inquilino).
+                        dividiendo el trabajo entre el proveedor de la nube y el cliente.
                     </p>
                 </div>
                 <!-- 12 -->
@@ -686,8 +714,10 @@
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">13. Block Public Access</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor de máxima prioridad en
-                        AWS. Bloquea instantáneamente cualquier acceso público, ignorando y anulando cualquier política
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor de seguridad de máxima
+                        prioridad en
+                        AWS. Cuando se activa, bloquea instantáneamente cualquier acceso público, ignorando y anulando
+                        cualquier política
                         o ACL previa.</p>
                 </div>
                 <!-- 14 -->
@@ -754,14 +784,18 @@
                         style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">21. NSG (Azure)</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Network Security Groups: Asociables
                         a subredes completas o interfaces. Filtran el tráfico determinando qué IPs y puertos pueden
-                        comunicarse.</p>
+                        comunicarse con los recursos.</p>
                 </div>
                 <!-- 22 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">22. SSH (Puerto 22)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secure Shell. Si este protocolo
-                        para servidores Linux se deja abierto a todo Internet (0.0.0.0/0), atacantes buscarán tomar
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secure Shell. Es un protocolo de
+                        red criptográfico
+                        utilizado por los administradores de sistemas para conectarse de forma remota y segura a la
+                        consola de comandos de un servidor Linux.
+                        Si este protocolo para servidores Linux se deja abierto a todo Internet (0.0.0.0/0), atacantes
+                        buscarán tomar
                         control por fuerza bruta.</p>
                 </div>
                 <!-- 23 -->
@@ -769,6 +803,8 @@
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">23. RDP (Puerto 3389)</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Remote Desktop Protocol de Windows.
+                        Es el equivalente de SSH pero para servidores Windows; proporciona una interfaz gráfica para
+                        manejar el servidor con mouse y teclado a distancia.
                         Si está expuesto públicamente, es uno de los principales vectores de entrada para ataques de
                         Ransomware.</p>
                 </div>
@@ -784,16 +820,21 @@
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">25. Cryptojacking</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Ciberataque donde el intruso
-                        utiliza el poder de procesamiento (CPU/GPU) de servidores Cloud víctimas para minar
-                        criptomonedas a expensas de facturas astronómicas.</p>
+                        logr acceder a los servirdores de la nube de una víctima y utiliza el poder de procesamiento
+                        (CPU/GPU) de servidores Cloud para minar
+                        criptomonedas a expensas de facturas astronómicas. Esto puede suceder, por ejemplo, si dejan el
+                        puerto 22 abierto o
+                        el permiso IAM es demasiado amplio</p>
                 </div>
                 <!-- 26 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
                         style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">26. IAM</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identity and Access Management:
-                        Capa fundamental que se encarga de gestionar quién puede acceder a qué recursos definiendo
-                        permisos exactos.</p>
+                        Capa fundamental de seguridad en la nube que se encarga de gestionar quién puede acceder a qué
+                        recursos y bajo qué condiciones. En lugar de ser un simple
+                        sistema de "usuario y contraseña", es un marco robusto que define la identidad de personas y
+                        servicios, y los permisos exactos que poseen. </p>
                 </div>
                 <!-- 27 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
@@ -801,7 +842,7 @@
                         style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">27. IaC</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Infraestructura como Código
                         (Terraform, AWS CloudFormation). Gestionar y aprovisionar toda la nube utilizando archivos de
-                        código legibles, en lugar de clicks manuales.</p>
+                        código legibles, en lugar de configuraciones manuales.</p>
                 </div>
                 <!-- 28 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
@@ -814,10 +855,34 @@
                 <!-- 29 -->
                 <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
                     <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">29. Tokens SAS Expuestos</h3>
+                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">29. Tokens SAS</h3>
                     <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Tokens (Shared Access Signatures)
-                        que al ser compartidos otorgan acceso delegado. Si se malconfiguran, exponen toda la
-                        información.</p>
+                        Es una URL firmada que otorga acceso limitado y delegado a los recursos de una cuenta de
+                        almacenamiento
+                        (Blobs, archivos, tablas) sin exponer las claves maestras de la cuenta..</p>
+                </div>
+
+                <!-- 30 -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]"
+                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">30. Shift-Left</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">En una línea de tiempo de
+                        desarrollo de software (que se lee de izquierda a
+                        derecha: Diseño ➡️ Código ➡️ Pruebas ➡️ Producción), "Shift-Left" significa mover los controles
+                        de seguridad lo más a la izquierda posible,
+                        integrándolos desde el momento en que el desarrollador está escribiendo el código. (Checkov,
+                        Terrascan, tfsec) </p>
+                </div>
+
+                <!-- 31 -->
+                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
+                    <h3 class="font-bold font-mono text-[1.05rem]"
+                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">31. S3 Block Public Access
+                    </h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Configuración en AWS que bloquea
+                        cualquier
+                        intento de hacer público un bucket S3, ya sea por política o por ACL (lista de control de
+                        acceso). </p>
                 </div>
 
             </div>
@@ -905,6 +970,14 @@
                                 href="https://aws.amazon.com/es/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/"
                                 class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link
                                 Oficial AWS</a></div>
+                    </li>
+                    <li class="pl-8 -indent-8 flex items-start gap-2">
+                        <span class="text-emerald-500 font-bold not-italic">▶</span>
+                        <div>Ben-Sasson, H. & Greenberg, R. (2023) <em>38TB of data accidentally exposed by Microsoft AI
+                                researchers. Wiz Research.</em>. <a
+                                href="https://www.wiz.io/blog/38tb-of-data-accidentally-exposed-by-microsoft-ai-researchers"
+                                class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link
+                                al artículo</a></div>
                     </li>
                 </ul>
             </div>

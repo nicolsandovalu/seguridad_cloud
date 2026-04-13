@@ -13,36 +13,37 @@ html, body {
 
 /* Títulos con impacto y autoridad (Degradado Cian-Esmeralda) */
 h1 { 
-    font-size: 2.2rem !important; 
+    font-size: clamp(1.3rem, 5vw, 2.2rem) !important; 
     font-weight: 700; 
+    line-height: 1.2 !important;
     letter-spacing: 0.05em; 
     background: linear-gradient(90deg, #22d3ee, #10b981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 } 
 h2 { 
-    font-size: 1.5rem !important; 
+    font-size: clamp(1.15rem, 4vw, 1.5rem) !important; 
     font-weight: 700; 
     margin-bottom: 1rem; 
     text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
 } 
-h3 { font-size: 1.15rem !important; font-weight: 600; } 
+h3 { font-size: clamp(1rem, 3vw, 1.15rem) !important; font-weight: 600; } 
 
 /* Texto de cuerpo: Legible a distancia */
 p, li, .text-sm { 
-    font-size: 0.95rem !important; 
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem) !important; 
     line-height: 1.6 !important; 
     color: #cbd5e1 !important; 
 }
 
 /* Terminal y Código: Compacto pero claro */
 .font-mono, pre, code { 
-    font-size: 0.85rem !important; 
+    font-size: clamp(0.7rem, 2vw, 0.85rem) !important; 
     line-height: 1.5 !important;
 }
 
 /* Etiquetas y estados */
-.text-xs { font-size: 0.8rem !important; letter-spacing: 0.05em; }
+.text-xs { font-size: clamp(0.65rem, 1.5vw, 0.8rem) !important; letter-spacing: 0.05em; }
 \n/* =========================================
            SISTEMA DE ESTADOS (STATE MANAGEMENT)
            ========================================= */
