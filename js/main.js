@@ -116,17 +116,35 @@ function switchTab(cloud, ev) {
 
 
 
-// --- 7. EFECTO 3D TILT (TARJETAS DE RIESGO) ---
+// --- EFECTO 3D TILT CON BRILLO DINÁMICO ---
 document.querySelectorAll('.tilt-card').forEach(card => {
     const content = card.querySelector('.tilt-content');
+
+    // Crear el elemento de brillo (glare)
+    const glare = document.createElement('div');
+    glare.className = 'glare-effect absolute inset-0 pointer-events-none rounded-xl opacity-0 transition-opacity duration-300';
+    glare.style.background = 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 60%)';
+    content.appendChild(glare);
+
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        content.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg) translateZ(30px)`;
+        const x = e.clientX - rect.left; // Posición X del ratón en la tarjeta
+        const y = e.clientY - rect.top;  // Posición Y del ratón en la tarjeta
+
+        // Rotación
+        const rotX = ((x / rect.width) - 0.5) * 20; // Max 20 grados
+        const rotY = ((y / rect.height) - 0.5) * -20;
+
+        content.style.transform = `rotateY(${rotX}deg) rotateX(${rotY}deg) translateZ(30px)`;
+
+        // Mover el brillo
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15) 0%, transparent 60%)`;
+        glare.style.opacity = '1';
     });
+
     card.addEventListener('mouseleave', () => {
         content.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`;
+        glare.style.opacity = '0';
     });
 });
 
@@ -202,30 +220,57 @@ function renderDynamicLab() {
 }
 
 function updateLabUI() {
-    // Restaurar botones a estado inactivo general
+    // 1. Limpiar todos los botones a estado inactivo
     document.querySelectorAll('.lab-btn').forEach(btn => {
         btn.classList.remove('active-vuln', 'active-sec', 'border-red-500', 'bg-red-950/40', 'border-emerald-500', 'bg-emerald-950/40', 'text-red-200', 'text-emerald-200');
         btn.classList.add('border-transparent', 'text-slate-500', 'opacity-70');
-        const dot = btn.querySelector('div');
-        if (dot) {
-            dot.className = 'w-2 h-2 rounded-full bg-slate-600';
+
+        // Seleccionar el contenedor flex de la derecha
+        const dotContainer = btn.querySelector('.flex.items-center.gap-2');
+        if (dotContainer) {
+            // Solo dejar el puntito gris apagado
+            dotContainer.innerHTML = '<div class="w-1.5 h-1.5 rounded-full bg-slate-600"></div>';
         }
     });
 
-    const activeMap = { 'microsoft': 'msft', 'att': 'att', 'latimes': 'lat' };
-    const shortId = activeMap[currentLab];
+    // Mapeo de IDs (para evitar errores si usas msft o microsoft)
+    const activeMap = { 'microsoft': 'msft', 'att': 'att', 'latimes': 'lat', 'msft': 'msft', 'lat': 'lat' };
+    const shortId = activeMap[currentLab] || currentLab;
     const activeBtn = document.getElementById(`btn-lab-${shortId}`);
 
+    // 2. Encender el botón activo
     if (activeBtn) {
         activeBtn.classList.remove('border-transparent', 'text-slate-500', 'opacity-70');
-        const dot = activeBtn.querySelector('div');
+        const dotContainer = activeBtn.querySelector('.flex.items-center.gap-2');
+
         if (!isLabHardened) {
+            // Estado VULNERABLE (Rojo)
             activeBtn.classList.add('active-vuln', 'border-red-500', 'bg-red-950/40', 'text-red-200');
-            if (dot) dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]';
+            if (dotContainer) {
+                // Inyecta el texto ACTIVO asegurando que se oculte en móviles (hidden sm:inline)
+                dotContainer.innerHTML = '<span class="text-[9px] text-red-400 opacity-80 uppercase tracking-widest hidden sm:inline">Activo</span><div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)]"></div>';
+            }
         } else {
+            // Estado SEGURO (Verde)
             activeBtn.classList.add('active-sec', 'border-emerald-500', 'bg-emerald-950/40', 'text-emerald-200');
-            if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]';
+            if (dotContainer) {
+                dotContainer.innerHTML = '<span class="text-[9px] text-emerald-400 opacity-80 uppercase tracking-widest hidden sm:inline">Seguro</span><div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,1)]"></div>';
+            }
         }
+    }
+
+    // 3. Mostrar el contenido de código correspondiente
+    document.querySelectorAll('.lab-content-pane').forEach(pane => {
+        pane.classList.remove('opacity-100', 'pointer-events-auto');
+        pane.classList.add('opacity-0', 'pointer-events-none');
+        pane.style.zIndex = "1";
+    });
+
+    const activePane = document.getElementById(`lab-content-${shortId}`);
+    if (activePane) {
+        activePane.classList.remove('opacity-0', 'pointer-events-none');
+        activePane.classList.add('opacity-100', 'pointer-events-auto');
+        activePane.style.zIndex = "10";
     }
 }
 
@@ -289,34 +334,35 @@ function toggleLabRemediation() {
     const needle = document.getElementById('lab-risk-needle');
     const statusText = document.getElementById('lab-risk-status-text');
 
-    toggleBtn.innerHTML = "REVERTIR A ESTADO VULNERABLE";
-    toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 hover:bg-emerald-700 transition-all shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-pointer pointer-events-auto";
+    if (isLabHardened) {
+        toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
+        toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
 
-    const breachLabMain = document.getElementById('breach-lab');
-    if (breachLabMain) {
-        breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
+        const breachLabMain = document.getElementById('breach-lab');
+        if (breachLabMain) {
+            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
+        }
+
+        const scrollBar = document.getElementById('scroll-progress-bar');
+        if (scrollBar) {
+            scrollBar.classList.remove('bg-red-500');
+            scrollBar.classList.add('bg-emerald-500');
+        }
+
+        labContainer.style.background = "";
+        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
+
+        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+        needle.style.transform = "rotate(-70deg)";
+        needle.classList.add('pulse-success');
+        setTimeout(() => needle.classList.remove('pulse-success'), 1500);
+
+        const shield = document.getElementById('shield-icon');
+        if (shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
+
+        statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
+        statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
     }
-
-    const scrollBar = document.getElementById('scroll-progress-bar');
-    if (scrollBar) {
-        scrollBar.classList.remove('bg-red-500');
-        scrollBar.classList.add('bg-emerald-500');
-    }
-
-    labContainer.style.background = "";
-    labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
-
-    needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-    needle.style.transform = "rotate(-70deg)";
-    needle.classList.add('pulse-success');
-    setTimeout(() => needle.classList.remove('pulse-success'), 1500);
-
-    const shield = document.getElementById('shield-icon');
-    if (shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
-
-    statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
-    statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
-    
     updateLabUI();
     renderDynamicLab();
 }
@@ -348,3 +394,92 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }, 4000);
 });
+
+// --- ANIMACIONES DE REVELACIÓN AL SCROLL ---
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // El elemento aparece cuando el 15% es visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Opcional: dejar de observar una vez que aparece
+                // observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    // Seleccionamos qué elementos queremos animar
+    const elementsToAnimate = document.querySelectorAll('.glass-panel, .tilt-card, section h2');
+
+    elementsToAnimate.forEach(el => {
+        el.classList.add('fade-in-section');
+        observer.observe(el);
+    });
+});
+
+// --- ANIMACIÓN DE CONTADORES NUMÉRICOS EN TEXTO ---
+function initTextCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 60; // Ajusta este valor para hacer la cuenta más lenta o rápida
+
+    // Darle tiempo a la animación reveal-text de CSS para que termine antes de empezar a contar
+    setTimeout(() => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+
+                // Calculamos el incremento
+                const inc = target / speed;
+
+                if (count < target) {
+                    // Sumamos y redondeamos para no mostrar decimales
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 30); // 30ms por frame
+                } else {
+                    counter.innerText = target; // Asegurarnos de terminar en el número exacto
+                }
+            };
+
+            updateCount();
+        });
+    }, 1200); // 1.2 segundos de retraso esperando que el panel inicial se muestre
+}
+
+// Ejecutar cuando se cargue el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    initTextCounters();
+});
+
+// --- FUNCIONALIDAD DE COPIAR CÓDIGO ---
+function copyTerminalCode() {
+    // Buscar qué pestaña está visible actualmente
+    const activeTab = document.querySelector('.tab-content:not(.hidden)');
+    if (!activeTab) return;
+
+    // Extraer solo el texto (sin las etiquetas span de HTML)
+    const codeText = activeTab.innerText;
+
+    // Copiar al portapapeles
+    navigator.clipboard.writeText(codeText).then(() => {
+        // Feedback visual
+        const copyBtn = document.getElementById('copyBtn');
+        const copyText = document.getElementById('copyText');
+
+        copyText.innerText = "¡Copiado!";
+        copyBtn.classList.add('text-emerald-400', 'border-emerald-400/50');
+
+        // Volver a la normalidad después de 2 segundos
+        setTimeout(() => {
+            copyText.innerText = "Copiar";
+            copyBtn.classList.remove('text-emerald-400', 'border-emerald-400/50');
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar: ', err);
+    });
+}

@@ -62,24 +62,28 @@
 
             <!-- SOC INFO PANE -->
             <div
-                class="font-mono font-medium text-cyan-50 space-y-4 md:space-y-6 mb-8 md:mb-10 bg-[#02060d] p-4 md:p-6 text-[0.85rem] md:text-base border border-cyan-900/30 rounded-lg shadow-inner reveal-text">
+                class="font-mono text-cyan-50 space-y-5 md:space-y-8 mb-8 md:mb-10 bg-[#02060d] p-6 md:p-8 text-base md:text-lg leading-relaxed border border-cyan-900/30 rounded-lg shadow-[inset_0_0_20px_rgba(34,211,238,0.05)] reveal-text">
+
                 <p style="animation-delay: 0.2s">
-                    <span class="text-cyan-500 font-bold">ESCENARIO:</span> El <span
-                        class="text-orange-500 font-bold bg-orange-950/40 px-1 rounded shadow-[0_0_10px_rgba(249,115,22,0.4)]">79%</span>
-                    de las grandes empresas operan en entornos Multi-Cloud. La agilidad del despliegue ha superado la
-                    capacidad de gestión, dejando la puerta abierta a fallas sistémicas.
+                    <span class="text-cyan-500 font-bold tracking-wider">ESCENARIO: </span> El <span
+                        class="text-orange-500 font-bold bg-orange-950/40 px-2 py-1 rounded shadow-[0_0_10px_rgba(249,115,22,0.4)] text-xl"><span
+                            class="counter inline-block min-w-[2ch] text-center" data-target="79">0</span>%</span> de
+                    las empresas ya operan en Multi-Cloud.
                 </p>
+
                 <p style="animation-delay: 1.0s">
-                    <span class="text-cyan-500 font-bold">RIESGO:</span> No son incidentes aislados; un activo promedio
-                    en la nube posee unas <span
-                        class="text-red-500 font-bold bg-red-950/40 px-1 rounded shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse">115
-                        vulnerabilidades abiertas</span>. La velocidad ha sacrificado la gobernanza.
+                    <span class="text-cyan-500 font-bold tracking-wider">RIESGO: </span> Un entorno Cloud promedio
+                    expone <span
+                        class="text-red-500 font-bold bg-red-950/40 px-2 py-1 rounded shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse text-xl"><span
+                            class="counter inline-block min-w-[3ch] text-center" data-target="115">0</span>%
+                        vulnerabilidades críticas</span>. No es un incidente aislado, es un fallo sistémico.
                 </p>
+
                 <p style="animation-delay: 1.8s">
-                    <span class="text-cyan-500 font-bold">OBJETIVO:</span> El Hardening no es opcional. Es el proceso de
-                    blindar identidades, redes y almacenamiento, eliminando cada función innecesaria para recuperar el
-                    control bajo el Modelo de Responsabilidad Compartida.
+                    <span class="text-cyan-500 font-bold tracking-wider">OBJETIVO: </span> El Hardening no es
+                    opcional.
                 </p>
+
             </div>
 
             <!-- BUTTON -->
@@ -203,395 +207,783 @@
             </div>
 
             <!-- SECCIÓN 1: Explicación del Concepto -->
-            <section class="glass-panel bg-dynamic md:col-span-7">
-                <h2 class="font-display text-title-dynamic font-bold flex items-center gap-2">Configuración segura -
-                    Hardening</h2>
-                <p>
-                    El <strong>Hardening</strong> es el proceso de asegurar un sistema reduciendo su superficie de
-                    ataque eliminando funciones, puertos, permisos o servicios innecesarios. Se fundamenta en el
-                    <strong>Modelo de Responsabilidad Compartida</strong>, donde el proveedor asegura la infraestructura
-                    física (la "nube"), pero el cliente es responsable de asegurar los datos, las identidades y la
-                    configuración de los recursos (lo que está "en la nube").
-                </p>
-                <div class="border border-dynamic rounded-xl p-6 mt-6 relative overflow-hidden bg-black/40">
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent to-dynamic opacity-10"></div>
-                    <h3 class="font-bold uppercase tracking-wider mb-4 text-title-dynamic">Modelo de Responsabilidad
-                        Compartida</h3>
-                    <div class="flex h-12 rounded-lg overflow-hidden font-bold text-white text-center shadow-inner">
-                        <div class="w-1/3 bg-slate-800 flex items-center justify-center border-r border-slate-700">
-                            Proveedor (Infraestructura)</div>
+            <section class="glass-panel bg-dynamic md:col-span-7 flex flex-col justify-between">
+                <div>
+                    <h2 class="font-display text-title-dynamic font-bold flex items-center gap-3 mb-4">
+                        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                        Configuración Segura - Hardening
+                    </h2>
+                    <p class="text-slate-300 text-[0.9rem] leading-relaxed mb-6">
+                        El <strong>Hardening</strong> blinda un sistema reduciendo su superficie de ataque: eliminando
+                        funciones, puertos y permisos innecesarios. Se rige por el <strong>Modelo de Responsabilidad
+                            Compartida</strong>: la nube no es segura por defecto, la infraestructura es del proveedor,
+                        pero la seguridad de los datos es tuya.
+                    </p>
+                </div>
+
+                <div
+                    class="border border-dynamic rounded-xl p-5 relative overflow-hidden bg-[#050505] shadow-[inset_0_0_30px_rgba(0,0,0,0.8)] mt-auto">
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:15px_15px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]">
+                    </div>
+
+                    <h3
+                        class="font-mono text-[0.75rem] uppercase tracking-[0.15em] text-slate-300 mb-4 relative z-10 flex items-center gap-2">
+                        <span
+                            class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></span>
+                        Modelo de Responsabilidad Compartida
+                    </h3>
+
+                    <div class="flex flex-col relative z-10">
                         <div
-                            class="w-2/3 flex items-center justify-center transition-all show-vuln bg-red-600/80 shadow-[0_0_15px_rgba(239,68,68,0.5)]">
-                            Cliente (Datos, IAM) - VULNERABLE</div>
+                            class="flex items-stretch h-20 rounded-t-lg overflow-hidden border-t border-l border-r border-dynamic relative group shadow-lg">
+                            <div
+                                class="w-1/3 bg-[#0a0f16] flex flex-col justify-center px-3 border-r border-cyan-900/50 z-10">
+                                <span class="text-[0.6rem] text-cyan-400 font-bold tracking-wider mb-1 uppercase">Tu
+                                    Responsabilidad</span>
+                                <span class="text-[0.7rem] font-bold text-white leading-tight">Datos, IAM
+                                    &<br>Configuraciones</span>
+                            </div>
+
+                            <div class="w-2/3 relative bg-[#0a0a0a]">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-around bg-red-950/20 show-vuln transition-opacity duration-500">
+                                    <div class="flex flex-col items-center animate-[bounce_2s_infinite]">
+                                        <span class="text-xl mb-1">🔓</span>
+                                        <span
+                                            class="text-[9px] text-red-400 font-mono tracking-wider uppercase border border-red-500/30 bg-red-950/50 px-1.5 py-0.5 rounded">Datos
+                                            Expuestos</span>
+                                    </div>
+                                    <div class="flex flex-col items-center animate-[bounce_2.5s_infinite_0.2s]">
+                                        <span class="text-xl mb-1">⚠️</span>
+                                        <span
+                                            class="text-[9px] text-red-400 font-mono tracking-wider uppercase border border-red-500/30 bg-red-950/50 px-1.5 py-0.5 rounded">IAM
+                                            Permisivo</span>
+                                    </div>
+                                    <div class="absolute inset-0 border-2 border-red-500/50 animate-pulse"></div>
+                                </div>
+
+                                <div
+                                    class="absolute inset-0 flex items-center justify-around bg-emerald-950/30 show-sec transition-opacity duration-500">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xl mb-1 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🛡️</span>
+                                        <span
+                                            class="text-[9px] text-emerald-300 font-mono tracking-wider uppercase border border-emerald-500/30 bg-emerald-950/50 px-1.5 py-0.5 rounded">Cifrado
+                                            AES</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-xl mb-1 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🔐</span>
+                                        <span
+                                            class="text-[9px] text-emerald-300 font-mono tracking-wider uppercase border border-emerald-500/30 bg-emerald-950/50 px-1.5 py-0.5 rounded">MFA
+                                            & PoLP</span>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 border-2 border-emerald-500/50 shadow-[inset_0_0_20px_rgba(16,185,129,0.2)]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h-6 flex items-center justify-center relative -my-px z-20">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t-2 border-dashed border-slate-500"></div>
+                            </div>
+                            <div
+                                class="bg-[#050505] px-3 py-1 text-[0.55rem] font-bold font-mono text-slate-300 uppercase tracking-widest relative border border-slate-700 rounded-full shadow-lg">
+                                Frontera de Seguridad
+                            </div>
+                        </div>
+
                         <div
-                            class="w-2/3 flex items-center justify-center transition-all show-sec bg-emerald-600/90 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
-                            Cliente (Datos, IAM) - ASEGURADO</div>
+                            class="flex items-stretch h-14 rounded-b-lg overflow-hidden border border-slate-600 bg-slate-900/50 relative shadow-inner">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-transparent"></div>
+
+                            <div
+                                class="w-1/3 bg-[#0a0f16]/80 flex flex-col justify-center px-3 border-r border-slate-600 z-10">
+                                <span class="text-[0.6rem] text-blue-400 font-bold tracking-wider mb-1 uppercase">El
+                                    Proveedor</span>
+                                <span class="text-[0.7rem] font-bold text-slate-200 leading-tight">AWS / Azure /
+                                    GCP</span>
+                            </div>
+
+                            <div class="w-2/3 flex items-center justify-around px-2 z-10">
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,1)]"></span>
+                                    <span class="text-[10px] text-slate-300 font-mono font-bold">Data Centers<br><span
+                                            class="text-[8px] font-normal opacity-70">Capa Física</span></span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,1)]"></span>
+                                    <span class="text-[10px] text-slate-300 font-mono font-bold">Red Global<br><span
+                                            class="text-[8px] font-normal opacity-70">Cableado Submarino</span></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- SECCIÓN 4: Relación con Normativas -->
-            <section class="glass-panel bg-dynamic md:col-span-5 flex flex-col justify-center">
-                <h2 class="font-display text-title-dynamic font-bold">Relación con normativas</h2>
-                <p class="border-b border-dynamic pb-4 mb-6">Las configuraciones seguras se alinean con estos estándares
-                    globales:</p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <div class="mt-2 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
-                        <div><strong class="text-title-dynamic block mb-1">CIS Benchmarks</strong> La guía de oro. Pasos
-                            exactos para el endurecimiento de configuraciones en AWS, Azure y GCP.</div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-2 w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]">
+            <section class="glass-panel bg-dynamic md:col-span-5 flex flex-col h-full">
+                <div>
+                    <h2 class="font-display text-title-dynamic font-bold flex items-center gap-3">
+                        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                        Gobernanza y Cumplimiento
+                    </h2>
+                    <p class="text-[0.85rem] text-slate-300 mt-3 mb-5 border-b border-dynamic pb-5">
+                        El Hardening no es empírico; es el mecanismo técnico necesario para cumplir con los estándares
+                        globales de seguridad y evitar multas regulatorias:
+                    </p>
+                </div>
+
+                <div class="space-y-3 relative z-10 flex-grow flex flex-col justify-center">
+
+                    <div
+                        class="group flex items-center gap-4 p-3.5 rounded-xl border border-transparent hover:border-blue-500/30 hover:bg-blue-900/10 transition-all duration-300 cursor-default bg-[#050505]">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-lg border border-blue-500/40 bg-gradient-to-br from-[#0a0f16] to-[#010409] shadow-[0_0_10px_rgba(59,130,246,0.15)] group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center justify-center font-display font-bold text-blue-400 tracking-wider text-sm transition-shadow">
+                            CIS
                         </div>
-                        <div><strong class="text-title-dynamic block mb-1">NIST SP 800-53 y SP 800-144 </strong> Definen
-                            los controles
-                            de gestión de configuración (CM) y control de acceso (AC), y establecen directrices
-                            fundamentales para la privacidad y seguridad en nubes públicas.</div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-2 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
-                        <div><strong class="text-title-dynamic block mb-1">ISO/IEC 27017</strong> Extensión de la ISO
-                            27001 que proporciona controles
-                            específicos para servicios en la nube, abordando el aislamiento de datos y la gestión de
-                            activos virtualizados.</div>
-                    </li>
-                </ul>
+                        <div>
+                            <strong
+                                class="text-title-dynamic block text-[0.95rem] group-hover:text-blue-400 transition-colors">CIS
+                                Benchmarks</strong>
+                            <p class="text-[0.75rem] text-slate-400 leading-relaxed mt-1">La guía de oro. Pasos exactos
+                                para el endurecimiento de configuraciones en AWS, Azure y GCP.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group flex items-center gap-4 p-3.5 rounded-xl border border-transparent hover:border-purple-500/30 hover:bg-purple-900/10 transition-all duration-300 cursor-default bg-[#050505]">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-lg border border-purple-500/40 bg-gradient-to-br from-[#0a0f16] to-[#010409] shadow-[0_0_10px_rgba(168,85,247,0.15)] group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] flex items-center justify-center font-display font-bold text-purple-400 tracking-wider text-sm transition-shadow">
+                            NIST
+                        </div>
+                        <div>
+                            <strong
+                                class="text-title-dynamic block text-[0.95rem] group-hover:text-purple-400 transition-colors">NIST
+                                SP 800-53 / 144</strong>
+                            <p class="text-[0.75rem] text-slate-400 leading-relaxed mt-1">Controles de gestión (CM) y
+                                acceso (AC). Directrices fundamentales para privacidad en nubes públicas.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group flex items-center gap-4 p-3.5 rounded-xl border border-transparent hover:border-amber-500/30 hover:bg-amber-900/10 transition-all duration-300 cursor-default bg-[#050505]">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-lg border border-amber-500/40 bg-gradient-to-br from-[#0a0f16] to-[#010409] shadow-[0_0_10px_rgba(245,158,11,0.15)] group-hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] flex items-center justify-center font-display font-bold text-amber-400 tracking-wider text-sm transition-shadow">
+                            ISO
+                        </div>
+                        <div>
+                            <strong
+                                class="text-title-dynamic block text-[0.95rem] group-hover:text-amber-400 transition-colors">ISO/IEC
+                                27017</strong>
+                            <p class="text-[0.75rem] text-slate-400 leading-relaxed mt-1">Extensión de la ISO 27001 con
+                                controles específicos para aislamiento de datos y activos virtualizados.</p>
+                        </div>
+                    </div>
+
+                </div>
             </section>
 
             <!-- SECCIÓN 2: Implementación Técnica -->
             <section class="glass-panel bg-dynamic md:col-span-12">
-                <h2 class="font-display text-title-dynamic font-bold">Cómo se implementa en Cloud
-                </h2>
+                <div class="mb-8">
+                    <h2 class="font-display text-title-dynamic font-bold flex items-center gap-3">
+                        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        Implementación Técnica
+                    </h2>
 
-                <!-- Aumento de Padding para evitar solapamientos (Punto 2) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 mt-6">
-                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
-                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3" style="font-size: 1.2rem; margin-bottom: 1rem;">🛡️ Capa de
-                            Almacenamiento</strong>
-                        <ul class="list-disc pl-5 opacity-90 space-y-2">
-                            <li><strong>AWS:</strong> S3 Block Public Access a nivel de cuenta.</li>
-                            <li><strong>Azure:</strong> Deshabilitar acceso público y usar Tokens SAS estrictos.</li>
-                            <li><strong>GCP:</strong> Habilitar UBLA para evitar ACLs antiguas.</li>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div
+                        class="p-6 border border-dynamic rounded-xl bg-[#050505] shadow-lg relative overflow-hidden group hover:border-cyan-500/40 transition-all duration-300">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 border-b border-dynamic pb-3 relative z-10">
+                            <div
+                                class="p-2 bg-slate-900 rounded-lg border border-slate-700 shadow-inner group-hover:border-cyan-500/50 transition-colors">
+                                <span class="text-xl">🗄️</span>
+                            </div>
+                            <strong class="text-title-dynamic font-bold text-lg">Almacenamiento</strong>
+                        </div>
+                        <ul class="text-[0.85rem] text-slate-300 space-y-3 relative z-10">
+                            <li class="flex items-start gap-2"><span class="text-cyan-500 font-bold">AWS:</span> S3
+                                Block Public Access a nivel de cuenta.</li>
+                            <li class="flex items-start gap-2"><span class="text-cyan-500 font-bold">Azure:</span>
+                                Deshabilitar acceso anónimo y usar Tokens SAS.</li>
+                            <li class="flex items-start gap-2"><span class="text-cyan-500 font-bold">GCP:</span>
+                                Habilitar UBLA para invalidar ACLs antiguas.</li>
                         </ul>
                     </div>
-                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
-                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3" style="font-size: 1.2rem; margin-bottom: 1rem;">🔑 Capa de
-                            Identidad (IAM)</strong>
-                        <ul class="list-disc pl-5 opacity-90 space-y-2">
-                            <li>Implementar Principio de Mínimo Privilegio (PoLP).</li>
-                            <li>Reemplazar Access Keys permanentes por credenciales temporales.</li>
+
+                    <div
+                        class="p-6 border border-dynamic rounded-xl bg-[#050505] shadow-lg relative overflow-hidden group hover:border-cyan-500/40 transition-all duration-300">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 border-b border-dynamic pb-3 relative z-10">
+                            <div
+                                class="p-2 bg-slate-900 rounded-lg border border-slate-700 shadow-inner group-hover:border-cyan-500/50 transition-colors">
+                                <span class="text-xl">🔑</span>
+                            </div>
+                            <strong class="text-title-dynamic font-bold text-lg">Identidad (IAM)</strong>
+                        </div>
+                        <ul class="text-[0.85rem] text-slate-300 space-y-3 relative z-10">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Implementar Principio de Mínimo Privilegio (PoLP).
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Reemplazar Access Keys estáticas por credenciales temporales.
+                            </li>
                         </ul>
                     </div>
-                    <div class="p-6 border border-dynamic rounded-xl bg-black/40 shadow-lg">
-                        <strong class="text-title-dynamic font-bold block mb-4 border-b border-dynamic pb-3" style="font-size: 1.2rem; margin-bottom: 1rem;">🌐 Capa de
-                            Red</strong>
-                        <ul class="list-disc pl-5 opacity-90 space-y-2">
-                            <li>Cierre de puertos con Security Groups /Network Security Groups para asegurar
-                                que puertos administrativos no estén abiertos a Internet.</li>
+
+                    <div
+                        class="p-6 border border-dynamic rounded-xl bg-[#050505] shadow-lg relative overflow-hidden group hover:border-cyan-500/40 transition-all duration-300">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 border-b border-dynamic pb-3 relative z-10">
+                            <div
+                                class="p-2 bg-slate-900 rounded-lg border border-slate-700 shadow-inner group-hover:border-cyan-500/50 transition-colors">
+                                <span class="text-xl">🌐</span>
+                            </div>
+                            <strong class="text-title-dynamic font-bold text-lg">Perímetro de Red</strong>
+                        </div>
+                        <ul class="text-[0.85rem] text-slate-300 space-y-3 relative z-10">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Cierre de puertos críticos (ej. 22 SSH, 3389 RDP).
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Uso estricto de Security Groups para aislar instancias de Internet.
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="flex gap-1 border-b border-dynamic mb-4">
+                <div
+                    class="rounded-xl overflow-hidden border border-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.8)] bg-[#0d1117] relative">
 
-                    <button class="tab-btn active" onclick="switchTab('aws', event)">AWS CLI (Storage)</button>
+                    <div class="bg-[#010409] border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80 border border-red-600"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80 border border-yellow-600"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80 border border-green-600"></div>
+                        </div>
+                        <div class="text-xs font-mono text-slate-500">terminal ~ cloud-cli</div>
+                        <button onclick="copyTerminalCode()" id="copyBtn"
+                            class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-mono bg-white/5 hover:bg-white/10 px-2 py-1 rounded border border-white/10">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span id="copyText">Copiar</span>
+                        </button>
+                    </div>
 
-                    <button class="tab-btn opacity-60" onclick="switchTab('azure', event)">Azure CLI (Storage)</button>
+                    <div class="bg-[#161b22] px-3 pt-2 border-b border-slate-800 flex gap-1">
+                        <button
+                            class="tab-btn active px-4 py-2 text-xs font-mono transition-all text-slate-400 border-b-2 border-transparent relative top-px"
+                            onclick="switchTab('aws', event)">AWS_S3.sh</button>
+                        <button
+                            class="tab-btn px-4 py-2 text-xs font-mono transition-all text-slate-400 border-b-2 border-transparent relative top-px hover:text-slate-200"
+                            onclick="switchTab('azure', event)">Azure_Blob.sh</button>
+                        <button
+                            class="tab-btn px-4 py-2 text-xs font-mono transition-all text-slate-400 border-b-2 border-transparent relative top-px hover:text-slate-200"
+                            onclick="switchTab('gcp', event)">GCP_UBLA.sh</button>
+                    </div>
 
-                    <button class="tab-btn opacity-60" onclick="switchTab('gcp', event)">GCP CLI (Storage)</button>
+                    <div class="p-5 overflow-x-auto">
+                        <div id="code-aws"
+                            class="tab-content text-sm font-mono leading-relaxed text-slate-300 whitespace-pre">
+                            <span class="text-slate-500"># Implementación de S3 Block Public Access a nivel de
+                                cuenta</span>
+                            <span class="text-pink-400">aws</span> s3control put-public-access-block --account-id <span
+                                class="text-yellow-300">&lt;tu-id-cuenta&gt;</span> \
+                            --public-access-block-configuration <span
+                                class="text-green-300">"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"</span>
+                        </div>
 
+                        <div id="code-azure"
+                            class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300 whitespace-pre">
+                            <span class="text-slate-500"># Deshabilitar el acceso público a los Blob Storage</span>
+                            <span class="text-pink-400">az</span> storage account update --name <span
+                                class="text-yellow-300">"mystorageaccount"</span> \
+                            --resource-group myResourceGroup --allow-blob-public-access <span
+                                class="text-red-400">false</span>
+                        </div>
+
+                        <div id="code-gcp"
+                            class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300 whitespace-pre">
+                            <span class="text-slate-500"># Habilitar Uniform Bucket-Level Access (UBLA)</span>
+                            <span class="text-pink-400">gcloud</span> storage buckets update gs://<span
+                                class="text-yellow-300">mi-bucket-sensible</span> \
+                            --uniform-bucket-level-access
+                        </div>
+                    </div>
                 </div>
-
-                <div class="bg-[#0D1117] border border-[#30363D] rounded-xl p-5 relative group overflow-hidden">
-
-                    <div id="code-aws" class="tab-content text-sm font-mono leading-relaxed text-slate-300">
-
-                        <span class="text-slate-500"># Implementación de S3 Block Public Access a nivel de
-
-                            cuenta</span><br>
-
-                        <span class="text-pink-400">aws</span> s3control put-public-access-block --account-id <span
-                            class="text-yellow-300">&lt;tu-id-cuenta&gt;</span> \<br>
-
-                        &nbsp;&nbsp;--public-access-block-configuration <span
-                            class="text-green-300">"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"</span>
-
-                    </div>
-
-                    <div id="code-azure" class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300">
-
-                        <span class="text-slate-500"># Deshabilitar el acceso público a los Blob Storage</span><br>
-
-                        <span class="text-pink-400">az</span> storage account update --name <span
-                            class="text-yellow-300">"mystorageaccount"</span> \<br>
-
-                        &nbsp;&nbsp;--resource-group myResourceGroup --allow-blob-public-access <span
-                            class="text-red-400">false</span>
-
-                    </div>
-
-                    <div id="code-gcp" class="tab-content hidden text-sm font-mono leading-relaxed text-slate-300">
-
-                        <span class="text-slate-500"># Habilitar Uniform Bucket-Level Access (UBLA)</span><br>
-
-                        <span class="text-pink-400">gcloud</span> storage buckets update gs://<span
-                            class="text-yellow-300">mi-bucket-sensible</span> \<br>
-
-                        &nbsp;&nbsp;--uniform-bucket-level-access
-
-                    </div>
-
-                </div>
-
             </section>
             <!-- SECCIÓN 3: Riesgos 3D -->
 
             <section class="md:col-span-12 mt-4">
-
-                <h2 class="text-2xl font-display text-title-dynamic mb-6">Vulnerabilidades</h2>
-
+                <h2 class="text-2xl font-display text-title-dynamic mb-6 flex items-center gap-3">
+                    <svg class="w-7 h-7 text-red-500 animate-pulse drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                        </path>
+                    </svg>
+                    Vulnerabilidades Frecuentes
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
 
                     <div class="tilt-card group lg:col-span-2">
-
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-
-                            <h3 class="font-bold mb-2 text-title-dynamic">Exfiltración masiva de datos</h3>
-
-                            <p class="text-[11px] opacity-80 leading-relaxed">Un bucket público o un token SAS mal
-
-                                configurado permite a cualquier persona descargar terabytes de información sin
-
-                                autenticación. Filtración de material sensible (.pem, .sql, .bak).</p>
-
+                        <div class="glass-panel bg-dynamic h-full tilt-content p-5 flex flex-col">
+                            <div class="flex items-start justify-between mb-3 gap-2">
+                                <h3 class="font-bold text-title-dynamic flex items-center gap-2 text-[0.95rem]">
+                                    <span>🔓</span> Exfiltración Masiva
+                                </h3>
+                                <span
+                                    class="bg-red-950/80 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/30 uppercase tracking-wider shrink-0">
+                                    Crítico
+                                </span>
+                            </div>
+                            <ul
+                                class="text-[0.8rem] opacity-80 leading-relaxed text-slate-300 space-y-1.5 list-disc pl-4 marker:text-cyan-600">
+                                <li>Buckets públicos o Tokens SAS expuestos.</li>
+                                <li>Descarga de Terabytes sin autenticación.</li>
+                                <li>Fuga de material sensible (.pem, .sql).</li>
+                            </ul>
                         </div>
-
                     </div>
 
                     <div class="tilt-card group lg:col-span-3">
-
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-
-                            <h3 class="font-bold mb-2 text-title-dynamic">Escalamiento y movimiento lateral</h3>
-
-                            <p class="text-[11px] opacity-80 leading-relaxed">Si a un servidor web se le asigna un rol
-
-                                de IAM con permisos de administrador, un atacante que vulnere el servidor web podrá
-
-                                controlar toda la cuenta en la nube.</p>
-
+                        <div class="glass-panel bg-dynamic h-full tilt-content p-5 flex flex-col">
+                            <div class="flex items-start justify-between mb-3 gap-2">
+                                <h3 class="font-bold text-title-dynamic flex items-center gap-2 text-[0.95rem]">
+                                    <span>🗝️</span> Movimiento Lateral
+                                </h3>
+                                <span
+                                    class="bg-red-950/80 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/30 uppercase tracking-wider shrink-0">
+                                    Crítico
+                                </span>
+                            </div>
+                            <ul
+                                class="text-[0.8rem] opacity-80 leading-relaxed text-slate-300 space-y-1.5 list-disc pl-4 marker:text-cyan-600">
+                                <li>Roles IAM con privilegios excesivos (ej. Web Server con rol Admin).</li>
+                                <li>Permite pivotar desde un recurso menor.</li>
+                                <li>Toma de control total de la cuenta Cloud.</li>
+                            </ul>
                         </div>
-
                     </div>
 
                     <div class="tilt-card group lg:col-span-2">
-
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-
-                            <h3 class="font-bold mb-2 text-title-dynamic">Cryptojacking</h3>
-
-                            <p class="text-[11px] opacity-80 leading-relaxed">Instancias con puertos expuestos (como el
-
-                                22) son escaneadas por bots, vulneradas por fuerza bruta e infectadas con mineros,
-
-                                disparando costos de facturación.</p>
-
+                        <div class="glass-panel bg-dynamic h-full tilt-content p-5 flex flex-col">
+                            <div class="flex items-start justify-between mb-3 gap-2">
+                                <h3 class="font-bold text-title-dynamic flex items-center gap-2 text-[0.95rem]">
+                                    <span>⛏️</span> Cryptojacking
+                                </h3>
+                                <span
+                                    class="bg-orange-950/80 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded border border-orange-500/30 uppercase tracking-wider shrink-0">
+                                    Alto
+                                </span>
+                            </div>
+                            <ul
+                                class="text-[0.8rem] opacity-80 leading-relaxed text-slate-300 space-y-1.5 list-disc pl-4 marker:text-cyan-600">
+                                <li>Puertos de administración expuestos (SSH 22).</li>
+                                <li>Infección automatizada por bots.</li>
+                                <li>Costos de facturación disparados por minería.</li>
+                            </ul>
                         </div>
-
                     </div>
 
                     <div class="tilt-card group lg:col-span-1">
-
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-
-                            <h3 class="font-bold mb-2 text-title-dynamic">Infección de recursos</h3>
-
-                            <p class="text-[11px] opacity-80 leading-relaxed">Atacantes sobrescriben archivos en buckets
-                                con
-                                acceso de escritura para inyectar código malicioso en webs legítimas.</p>
-
+                        <div class="glass-panel bg-dynamic h-full tilt-content p-5 flex flex-col">
+                            <div class="flex items-start justify-between mb-3 gap-2 flex-col sm:flex-row">
+                                <h3 class="font-bold text-title-dynamic flex items-center gap-2 text-[0.95rem]">
+                                    <span>🦠</span> Infección
+                                </h3>
+                                <span
+                                    class="bg-orange-950/80 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded border border-orange-500/30 uppercase tracking-wider shrink-0">
+                                    Alto
+                                </span>
+                            </div>
+                            <ul
+                                class="text-[0.8rem] opacity-80 leading-relaxed text-slate-300 space-y-1.5 list-disc pl-4 marker:text-cyan-600">
+                                <li>Buckets con permisos de escritura.</li>
+                                <li>Inyección de código malicioso.</li>
+                            </ul>
                         </div>
-
                     </div>
 
                     <div class="tilt-card group lg:col-span-2">
-
-                        <div class="glass-panel bg-dynamic h-full tilt-content p-5">
-
-                            <h3 class="font-bold mb-2 text-title-dynamic">Logs ausentes o sin alertas</h3>
-
-                            <p class="text-[11px] opacity-80 leading-relaxed">Ausencia de registros de auditoría, logs
-                                desactivados o sin alertas configuradas.
-                                Sin esta capa el atacante puede operar meses sin ser detectado.</p>
-
+                        <div class="glass-panel bg-dynamic h-full tilt-content p-5 flex flex-col">
+                            <div class="flex items-start justify-between mb-3 gap-2">
+                                <h3 class="font-bold text-title-dynamic flex items-center gap-2 text-[0.95rem]">
+                                    <span>🙈</span> Evasión / Logs
+                                </h3>
+                                <span
+                                    class="bg-yellow-950/80 text-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded border border-yellow-500/30 uppercase tracking-wider shrink-0">
+                                    Medio
+                                </span>
+                            </div>
+                            <ul
+                                class="text-[0.8rem] opacity-80 leading-relaxed text-slate-300 space-y-1.5 list-disc pl-4 marker:text-cyan-600">
+                                <li>Ausencia de registros de auditoría.</li>
+                                <li>Sin alertas configuradas ante brechas.</li>
+                                <li>El atacante opera meses sin ser detectado.</li>
+                            </ul>
                         </div>
-
                     </div>
 
                 </div>
-
             </section>
             <!-- SECCIÓN 5: REDISEÑO CLOUD BREACH LAB SOC -->
             <section id="breach-lab"
-                class="glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-colors duration-1000 bg-[#050505]">
+                class="md:col-span-12 mt-6 flex flex-col relative overflow-hidden rounded-xl border border-red-500/30 lab-container-vuln transition-colors duration-1000 bg-[#050505] shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+
                 <div
-                    class="p-6 border-b border-red-900/50 bg-black/40 flex justify-between items-center relative z-10 backdrop-blur-md transition-colors duration-1000 lab-header">
+                    class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20">
+                </div>
+
+                <div
+                    class="p-5 border-b border-red-900/50 bg-black/60 flex flex-col md:flex-row justify-between items-center relative z-10 backdrop-blur-md gap-4">
                     <h2
-                        class="font-display text-red-500 font-bold flex items-center gap-3 transition-colors duration-1000 lab-title mb-0 drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]">
-                        Casos reales
+                        class="font-mono text-red-500 font-bold flex items-center gap-3 tracking-widest uppercase text-lg md:text-xl mb-0 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]">
+                        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        Threat Intelligence: Análisis de Brechas
                     </h2>
-                    <!-- Botón Interruptor Global Central -->
                     <button onclick="toggleLabRemediation()" id="lab-remediation-btn"
-                        class="font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-900/40 text-red-100 hover:bg-red-700 transition-all shadow-[0_0_15px_rgba(239,68,68,0.5)]">
-                        APLICAR HARDENING
+                        class="font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] hover:shadow-[0_0_25px_rgba(239,68,68,0.8)] flex items-center gap-2 group text-[0.95rem]">
+                        <svg class="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Aplicar Hardening
                     </button>
                 </div>
 
-                <!-- Lista de Alertas Dinámicas (TABS) con font-size: 0.8rem adaptado -->
                 <div
-                    class="flex flex-col md:flex-row gap-3 p-4 bg-black/60 border-b border-red-900/30 relative z-10 font-mono font-medium transition-colors duration-1000 lab-tabs-container">
+                    class="flex flex-col md:flex-row gap-2 p-3 bg-[#0a0a0a] border-b border-red-900/30 relative z-10 font-mono shadow-inner overflow-x-auto">
                     <button onclick="switchLab('msft')" id="btn-lab-msft"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all active-vuln border-red-500 bg-red-950/40 text-red-200 shadow-[0_0_10px_rgba(239,68,68,0.3)]">
-                        <span style="font-size: 0.8rem;">[ ALERTA ] Microsoft AI</span>
-                        <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                    </button>
-                    <button onclick="switchLab('att')" id="btn-lab-att"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all border-transparent text-slate-300 hover:bg-white/5 opacity-80">
-                        <span style="font-size: 0.8rem;">[ ALERTA ] AT&T / Snowflake</span>
-                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
-                    </button>
-                    <button onclick="switchLab('lat')" id="btn-lab-lat"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded border transition-all border-transparent text-slate-300 hover:bg-white/5 opacity-80">
-                        <span style="font-size: 0.8rem;">[ ALERTA ] LA Times (S3)</span>
-                        <div class="w-2 h-2 rounded-full bg-slate-600"></div>
-                    </button>
-                </div>
-
-                <!-- Contenedor Principal: Split 70% Código / 30% Risk Gauge -->
-                <div id="breach-lab-content"
-                    class="p-6 grid grid-cols-1 md:grid-cols-10 gap-8 relative z-10 scanlines-bg transition-colors duration-1000">
-
-                    <!-- Area de Código de Casos (Renderizado Dinámico 70%) -->
-                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[360px] overflow-hidden p-2">
-                        <!-- El contenido se inyecta desde JS -->
-                    </div>
-
-                    <!-- Risk Gauge (SVG Dinámico 30%) -->
-                    <div
-                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-8 bg-[#0a0a0a] rounded-xl border border-red-900/40 transition-colors duration-1000 lab-gauge-container relative overflow-hidden shadow-xl">
-                        <div class="uppercase tracking-widest text-slate-400 mb-8 font-mono font-bold z-10"
-                            style="font-size: 0.8rem;">
-                            Nivel de Riesgo
-                        </div>
-                        <div class="relative w-48 h-24 overflow-hidden z-10">
-                            <!-- Arco base -->
-                            <svg class="w-full h-full" viewBox="0 0 100 50">
-                                <path d="M 5 50 A 45 45 0 0 1 95 50" fill="none" stroke="#222" stroke-width="10"
-                                    stroke-linecap="round"></path>
-                                <path d="M 5 50 A 45 45 0 0 1 50 5" fill="none" class="stroke-emerald-600"
-                                    stroke-width="10" opacity="0.9"></path>
-                                <path d="M 50 5 A 45 45 0 0 1 95 50" fill="none"
-                                    class="stroke-red-600 drop-shadow-[0_0_5px_rgba(239,68,68,0.8)]" stroke-width="10"
-                                    opacity="0.9"></path>
-                            </svg>
-                            <!-- Aguja Inercial -->
-                            <div id="lab-risk-needle"
-                                class="absolute bottom-0 left-1/2 w-[4px] h-[50px] bg-[#fff] rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_0_10px_rgba(255,255,255,0.8)] z-10"
-                                style="transform: rotate(70deg);"></div>
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all active-vuln border border-red-500/50 bg-red-950/40 text-red-200 shadow-[inset_0_0_15px_rgba(239,68,68,0.2)] whitespace-nowrap min-w-0">
+                        <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">Microsoft AI</span>
+                        <div class="flex items-center gap-2 shrink-0 ml-3">
+                            <span
+                                class="text-[10px] text-red-400 opacity-80 uppercase tracking-widest hidden xl:inline-block">Activo</span>
                             <div
-                                class="absolute bottom-0 left-1/2 w-6 h-6 bg-slate-200 rounded-full -translate-x-1/2 translate-y-[40%] z-20 shadow-lg border-2 border-slate-900">
+                                class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)]">
                             </div>
                         </div>
+                    </button>
+                    <button onclick="switchLab('att')" id="btn-lab-att"
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200 whitespace-nowrap min-w-0">
+                        <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">AT&T / Snowflake</span>
+                        <div class="flex items-center gap-2 shrink-0 ml-3">
+                            <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                        </div>
+                    </button>
+                    <button onclick="switchLab('lat')" id="btn-lab-lat"
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200 whitespace-nowrap min-w-0">
+                        <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">LA Times (S3)</span>
+                        <div class="flex items-center gap-2 shrink-0 ml-3">
+                            <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="breach-lab-content"
+                    class="p-6 grid grid-cols-1 md:grid-cols-10 gap-8 relative z-10 transition-colors duration-1000 bg-[#020408]">
+
+                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[380px] overflow-hidden p-1">
+
+                        <div id="lab-content-msft"
+                            class="lab-content-pane absolute inset-0 opacity-100 pointer-events-auto transition-opacity duration-300">
+                            <div
+                                class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
+                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
+                                    Token SAS Over-permissioned</h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Error de configuración manual
+                                    dio acceso total (Lectura, Escritura, Borrado) por 10 años, exponiendo 38 TB.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">az</span> storage container generate-sas --permissions
+                                    rwl --expiry 2033-01-01
+                                </div>
+                            </div>
+                            <div
+                                class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
+                                    <span>🛡️</span> Hardening: RBAC
+                                </h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Se aplica Mínimo Privilegio
+                                    mediante Identidad, sin enlaces públicos.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">az</span> role assignment create --role "Storage Blob
+                                    Data Reader"
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="lab-content-att"
+                            class="lab-content-pane absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
+                            <div
+                                class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
+                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
+                                    Sin MFA y Red Abierta</h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Credenciales robadas entraron
+                                    libremente al omitir MFA y permitir acceso desde 0.0.0.0/0.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">ALTER USER</span> admin SET MIN_MFA_DAYS = 0;<br>
+                                    ALLOWED_IP_LIST = ('0.0.0.0/0');
+                                </div>
+                            </div>
+                            <div
+                                class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
+                                    <span>🛡️</span> Hardening: Acceso Condicionado
+                                </h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Zero Trust forzando MFA y
+                                    limitando conexiones a IPs corporativas.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">ALTER USER</span> admin SET MIN_MFA_DAYS = 1;<br>
+                                    ALLOWED_IP_LIST = ('10.2.0.0/16');
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="lab-content-lat"
+                            class="lab-content-pane absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
+                            <div
+                                class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
+                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
+                                    ACL Global AWS S3</h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Bucket público con permiso de
+                                    Escritura para 'AllUsers' permitió inyección de criptomineros.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">aws</span> s3api put-bucket-acl --grant-write
+                                    uri=.../AllUsers
+                                </div>
+                            </div>
+                            <div
+                                class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
+                                    <span>🛡️</span> Hardening: Block Public Access
+                                </h4>
+                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Interruptor maestro que bloquea
+                                    políticas públicas e ignora ACLs antiguas.</p>
+                                <div
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
+                                    <span class="text-blue-400">aws</span> s3control put-public-access-block
+                                    "BlockPublicAcls=true"
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-8 bg-[#050505] rounded-xl border border-red-900/40 transition-colors duration-1000 lab-gauge-container relative overflow-hidden shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+
+                        <div
+                            class="uppercase tracking-widest text-slate-400 mb-8 font-mono font-bold z-10 flex items-center gap-2 text-sm">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                            Índice de Exposición
+                        </div>
+
+                        <div class="relative w-64 h-32 overflow-hidden z-10 mt-2">
+                            <svg class="w-full h-full" viewBox="0 0 100 50">
+                                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#1a1a1a" stroke-width="12"
+                                    stroke-linecap="round"></path>
+                                <path d="M 10 50 A 40 40 0 0 1 45 13" fill="none" class="stroke-emerald-600"
+                                    stroke-width="12" stroke-linecap="round" opacity="0.8"></path>
+                                <path d="M 45 13 A 40 40 0 0 1 90 50" fill="none"
+                                    class="stroke-red-600 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" stroke-width="12"
+                                    stroke-linecap="round" opacity="0.9"></path>
+                                <line x1="20" y1="35" x2="25" y2="38" stroke="#fff" stroke-width="1" opacity="0.5">
+                                </line>
+                                <line x1="50" y1="10" x2="50" y2="15" stroke="#fff" stroke-width="1" opacity="0.5">
+                                </line>
+                                <line x1="80" y1="35" x2="75" y2="38" stroke="#fff" stroke-width="1" opacity="0.5">
+                                </line>
+                            </svg>
+
+                            <div id="lab-risk-needle"
+                                class="absolute bottom-0 left-1/2 w-[4px] h-[70px] bg-white rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_0_15px_rgba(255,255,255,1)] z-10"
+                                style="transform: rotate(65deg);"></div>
+
+                            <div
+                                class="absolute bottom-0 left-1/2 w-10 h-10 bg-slate-800 rounded-full -translate-x-1/2 translate-y-[40%] z-20 shadow-lg border-[3px] border-slate-900 flex items-center justify-center">
+                                <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
+                            </div>
+                        </div>
+
                         <div id="lab-risk-status-text"
-                            class="text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10"
-                            style="font-size: 0.9rem;">
-                            CRITICAL
+                            class="text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl"
+                            style="text-shadow: 0 0 10px rgba(239,68,68,0.5);">
+                            CRITICAL RISK
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- SECCIÓN 6: Recomendaciones (Gobernanza Proactiva) -->
-            <section class="glass-panel bg-dynamic md:col-span-12 mt-6 p-8">
-                <h2 class="font-display text-title-dynamic font-bold mb-6">Recomendaciones: Mejores prácticas y
-                    mitigación </h2>
-                <p class="mb-8 border-b border-dynamic pb-6">Las configuraciones manuales fallan por naturaleza humana.
-                    La automatización es la una solución escalable frente a la fatiga de configuración:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section
+                class="glass-panel bg-[#020605] md:col-span-12 mt-6 p-8 md:p-12 rounded-2xl border border-emerald-900/30">
+
+                <div class="mb-12 text-center max-w-3xl mx-auto">
+                    <h2
+                        class="font-display text-emerald-400 font-bold mb-4 text-2xl md:text-3xl flex items-center justify-center gap-3">
+                        <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(16,185,129,0.8)]" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Recomendaciones y mejores prácticas
+                    </h2>
+                    <p class="text-slate-400 text-[1.1rem] leading-relaxed">
+                        Las configuraciones manuales fallan por naturaleza humana. La automatización es una
+                        solución escalable frente a la fatiga de configuración.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
                     <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">⚡</span> Evolución hacia la Automatización (IaC
-                            y Shift-Left)</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Las configuraciones manuales (conocidas
-                            como ClickOps) son la principal causa de errores.Infraestructura como Código (IaC):
-                            Utilizar herramientas como Terraform o AWS CloudFormation para que cada vez que se
-                            despliegue un recurso, este nazca 100% seguro por diseño.</p>
+                        class="bg-[#050a08] p-8 rounded-2xl border border-emerald-900/40 hover:border-emerald-500/60 transition-all duration-300 h-full flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.5)] group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-5 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                            ⚡</div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-xl mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                            ⚡</div>
+                        <h3 class="text-white font-display font-bold text-xl mb-3">IaC y Shift-Left</h3>
+
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-[0.95rem]">
+                            Las configuraciones manuales <span class="text-slate-500 italic">(ClickOps)</span> son la
+                            raíz del problema. Detecta vulnerabilidades antes del despliegue productivo.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-emerald-900/30">
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">Terraform</span>
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">Checkov</span>
+                        </div>
                     </div>
+
                     <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">🎯</span> Validación de Comportamiento</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Uso de sondas para verificar si una alerta
-                            es explotable, reduciendo falsos positivos en un 93%.</p>
+                        class="bg-[#050a08] p-8 rounded-2xl border border-emerald-900/40 hover:border-emerald-500/60 transition-all duration-300 h-full flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.5)] group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-5 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                            🔐</div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-xl mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                            🔐</div>
+                        <h3 class="text-white font-display font-bold text-xl mb-3">MFA y Acceso Condicional</h3>
+
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-[0.95rem]">
+                            No basta con ofrecer Autenticación Multifactor como
+                            opción; hay que forzarla a nivel de sistema.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-emerald-900/30">
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">Zero
+                                Trust</span>
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">MFA
+                                Forzado</span>
+                        </div>
                     </div>
+
                     <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">👀</span> Monitoreo y Auditoría</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Vigilancia con AWS CloudTrail o Azure
-                            Monitor para detectar quién alteró configuraciones críticas.</p>
+                        class="bg-[#050a08] p-8 rounded-2xl border border-emerald-900/40 hover:border-emerald-500/60 transition-all duration-300 h-full flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.5)] group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-5 text-6xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                            👁️</div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-xl mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                            👁️</div>
+                        <h3 class="text-white font-display font-bold text-xl mb-3">Auditoría Continua</h3>
+
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-[0.95rem]">
+                            Las capas anteriores previenen el ataque, pero el monitoreo en tiempo real te avisa
+                            exactamente cuando las barreras caen o los permisos son alterados.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-emerald-900/30">
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">AWS
+                                CloudTrail</span>
+                            <span
+                                class="text-[0.75rem] font-mono tracking-wide text-emerald-300 bg-emerald-950/60 px-3 py-1.5 rounded-md border border-emerald-800/50">Azure
+                                Monitor</span>
+                        </div>
                     </div>
-                    <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">🔄</span> Drift Detection</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Alerta inmediata ante cambios manuales
-                            (ClickOps) para forzar autoremediación.</p>
-                    </div>
-                    <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">🛡️</span> Patch Management</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Hardening del OS en instancias virtuales
-                            para cerrar vulnerabilidades críticas de red.</p>
-                    </div>
-                    <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">🌐</span> Auditoría de DNS</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">Verificación constante de registros DNS
-                            CNAME evitando secuestros por subdominios inactivos.</p>
-                    </div>
-                    <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">🎯</span> Gestión Avanzada de Identidades
-                            (IAM)</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">El objetivo es eliminar las credenciales
-                            estáticas que pueden ser filtradas en repositorios de código.Eliminar Access Keys: Sustituir
-                            llaves permanentes por Roles (AWS), Managed Identities (Azure) o Service Accounts (GCP).
-                            Esto permite que la nube autentique las aplicaciones de forma transparente y segura sin
-                            necesidad de guardar contraseñas en el código</p>
-                    </div>
-                    <div
-                        class="glass-panel bg-dynamic p-6 border border-dynamic rounded-xl transition-all hover:scale-[1.02] h-full flex flex-col shadow-lg border-t-2 border-t-emerald-500/50">
-                        <strong class="text-emerald-400 font-bold block mb-3 flex items-center gap-2"><span
-                                class="icon-hover-animate inline-block">👀</span> MFA Obligatorio y Acceso
-                            Condicional:</strong>
-                        <p style="font-size: 0.85rem;" class="text-slate-300">No basta con tener MFA; se deben crear
-                            políticas donde el acceso se bloquee si el
-                            usuario intenta entrar desde una IP o país no autorizado, como se vio necesario en el caso
-                            de Snowflake.</p>
-                    </div>
+
                 </div>
             </section>
-        </div>
 
-        <!-- ========================================= -->
-        <!-- VISTA 2: GLOSARIO                         -->
-        <!-- ========================================= -->
+            <!-- ========================================= -->
+            <!-- VISTA 2: GLOSARIO                         -->
+            <!-- ========================================= -->
+        </div>
         <div id="section-glosario" class="content-section hidden">
             <div class="mb-8 border-b border-dynamic pb-4">
                 <h2
@@ -601,289 +993,837 @@
                     arquitectura y prevención de brechas.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="max-w-4xl mx-auto space-y-3">
 
-                <!-- 1 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">1. Hardening</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Proceso de reducir la superficie de
-                        ataque de un sistema eliminando configuraciones innecesarias, aplicando restricciones y
-                        siguiendo guías de mejores prácticas de seguridad.</p>
-                </div>
-                <!-- 2 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">2. Superficie de ataque</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Conjunto de todos los puntos de
-                        entrada por los que un atacante podría intentar acceder a un sistema. Más configuraciones
-                        abiertas = mayor superficie de ataque.</p>
-                </div>
-                <!-- 3 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">3. Principio de menor
-                        privilegio</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Regla de seguridad que indica que
-                        cada usuario, proceso o sistema debe tener solo los permisos mínimos necesarios para realizar su
-                        tarea, y nada más.</p>
-                </div>
-                <!-- 4 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">4. Buckets/Blobs</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Es el contenedor lógico básico de
-                        almacenamiento en la nube (ej. AWS S3).
-                        <span class="block mt-2"><strong class="text-red-400">Buckets Públicos / Brechas por buckets
-                                expuestos:</strong> Riesgo muy
-                            común de exponer datos sensibles por no cambiar la visibilidad a "privada". Ocurren por mala
-                            configuración del contenedor, permitiendo a quien sea ver o descargar archivos sin
-                            contraseñas</span>
-                    </p>
-                </div>
-                <!-- 5 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">5. Shadow IT</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Servicios levantados por
-                        desarrolladores sin pasar por el proceso de hardening (ej. bases de datos sin contraseña).</p>
-                </div>
-                <!-- 6 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">6. Movimiento Lateral</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Si una instancia comprometida no
-                        tiene hardening de red, el atacante puede saltar a otros servidores críticos.</p>
-                </div>
-                <!-- 7 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">7. Endpoints</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cualquier dispositivo o punto de
-                        conexión que se comunica con una red. En Cloud piensa en un endpoint como una "puerta de
-                        entrada" a tus servicios. Si está "expuesto", cualquiera en Internet podría intentar "tocar la
-                        puerta".</p>
-                </div>
-                <!-- 8 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">8. CSPM</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud Security Posture Management
-                        (Gestión de la Postura de Seguridad en la Nube):
-                        Categoría de herramientas de seguridad que escanean continuamente tu infraestructura en la nube
-                        para detectar malas configuraciones, riesgos de cumplimiento y vulnerabilidades.</p>
-                </div>
-                <!-- 9 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">9. CNAPP</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Cloud-Native Application Protection
-                        Platforms (Plataformas de Protección de Aplicaciones Nativas de la Nube):
-                        Evolución del CSPM que unifica múltiples herramientas de seguridad para proteger todo
-                        el ciclo de vida de una aplicación en la nube.</p>
-                </div>
-                <!-- 10 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">10. MFA</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Multi-Factor Authentication:
-                        Método de seguridad que requiere que el usuario proporcione dos o más pruebas (factores)
-                        diferentes para
-                        verificar su identidad antes de acceder a una cuenta o sistema.</p>
-                </div>
-                <!-- 11 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">11. Modelo de responsabilidad
-                        compartida
-                    </h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Define quién es responsable de qué,
-                        dividiendo el trabajo entre el proveedor de la nube y el cliente.
-                    </p>
-                </div>
-                <!-- 12 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">12. Bucket Policies (AWS)
-                    </h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Documentos JSON que se adjuntan a
-                        un contenedor completo en AWS S3. En lugar de dar permisos archivo por archivo, definen reglas a
-                        nivel general.</p>
-                </div>
-                <!-- 13 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">13. Block Public Access</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Interruptor de seguridad de máxima
-                        prioridad en
-                        AWS. Cuando se activa, bloquea instantáneamente cualquier acceso público, ignorando y anulando
-                        cualquier política
-                        o ACL previa.</p>
-                </div>
-                <!-- 14 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">14. Blob Storage (Azure)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Servicio de almacenamiento de
-                        objetos de Azure. Diseñado para almacenar cantidades masivas de datos no estructurados, como
-                        texto, imágenes o videos.</p>
-                </div>
-                <!-- 15 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">15. allow-blob-public-access
-                        false</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Configuración específica en Azure
-                        que desactiva el acceso anónimo y público a todos los contenedores. Equivalente al Block Public
-                        Access.</p>
-                </div>
-                <!-- 16 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">16. SAS (Azure)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Shared Access Signatures: Token o
-                        URL firmada criptográficamente para otorgar acceso temporal y limitado a un recurso específico
-                        sin exponer la contraseña principal.</p>
-                </div>
-                <!-- 17 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">17. UBLA (GCP)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Uniform Bucket-Level Access:
-                        Unifica el control de acceso. Al activarla, deshabilita las antiguas ACLs y fuerza a que toda
-                        seguridad se gestione mediante IAM.</p>
-                </div>
-                <!-- 18 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">18. (ACL) Access Control List
-                    </h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Método de seguridad heredado. Lista
-                        adjunta a un archivo que dice quién tiene permisos. Es propensa a errores humanos a escala
-                        Cloud.</p>
-                </div>
-                <!-- 19 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">19. Managed Identities</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identidades Administradas (Azure):
-                        Da a una aplicación su propia identidad para conectarse a bases de datos sin guardar contraseñas
-                        en el código.</p>
-                </div>
-                <!-- 20 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">20. Security Groups (AWS)
-                    </h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Actúan como firewall virtual a
-                        nivel de la instancia. Son stateful: si aprueban la entrada de un dato, aprueban su salida.</p>
-                </div>
-                <!-- 21 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">21. NSG (Azure)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Network Security Groups: Asociables
-                        a subredes completas o interfaces. Filtran el tráfico determinando qué IPs y puertos pueden
-                        comunicarse con los recursos.</p>
-                </div>
-                <!-- 22 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">22. SSH (Puerto 22)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Secure Shell. Es un protocolo de
-                        red criptográfico
-                        utilizado por los administradores de sistemas para conectarse de forma remota y segura a la
-                        consola de comandos de un servidor Linux.
-                        Si este protocolo para servidores Linux se deja abierto a todo Internet (0.0.0.0/0), atacantes
-                        buscarán tomar
-                        control por fuerza bruta.</p>
-                </div>
-                <!-- 23 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">23. RDP (Puerto 3389)</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Remote Desktop Protocol de Windows.
-                        Es el equivalente de SSH pero para servidores Windows; proporciona una interfaz gráfica para
-                        manejar el servidor con mouse y teclado a distancia.
-                        Si está expuesto públicamente, es uno de los principales vectores de entrada para ataques de
-                        Ransomware.</p>
-                </div>
-                <!-- 24 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">24. Exfiltración</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Transferencia o robo no autorizado
-                        de datos desde un sistema hacia el exterior (robando información confidencial masivamente).</p>
-                </div>
-                <!-- 25 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">25. Cryptojacking</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Ciberataque donde el intruso
-                        logr acceder a los servirdores de la nube de una víctima y utiliza el poder de procesamiento
-                        (CPU/GPU) de servidores Cloud para minar
-                        criptomonedas a expensas de facturas astronómicas. Esto puede suceder, por ejemplo, si dejan el
-                        puerto 22 abierto o
-                        el permiso IAM es demasiado amplio</p>
-                </div>
-                <!-- 26 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">26. IAM</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Identity and Access Management:
-                        Capa fundamental de seguridad en la nube que se encarga de gestionar quién puede acceder a qué
-                        recursos y bajo qué condiciones. En lugar de ser un simple
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11V7.159c0-1.255-1.042-2.274-2.29-2.274H5c-1.105 0-2 .895-2 2v3.84m9 3.517c0 3.517 1.009 6.799 2.753 9.571m3.44-2.04l-.054-.09A13.916 13.916 0 0116 11V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84m-9 3.517V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84">
+                                </path>
+                            </svg>
+                            1. Hardening
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Proceso de reducir la superficie de ataque de un sistema eliminando configuraciones
+                        innecesarias, aplicando restricciones y siguiendo guías de mejores prácticas de seguridad.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M3 10V21M21 10V21M3 10L12 3L21 10M12 11V21M12 11H8M12 11H16"></path>
+                            </svg>
+                            2. Superficie de ataque
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Conjunto de todos los puntos de entrada por los que un atacante podría intentar acceder a un
+                        sistema. Más configuraciones abiertas = mayor superficie de ataque.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
+                                </path>
+                            </svg>
+                            3. Principio de menor
+
+                            privilegio
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Regla de seguridad que indica que cada usuario, proceso o sistema debe tener solo los
+                        permisos
+                        mínimos necesarios para realizar su tarea, y nada más.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
+                                </path>
+                            </svg>
+                            4. Buckets/Blobs
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Es el contenedor lógico básico de almacenamiento en la nube (ej. AWS S3). <span
+                            class="block mt-2"><strong class="text-red-400">Buckets Públicos / Brechas por buckets
+                                expuestos:</strong> Riesgo muy común de exponer datos sensibles por no cambiar la
+                            visibilidad a "privada". Ocurren por mala configuración del contenedor, permitiendo a
+                            quien
+                            sea ver o descargar archivos sin contraseñas</span>
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M3 10V21M21 10V21M3 10L12 3L21 10M12 11V21M12 11H8M12 11H16"></path>
+                            </svg>
+                            5. Shadow IT
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Servicios levantados por desarrolladores sin pasar por el proceso de hardening (ej. bases de
+                        datos sin contraseña).
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M3 10V21M21 10V21M3 10L12 3L21 10M12 11V21M12 11H8M12 11H16"></path>
+                            </svg>
+                            6. Movimiento Lateral
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Si una instancia comprometida no tiene hardening de red, el atacante puede saltar a otros
+                        servidores críticos.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                                </path>
+                            </svg>
+                            7. Endpoints
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Cualquier dispositivo o punto de conexión que se comunica con una red. En Cloud piensa en un
+                        endpoint como una "puerta de entrada" a tus servicios. Si está "expuesto", cualquiera en
+                        Internet podría intentar "tocar la puerta".
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            8. CSPM
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Cloud Security Posture Management (Gestión de la Postura de Seguridad en la Nube): Categoría
+                        de
+                        herramientas de seguridad que escanean continuamente tu infraestructura en la nube para
+                        detectar
+                        malas configuraciones, riesgos de cumplimiento y vulnerabilidades.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            9. CNAPP
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Cloud-Native Application Protection Platforms (Plataformas de Protección de Aplicaciones
+                        Nativas
+                        de la Nube): Evolución del CSPM que unifica múltiples herramientas de seguridad para
+                        proteger
+                        todo el ciclo de vida de una aplicación en la nube.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            10. MFA
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Multi-Factor Authentication: Método de seguridad que requiere que el usuario proporcione dos
+                        o
+                        más pruebas (factores) diferentes para verificar su identidad antes de acceder a una cuenta
+                        o
+                        sistema.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            11. Modelo de responsabilidad
+
+                            compartida
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Define quién es responsable de qué, dividiendo el trabajo entre el proveedor de la nube y el
+                        cliente.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
+                                </path>
+                            </svg>
+                            12. Bucket Policies (AWS)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Documentos JSON que se adjuntan a un contenedor completo en AWS S3. En lugar de dar permisos
+                        archivo por archivo, definen reglas a nivel general.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11V7.159c0-1.255-1.042-2.274-2.29-2.274H5c-1.105 0-2 .895-2 2v3.84m9 3.517c0 3.517 1.009 6.799 2.753 9.571m3.44-2.04l-.054-.09A13.916 13.916 0 0116 11V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84m-9 3.517V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84">
+                                </path>
+                            </svg>
+                            13. Block Public Access
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Interruptor de seguridad de máxima prioridad en AWS. Cuando se activa, bloquea
+                        instantáneamente
+                        cualquier acceso público, ignorando y anulando cualquier política o ACL previa.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
+                                </path>
+                            </svg>
+                            14. Blob Storage (Azure)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Servicio de almacenamiento de objetos de Azure. Diseñado para almacenar cantidades masivas
+                        de
+                        datos no estructurados, como texto, imágenes o videos.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
+                                </path>
+                            </svg>
+                            15. allow-blob-public-access
+
+                            false
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Configuración específica en Azure que desactiva el acceso anónimo y público a todos los
+                        contenedores. Equivalente al Block Public Access.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            16. SAS (Azure)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Shared Access Signatures: Token o URL firmada criptográficamente para otorgar acceso
+                        temporal y
+                        limitado a un recurso específico sin exponer la contraseña principal.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            17. UBLA (GCP)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Uniform Bucket-Level Access: Unifica el control de acceso. Al activarla, deshabilita las
+                        antiguas ACLs y fuerza a que toda seguridad se gestione mediante IAM.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            18. (ACL) Access Control List
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Método de seguridad heredado. Lista adjunta a un archivo que dice quién tiene permisos. Es
+                        propensa a errores humanos a escala Cloud.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
+                                </path>
+                            </svg>
+                            19. Managed Identities
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Identidades Administradas (Azure): Da a una aplicación su propia identidad para conectarse a
+                        bases de datos sin guardar contraseñas en el código.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11V7.159c0-1.255-1.042-2.274-2.29-2.274H5c-1.105 0-2 .895-2 2v3.84m9 3.517c0 3.517 1.009 6.799 2.753 9.571m3.44-2.04l-.054-.09A13.916 13.916 0 0116 11V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84m-9 3.517V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84">
+                                </path>
+                            </svg>
+                            20. Security Groups (AWS)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Actúan como firewall virtual a nivel de la instancia. Son stateful: si aprueban la entrada
+                        de un
+                        dato, aprueban su salida.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11V7.159c0-1.255-1.042-2.274-2.29-2.274H5c-1.105 0-2 .895-2 2v3.84m9 3.517c0 3.517 1.009 6.799 2.753 9.571m3.44-2.04l-.054-.09A13.916 13.916 0 0116 11V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84m-9 3.517V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84">
+                                </path>
+                            </svg>
+                            21. NSG (Azure)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Network Security Groups: Asociables a subredes completas o interfaces. Filtran el tráfico
+                        determinando qué IPs y puertos pueden comunicarse con los recursos.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            22. SSH (Puerto 22)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Secure Shell. Es un protocolo de red criptográfico utilizado por los administradores de
+                        sistemas
+                        para conectarse de forma remota y segura a la consola de comandos de un servidor Linux. Si
+                        este
+                        protocolo para servidores Linux se deja abierto a todo Internet (0.0.0.0/0), atacantes
+                        buscarán
+                        tomar control por fuerza bruta.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            23. RDP (Puerto 3389)
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Remote Desktop Protocol de Windows. Es el equivalente de SSH pero para servidores Windows;
+                        proporciona una interfaz gráfica para manejar el servidor con mouse y teclado a distancia.
+                        Si
+                        está expuesto públicamente, es uno de los principales vectores de entrada para ataques de
+                        Ransomware.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M3 10V21M21 10V21M3 10L12 3L21 10M12 11V21M12 11H8M12 11H16"></path>
+                            </svg>
+                            24. Exfiltración
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Transferencia o robo no autorizado de datos desde un sistema hacia el exterior (robando
+                        información confidencial masivamente).
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M3 10V21M21 10V21M3 10L12 3L21 10M12 11V21M12 11H8M12 11H16"></path>
+                            </svg>
+                            25. Cryptojacking
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Ciberataque donde el intruso logr acceder a los servirdores de la nube de una víctima y
+                        utiliza
+                        el poder de procesamiento (CPU/GPU) de servidores Cloud para minar criptomonedas a expensas
+                        de
+                        facturas astronómicas. Esto puede suceder, por ejemplo, si dejan el puerto 22 abierto o el
+                        permiso IAM es demasiado amplio
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #22d3ee; text-shadow: 0 0 5px rgba(34,211,238,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z">
+                                </path>
+                            </svg>
+                            26. IAM
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Identity and Access Management: Capa fundamental de seguridad en la nube que se encarga de
+                        gestionar quién puede acceder a qué recursos y bajo qué condiciones. En lugar de ser un
+                        simple
                         sistema de "usuario y contraseña", es un marco robusto que define la identidad de personas y
-                        servicios, y los permisos exactos que poseen. </p>
-                </div>
-                <!-- 27 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">27. IaC</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Infraestructura como Código
-                        (Terraform, AWS CloudFormation). Gestionar y aprovisionar toda la nube utilizando archivos de
-                        código legibles, en lugar de configuraciones manuales.</p>
-                </div>
-                <!-- 28 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">28. Shift-Left</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Mover los controles de seguridad lo
-                        más al inicio del desarrollo, integrándolos desde el momento en que se escribe el código
-                        (Checkov, tfsec).</p>
-                </div>
-                <!-- 29 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">29. Tokens SAS</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Tokens (Shared Access Signatures)
-                        Es una URL firmada que otorga acceso limitado y delegado a los recursos de una cuenta de
-                        almacenamiento
-                        (Blobs, archivos, tablas) sin exponer las claves maestras de la cuenta..</p>
-                </div>
-
-                <!-- 30 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">30. Shift-Left</h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">En una línea de tiempo de
-                        desarrollo de software (que se lee de izquierda a
-                        derecha: Diseño ➡️ Código ➡️ Pruebas ➡️ Producción), "Shift-Left" significa mover los controles
-                        de seguridad lo más a la izquierda posible,
-                        integrándolos desde el momento en que el desarrollador está escribiendo el código. (Checkov,
-                        Terrascan, tfsec) </p>
-                </div>
-
-                <!-- 31 -->
-                <div class="glass-panel bg-dynamic flex flex-col gap-3 p-6 shadow-md transition-all hover:scale-[1.02]">
-                    <h3 class="font-bold font-mono text-[1.05rem]"
-                        style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">31. S3 Block Public Access
-                    </h3>
-                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;">Configuración en AWS que bloquea
-                        cualquier
-                        intento de hacer público un bucket S3, ya sea por política o por ACL (lista de control de
-                        acceso). </p>
-                </div>
+                        servicios, y los permisos exactos que poseen.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            27. IaC
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Infraestructura como Código (Terraform, AWS CloudFormation). Gestionar y aprovisionar toda
+                        la
+                        nube utilizando archivos de código legibles, en lugar de configuraciones manuales.
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            28. Shift-Left
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Mover los controles de seguridad lo más al inicio del desarrollo, integrándolos desde el
+                        momento
+                        en que se escribe el código (Checkov, tfsec).
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            29. Tokens SAS
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Tokens (Shared Access Signatures) Es una URL firmada que otorga acceso limitado y delegado a
+                        los
+                        recursos de una cuenta de almacenamiento (Blobs, archivos, tablas) sin exponer las claves
+                        maestras de la cuenta..
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            30. Shift-Left
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        En una línea de tiempo de desarrollo de software (que se lee de izquierda a derecha: Diseño
+                        ➡️
+                        Código ➡️ Pruebas ➡️ Producción), "Shift-Left" significa mover los controles de seguridad lo
+                        más
+                        a la izquierda posible, integrándolos desde el momento en que el desarrollador está
+                        escribiendo
+                        el código. (Checkov, Terrascan, tfsec)
+                    </div>
+                </details>
+                <details
+                    class="group bg-black/40 border border-dynamic rounded-lg overflow-hidden transition-all duration-300 hover:border-cyan-500/50">
+                    <summary
+                        class="flex justify-between items-center font-bold cursor-pointer list-none p-5 outline-none">
+                        <span class="font-mono text-[1.05rem] flex items-center"
+                            style="color: #ef4444; text-shadow: 0 0 5px rgba(239,68,68,0.5);">
+                            <svg fill="none" class="w-5 h-5 mr-3 inline-block" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11V7.159c0-1.255-1.042-2.274-2.29-2.274H5c-1.105 0-2 .895-2 2v3.84m9 3.517c0 3.517 1.009 6.799 2.753 9.571m3.44-2.04l-.054-.09A13.916 13.916 0 0116 11V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84m-9 3.517V7.159c0-1.255 1.042-2.274 2.29-2.274h.71c1.105 0 2 .895 2 2v3.84">
+                                </path>
+                            </svg>
+                            31. S3 Block Public Access
+                        </span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 text-cyan-500">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-5 text-slate-300 text-[0.85rem] border-t border-dynamic leading-relaxed bg-[#050505]">
+                        Configuración en AWS que bloquea cualquier intento de hacer público un bucket S3, ya sea por
+                        política o por ACL (lista de control de acceso).
+                    </div>
+                </details>
 
             </div>
         </div>
@@ -932,8 +1872,8 @@
                         <span class="text-emerald-500 font-bold not-italic">▶</span>
                         <div>Hashmi, S. I., Kashif, S., Grober, L., Krombholz, K., & Javed, M. (2026). Mapping the
                             cloud: A mixed-methods study of cloud security and privacy configuration challenges.
-                            <em>Network and Distributed System Security (NDSS) Symposium 2026</em>, San Diego, CA. <a
-                                href="https://doi.org/10.14722/ndss.2026.241302"
+                            <em>Network and Distributed System Security (NDSS) Symposium 2026</em>, San Diego, CA.
+                            <a href="https://doi.org/10.14722/ndss.2026.241302"
                                 class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">https://doi.org/10.14722/ndss.2026.241302</a>
                         </div>
                     </li>
@@ -941,7 +1881,8 @@
                     <li class="pl-8 -indent-8 flex items-start gap-2">
                         <span class="text-emerald-500 font-bold not-italic">▶</span>
                         <div>Jansen, W., & Grance, T. (2011). <em>Guidelines on security and privacy in public cloud
-                                computing (NIST Special Publication 800-144)</em>. National Institute of Standards and
+                                computing (NIST Special Publication 800-144)</em>. National Institute of Standards
+                            and
                             Technology.</div>
                     </li>
                     <!-- 6 -->
@@ -965,7 +1906,8 @@
                     <!-- 8 -->
                     <li class="pl-8 -indent-8 flex items-start gap-2">
                         <span class="text-emerald-500 font-bold not-italic">▶</span>
-                        <div>AWS Security Blog. (2018). <em>Amazon S3 Block Public Access – Another Layer of Protection
+                        <div>AWS Security Blog. (2018). <em>Amazon S3 Block Public Access – Another Layer of
+                                Protection
                                 for Your Accounts and Buckets</em>. <a
                                 href="https://aws.amazon.com/es/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/"
                                 class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link
@@ -973,7 +1915,8 @@
                     </li>
                     <li class="pl-8 -indent-8 flex items-start gap-2">
                         <span class="text-emerald-500 font-bold not-italic">▶</span>
-                        <div>Ben-Sasson, H. & Greenberg, R. (2023) <em>38TB of data accidentally exposed by Microsoft AI
+                        <div>Ben-Sasson, H. & Greenberg, R. (2023) <em>38TB of data accidentally exposed by
+                                Microsoft AI
                                 researchers. Wiz Research.</em>. <a
                                 href="https://www.wiz.io/blog/38tb-of-data-accidentally-exposed-by-microsoft-ai-researchers"
                                 class="text-emerald-400 hover:text-emerald-300 not-italic ml-1 underline underline-offset-4">Link
