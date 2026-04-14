@@ -694,15 +694,7 @@
                         Threat Intelligence: Análisis de Brechas
                     </h2>
                     <button onclick="toggleLabRemediation()" id="lab-remediation-btn"
-                        class="font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] hover:shadow-[0_0_25px_rgba(239,68,68,0.8)] flex items-center gap-2 group text-[0.95rem]">
-                        <svg class="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
+                        class="font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] flex items-center gap-2 group text-[0.95rem]">
                         Aplicar Hardening
                     </button>
                 </div>
@@ -710,25 +702,23 @@
                 <div
                     class="flex flex-col md:flex-row gap-2 p-3 bg-[#0a0a0a] border-b border-red-900/30 relative z-10 font-mono shadow-inner overflow-x-auto">
                     <button onclick="switchLab('msft')" id="btn-lab-msft"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all active-vuln border border-red-500/50 bg-red-950/40 text-red-200 shadow-[inset_0_0_15px_rgba(239,68,68,0.2)] whitespace-nowrap min-w-0">
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all active-vuln border border-red-500/50 bg-red-950/40 text-red-200 whitespace-nowrap min-w-0">
                         <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">Microsoft AI</span>
                         <div class="flex items-center gap-2 shrink-0 ml-3">
                             <span
                                 class="text-[10px] text-red-400 opacity-80 uppercase tracking-widest hidden xl:inline-block">Activo</span>
-                            <div
-                                class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)]">
-                            </div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>
                         </div>
                     </button>
                     <button onclick="switchLab('att')" id="btn-lab-att"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200 whitespace-nowrap min-w-0">
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 whitespace-nowrap min-w-0">
                         <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">AT&T / Snowflake</span>
                         <div class="flex items-center gap-2 shrink-0 ml-3">
                             <div class="w-2 h-2 rounded-full bg-slate-600"></div>
                         </div>
                     </button>
                     <button onclick="switchLab('lat')" id="btn-lab-lat"
-                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 hover:text-slate-200 whitespace-nowrap min-w-0">
+                        class="lab-btn focus:outline-none flex items-center justify-between w-full md:flex-1 px-4 py-3 rounded transition-all border border-transparent text-slate-400 hover:bg-white/5 whitespace-nowrap min-w-0">
                         <span class="text-[0.95rem] tracking-wider uppercase font-bold truncate">LA Times (S3)</span>
                         <div class="flex items-center gap-2 shrink-0 ml-3">
                             <div class="w-2 h-2 rounded-full bg-slate-600"></div>
@@ -737,35 +727,42 @@
                 </div>
 
                 <div id="breach-lab-content"
-                    class="p-6 grid grid-cols-1 md:grid-cols-10 gap-8 relative z-10 transition-colors duration-1000 bg-[#020408]">
+                    class="p-6 grid grid-cols-1 md:grid-cols-10 gap-8 relative z-10 bg-[#020408]">
 
-                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[380px] overflow-hidden p-1">
+                    <div id="dynamic-lab-container" class="md:col-span-7 relative min-h-[450px] overflow-hidden p-1">
 
                         <div id="lab-content-msft"
                             class="lab-content-pane absolute inset-0 opacity-100 pointer-events-auto transition-opacity duration-300">
                             <div
                                 class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
-                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
-                                    Token SAS Over-permissioned</h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Error de configuración manual
-                                    dio acceso total (Lectura, Escritura, Borrado) por 10 años, exponiendo 38 TB.</p>
+                                <h4 class="text-red-500 font-bold mb-4 text-xl">⚠️ ESTADO: VULNERABLE (RIESGO: EXCESO
+                                    PRIVILEGIOS)</h4>
+                                <p class="text-base text-slate-300 mb-2"><strong>Falla:</strong> Exposición de 38 TB al
+                                    publicar modelos en GitHub con tokens SAS mal configurados.</p>
+                                <p class="text-base text-slate-400 mb-6"><strong>Impacto:</strong> Filtración de
+                                    backups, contraseñas y mensajes de Teams de empleados.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># ERROR: El token otorga 'Full Control'
+                                        (rwl) a toda la cuenta por 30 años</span>
                                     <span class="text-blue-400">az</span> storage container generate-sas --permissions
-                                    rwl --expiry 2033-01-01
+                                    rwl --expiry 2051-10-06
                                 </div>
                             </div>
                             <div
                                 class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
-                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
-                                    <span>🛡️</span> Hardening: RBAC
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl">🛡️ ESTADO: FORTIFICADO (HARDENING)
                                 </h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Se aplica Mínimo Privilegio
-                                    mediante Identidad, sin enlaces públicos.</p>
+                                <p class="text-base text-slate-100 mb-2"><strong>Riesgo Mitigado:</strong> Exfiltración
+                                    de Datos Masivos y Ataque a Cadena de Suministro.</p>
+                                <p class="text-base text-slate-200 mb-6"><strong>Análisis:</strong> Se deshabilita el
+                                    acceso por llave de cuenta y se migra a RBAC con identidades administradas.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># SOLUCIÓN: Azure RBAC + Entra ID. Sin
+                                        tokens estáticos expuestos</span>
                                     <span class="text-blue-400">az</span> role assignment create --role "Storage Blob
-                                    Data Reader"
+                                    Data Reader" --assignee &lt;identity-id&gt;
                                 </div>
                             </div>
                         </div>
@@ -774,26 +771,35 @@
                             class="lab-content-pane absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
                             <div
                                 class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
-                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
-                                    Sin MFA y Red Abierta</h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Credenciales robadas entraron
-                                    libremente al omitir MFA y permitir acceso desde 0.0.0.0/0.</p>
+                                <h4 class="text-red-500 font-bold mb-4 text-xl">⚠️ ESTADO: VULNERABLE (RIESGO: IDENTIDAD
+                                    SIN MFA)</h4>
+                                <p class="text-base text-slate-300 mb-2"><strong>Falla:</strong> Exfiltración de
+                                    registros por credenciales robadas y ausencia de MFA.</p>
+                                <p class="text-base text-slate-400 mb-6"><strong>Impacto:</strong> 100 millones de
+                                    registros de clientes expuestos desde IPs no autorizadas.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
-                                    <span class="text-blue-400">ALTER USER</span> admin SET MIN_MFA_DAYS = 0;<br>
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># ERROR: MFA opcional y red abierta
+                                        (0.0.0.0/0) a todo Internet</span>
+                                    <span class="text-blue-400">ALTER USER</span> 'admin_data' SET MIN_MFA_DAYS = 0;<br>
+                                    <span class="text-blue-400">CREATE NETWORK POLICY</span> 'open_access'
                                     ALLOWED_IP_LIST = ('0.0.0.0/0');
                                 </div>
                             </div>
                             <div
                                 class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
-                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
-                                    <span>🛡️</span> Hardening: Acceso Condicionado
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl">🛡️ ESTADO: FORTIFICADO (HARDENING)
                                 </h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Zero Trust forzando MFA y
-                                    limitando conexiones a IPs corporativas.</p>
+                                <p class="text-base text-slate-100 mb-2"><strong>Riesgo Mitigado:</strong> Acceso No
+                                    Autorizado por Robo de Credenciales.</p>
+                                <p class="text-base text-slate-200 mb-6"><strong>Análisis:</strong> Implementación de
+                                    Zero Trust forzando MFA global y restricción por lista blanca de IPs.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
-                                    <span class="text-blue-400">ALTER USER</span> admin SET MIN_MFA_DAYS = 1;<br>
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># SOLUCIÓN: MFA Obligatorio + Network
+                                        Allow-listing corporativo</span>
+                                    <span class="text-blue-400">ALTER USER</span> 'admin_data' SET MIN_MFA_DAYS = 1;<br>
+                                    <span class="text-blue-400">CREATE NETWORK POLICY</span> 'secure_access'
                                     ALLOWED_IP_LIST = ('10.2.0.0/16');
                                 </div>
                             </div>
@@ -803,27 +809,36 @@
                             class="lab-content-pane absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
                             <div
                                 class="lab-view-vuln absolute inset-0 border border-red-500/40 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20">
-                                <h4 class="text-red-500 font-bold mb-4 text-xl flex items-center gap-2"><span>⚠️</span>
-                                    ACL Global AWS S3</h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Bucket público con permiso de
-                                    Escritura para 'AllUsers' permitió inyección de criptomineros.</p>
+                                <h4 class="text-red-500 font-bold mb-4 text-xl">⚠️ ESTADO: VULNERABLE (RIESGO: ACL
+                                    GLOBAL S3)</h4>
+                                <p class="text-base text-slate-300 mb-2"><strong>Falla:</strong> Acceso de escritura
+                                    otorgado accidentalmente a un bucket público de assets.</p>
+                                <p class="text-base text-slate-400 mb-6"><strong>Impacto:</strong> Lectores minaron
+                                    Monero mediante un script inyectado por atacantes.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-sm leading-loose">
-                                    <span class="text-blue-400">aws</span> s3api put-bucket-acl --grant-write
-                                    uri=.../AllUsers
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-red-300 border border-red-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># ERROR: Permiso de escritura total para el
+                                        grupo 'AllUsers' (Cualquiera en Internet)</span>
+                                    <span class="text-blue-400">aws</span> s3api put-bucket-acl --bucket latimes-assets
+                                    \<br>
+                                    --grant-write uri=http://acs.amazonaws.com/groups/global/AllUsers
                                 </div>
                             </div>
                             <div
                                 class="lab-view-sec absolute inset-0 border border-emerald-500/40 bg-gradient-to-br from-[#064e3b] to-[#010a13] rounded-xl p-8 flex flex-col z-10 scale-95 opacity-0">
-                                <h4 class="text-emerald-500 font-bold mb-4 text-xl flex items-center gap-2">
-                                    <span>🛡️</span> Hardening: Block Public Access
+                                <h4 class="text-emerald-500 font-bold mb-4 text-xl">🛡️ ESTADO: FORTIFICADO (HARDENING)
                                 </h4>
-                                <p class="text-base text-slate-300 mb-6 leading-relaxed">Interruptor maestro que bloquea
-                                    políticas públicas e ignora ACLs antiguas.</p>
+                                <p class="text-base text-slate-100 mb-2"><strong>Riesgo Mitigado:</strong> Cryptojacking
+                                    e Inyección de Código Malicioso.</p>
+                                <p class="text-base text-slate-200 mb-6"><strong>Análisis:</strong> Se activa el
+                                    "Kill-Switch" S3 Block Public Access que anula cualquier ACL insegura.</p>
                                 <div
-                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-sm leading-loose">
+                                    class="bg-black/90 flex-1 p-5 rounded-xl font-mono text-emerald-300 border border-emerald-900/50 text-[0.9rem] leading-relaxed">
+                                    <span class="text-slate-500 block mb-2"># SOLUCIÓN: S3 Block Public Access + Content
+                                        Integrity (SRI)</span>
                                     <span class="text-blue-400">aws</span> s3control put-public-access-block
-                                    "BlockPublicAcls=true"
+                                    --account-id &lt;id&gt; \<br>
+                                    --public-access-block-configuration "BlockPublicAcls=true,IgnorePublicAcls=true"
                                 </div>
                             </div>
                         </div>
@@ -831,18 +846,9 @@
                     </div>
 
                     <div
-                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-8 bg-[#050505] rounded-xl border border-red-900/40 transition-colors duration-1000 lab-gauge-container relative overflow-hidden shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
-
-                        <div
-                            class="uppercase tracking-widest text-slate-400 mb-8 font-mono font-bold z-10 flex items-center gap-2 text-sm">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                </path>
-                            </svg>
-                            Índice de Exposición
-                        </div>
-
+                        class="md:col-span-3 w-full flex flex-col items-center justify-center p-8 bg-[#050505] rounded-xl border border-red-900/40 relative shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+                        <div class="uppercase tracking-widest text-slate-400 mb-8 font-mono font-bold z-10 text-xs">
+                            Índice de Exposición</div>
                         <div class="relative w-64 h-32 overflow-hidden z-10 mt-2">
                             <svg class="w-full h-full" viewBox="0 0 100 50">
                                 <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#1a1a1a" stroke-width="12"
@@ -852,29 +858,18 @@
                                 <path d="M 45 13 A 40 40 0 0 1 90 50" fill="none"
                                     class="stroke-red-600 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" stroke-width="12"
                                     stroke-linecap="round" opacity="0.9"></path>
-                                <line x1="20" y1="35" x2="25" y2="38" stroke="#fff" stroke-width="1" opacity="0.5">
-                                </line>
-                                <line x1="50" y1="10" x2="50" y2="15" stroke="#fff" stroke-width="1" opacity="0.5">
-                                </line>
-                                <line x1="80" y1="35" x2="75" y2="38" stroke="#fff" stroke-width="1" opacity="0.5">
-                                </line>
                             </svg>
-
                             <div id="lab-risk-needle"
-                                class="absolute bottom-0 left-1/2 w-[4px] h-[70px] bg-white rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_0_15px_rgba(255,255,255,1)] z-10"
+                                class="absolute bottom-0 left-1/2 w-[4px] h-[70px] bg-white rounded-full origin-bottom -translate-x-1/2 transition-transform duration-1000 shadow-[0_0_15px_rgba(255,255,255,1)] z-10"
                                 style="transform: rotate(65deg);"></div>
-
                             <div
                                 class="absolute bottom-0 left-1/2 w-10 h-10 bg-slate-800 rounded-full -translate-x-1/2 translate-y-[40%] z-20 shadow-lg border-[3px] border-slate-900 flex items-center justify-center">
                                 <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
                             </div>
                         </div>
-
                         <div id="lab-risk-status-text"
-                            class="text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl"
-                            style="text-shadow: 0 0 10px rgba(239,68,68,0.5);">
-                            CRITICAL RISK
-                        </div>
+                            class="text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl">
+                            CRITICAL RISK</div>
                     </div>
                 </div>
             </section>

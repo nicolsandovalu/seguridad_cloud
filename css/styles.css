@@ -567,3 +567,22 @@ body::after {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(148, 163, 184, 0.4);
 }
+
+/* --- FIX FLECHA GLOSARIO --- */
+summary {
+    list-style: none;
+    /* Quita la flecha por defecto en la mayoría de navegadores */
+}
+
+summary::-webkit-details-marker {
+    display: none;
+    /* Quita la flecha por defecto en Safari/Chrome */
+}
+
+/* Asegura que el contenedor del título y la flecha SVG ocupen todo el ancho */
+summary.flex {
+    display: flex !important;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}

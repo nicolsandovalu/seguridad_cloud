@@ -182,143 +182,78 @@ const incidentData = {
 let isLabHardened = false;
 let currentLab = 'microsoft';
 
-function renderDynamicLab() {
-    const data = incidentData[currentLab];
-    const container = document.getElementById('dynamic-lab-container');
-    const vulnClasses = isLabHardened ? "opacity-0 scale-105 pointer-events-none" : "opacity-100 scale-100 pointer-events-auto";
-    const secClasses = isLabHardened ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none";
 
-    container.innerHTML = `
-        <div class="absolute inset-0 transition-opacity duration-300">
-            <div id="view-vuln" class="absolute inset-0 transition-all duration-700 border border-red-500/50 bg-[#0a0202] rounded-xl p-8 flex flex-col z-20 ${vulnClasses}">
-                <h4 class="text-red-500 font-bold mb-4 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">⚠️ ESTADO: VULNERABLE</h4>
-                <div class="overflow-y-auto mb-4 pr-2 custom-scroll">
-                    <p class="leading-relaxed mb-2 text-[#cbd5e1]">
-                        <strong class="text-red-400">Falla:</strong> ${data.desc}<br>
-                        <strong class="text-red-400">Impacto:</strong> ${data.impact}
-                    </p>
-                </div>
-                <div class="bg-[#050505] flex-1 p-6 rounded-xl font-mono font-bold text-red-500 border border-red-900/50 relative overflow-y-auto shadow-inner">
-                    <pre class="whitespace-pre-wrap leading-loose drop-shadow-[0_0_3px_rgba(239,68,68,0.5)]">${data.vulnCode}</pre>
-                </div>
-            </div>
-
-            <div id="view-sec" class="absolute inset-0 transition-all duration-700 ease-in-out rounded-xl p-8 flex flex-col z-10 ${secClasses} laser-transition shadow-[0_0_40px_rgba(16,185,129,0.3)] bg-gradient-to-br from-[#064e3b] to-[#010a13] border-2 border-emerald-500">
-                <h4 class="text-emerald-400 font-bold mb-4 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🛡️ ESTADO: FORTIFICADO (HARDENING)</h4>
-                <div class="overflow-y-auto mb-4 pr-2 custom-scroll">
-                    <p class="leading-relaxed font-medium mb-2 text-slate-100">
-                        <strong class="text-emerald-400">Riesgo Mitigado:</strong> ${data.riskStatus}<br>
-                        <strong class="text-emerald-400">Análisis:</strong> ${data.analysis}
-                    </p>
-                </div>
-                <div class="bg-[#020617] flex-1 p-6 rounded-xl font-mono font-bold text-emerald-400 border border-emerald-800/80 relative overflow-y-auto shadow-inner">
-                    <pre class="whitespace-pre-wrap leading-loose drop-shadow-[0_0_3px_rgba(16,185,129,0.5)]">${data.hardCode}</pre>
-                </div>
-            </div>
-        </div>
-    `;
-}
 
 function updateLabUI() {
-    // 1. Limpiar todos los botones a estado inactivo
+    // Resetear botones
     document.querySelectorAll('.lab-btn').forEach(btn => {
         btn.classList.remove('active-vuln', 'active-sec', 'border-red-500', 'bg-red-950/40', 'border-emerald-500', 'bg-emerald-950/40', 'text-red-200', 'text-emerald-200');
         btn.classList.add('border-transparent', 'text-slate-500', 'opacity-70');
-
-        // Seleccionar el contenedor flex de la derecha
         const dotContainer = btn.querySelector('.flex.items-center.gap-2');
-        if (dotContainer) {
-            // Solo dejar el puntito gris apagado
-            dotContainer.innerHTML = '<div class="w-1.5 h-1.5 rounded-full bg-slate-600"></div>';
-        }
+        if (dotContainer) dotContainer.innerHTML = '<div class="w-1.5 h-1.5 rounded-full bg-slate-600"></div>';
     });
 
-    // Mapeo de IDs (para evitar errores si usas msft o microsoft)
     const activeMap = { 'microsoft': 'msft', 'att': 'att', 'latimes': 'lat', 'msft': 'msft', 'lat': 'lat' };
     const shortId = activeMap[currentLab] || currentLab;
     const activeBtn = document.getElementById(`btn-lab-${shortId}`);
 
-    // 2. Encender el botón activo
+    // Iluminar botón activo
     if (activeBtn) {
         activeBtn.classList.remove('border-transparent', 'text-slate-500', 'opacity-70');
         const dotContainer = activeBtn.querySelector('.flex.items-center.gap-2');
-
         if (!isLabHardened) {
-            // Estado VULNERABLE (Rojo)
             activeBtn.classList.add('active-vuln', 'border-red-500', 'bg-red-950/40', 'text-red-200');
-            if (dotContainer) {
-                // Inyecta el texto ACTIVO asegurando que se oculte en móviles (hidden sm:inline)
-                dotContainer.innerHTML = '<span class="text-[9px] text-red-400 opacity-80 uppercase tracking-widest hidden sm:inline">Activo</span><div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)]"></div>';
-            }
+            if (dotContainer) dotContainer.innerHTML = '<span class="text-[10px] text-red-400 opacity-80 uppercase tracking-widest hidden xl:inline-block">Activo</span><div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,1)]"></div>';
         } else {
-            // Estado SEGURO (Verde)
             activeBtn.classList.add('active-sec', 'border-emerald-500', 'bg-emerald-950/40', 'text-emerald-200');
-            if (dotContainer) {
-                dotContainer.innerHTML = '<span class="text-[9px] text-emerald-400 opacity-80 uppercase tracking-widest hidden sm:inline">Seguro</span><div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,1)]"></div>';
-            }
+            if (dotContainer) dotContainer.innerHTML = '<span class="text-[10px] text-emerald-400 opacity-80 uppercase tracking-widest hidden xl:inline-block">Seguro</span><div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,1)]"></div>';
         }
     }
 
-    // 3. Mostrar el contenido de código correspondiente
+    // CONTROL DE VISIBILIDAD DE LOS CASOS
     document.querySelectorAll('.lab-content-pane').forEach(pane => {
-        pane.classList.remove('opacity-100', 'pointer-events-auto');
         pane.classList.add('opacity-0', 'pointer-events-none');
-        pane.style.zIndex = "1";
+        pane.classList.remove('opacity-100', 'pointer-events-auto');
     });
 
     const activePane = document.getElementById(`lab-content-${shortId}`);
     if (activePane) {
         activePane.classList.remove('opacity-0', 'pointer-events-none');
         activePane.classList.add('opacity-100', 'pointer-events-auto');
-        activePane.style.zIndex = "10";
+
+        // Manejar sub-vistas (Vulnerable vs Seguro) dentro del panel
+        const viewVuln = activePane.querySelector('.lab-view-vuln');
+        const viewSec = activePane.querySelector('.lab-view-sec');
+
+        if (isLabHardened) {
+            viewVuln.classList.add('opacity-0', 'pointer-events-none', 'scale-105');
+            viewVuln.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+            viewSec.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+            viewSec.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        } else {
+            viewVuln.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+            viewVuln.classList.remove('opacity-0', 'pointer-events-none', 'scale-105');
+            viewSec.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+            viewSec.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+        }
     }
 }
-
 function switchLab(shortId) {
     const reverseMap = { 'msft': 'microsoft', 'att': 'att', 'lat': 'latimes' };
     currentLab = reverseMap[shortId] || shortId;
-    isLabHardened = false; // Reset estado
+    isLabHardened = false;
 
-    // Toggle central a estado Vulnerable
+    // Reset de estilos del botón de remediación
     const toggleBtn = document.getElementById('lab-remediation-btn');
     toggleBtn.innerHTML = "APLICAR HARDENING";
-    toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-red-500 bg-red-900/40 text-red-100 hover:bg-red-700 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.5)] pointer-events-auto";
+    toggleBtn.className = "font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] pointer-events-auto flex items-center gap-2 group text-[0.95rem]";
 
-    // Reset Risk Gauge
-    const needle = document.getElementById('lab-risk-needle');
-    if (needle) {
-        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-        needle.style.transform = "rotate(70deg)";
-    }
-    const shield = document.getElementById('shield-icon');
-    if (shield) { shield.classList.add('opacity-0', 'scale-50'); shield.classList.remove('opacity-100', 'scale-100'); }
+    // Reset del medidor de riesgo
+    document.getElementById('lab-risk-needle').style.transform = "rotate(65deg)";
+    document.getElementById('lab-risk-status-text').textContent = "CRITICAL RISK";
+    document.getElementById('lab-risk-status-text').className = "text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl";
 
-    const riskTypes = {
-        'microsoft': 'RIESGO: EXCESO DE PRIVILEGIOS SAS',
-        'att': 'RIESGO: IDENTIDAD SIN MFA Y RED ABIERTA',
-        'latimes': 'RIESGO: ACL GLOBAL EN S3'
-    };
-
-    const statusText = document.getElementById('lab-risk-status-text');
-    statusText.textContent = riskTypes[currentLab] || "CRITICAL";
-    statusText.className = "text-red-500 font-bold mt-4 text-xs tracking-widest text-center transition-colors duration-500 animate-pulse z-10";
-
-    const breachLabMain = document.getElementById('breach-lab');
-    if (breachLabMain) {
-        breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden ring-1 ring-red-500/20 lab-container-vuln transition-all duration-1000 bg-[#050505]';
-    }
-
-    const scrollBar = document.getElementById('scroll-progress-bar');
-    if (scrollBar) {
-        scrollBar.classList.remove('bg-emerald-500');
-        scrollBar.classList.add('bg-red-500');
-    }
-
-    const labContainer = document.getElementById('breach-lab-content');
-    labContainer.className = 'p-6 bg-[#030303] grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 scanlines-bg transition-all duration-1000 rounded-xl border-t border-red-900/40';
-
-    updateLabUI();
-    renderDynamicLab();
+    updateLabUI(); // Solo actualizamos visibilidad
 }
 
 function toggleLabRemediation() {
