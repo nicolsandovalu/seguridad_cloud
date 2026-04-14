@@ -586,3 +586,13 @@ summary.flex {
     justify-content: space-between;
     align-items: center;
 }
+
+/* --- FIX ESTABILIDAD AGUJA --- */
+#lab-risk-needle {
+    transform-origin: bottom center !important;
+    /* Fuerza el punto de rotación en la base */
+    transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    /* Animación elástica y fluida */
+    will-change: transform;
+    /* Optimiza el rendimiento de la animación */
+}

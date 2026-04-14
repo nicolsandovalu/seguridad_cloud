@@ -243,63 +243,67 @@ function switchLab(shortId) {
     currentLab = reverseMap[shortId] || shortId;
     isLabHardened = false;
 
-    // Reset de estilos del botón de remediación
+    // Reset del botón central
     const toggleBtn = document.getElementById('lab-remediation-btn');
-    toggleBtn.innerHTML = "APLICAR HARDENING";
-    toggleBtn.className = "font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] pointer-events-auto flex items-center gap-2 group text-[0.95rem]";
+    if (toggleBtn) {
+        toggleBtn.innerHTML = "APLICAR HARDENING";
+        toggleBtn.className = "font-display font-bold uppercase px-8 py-3 rounded border border-red-500 bg-red-950/60 text-red-100 hover:bg-red-600 hover:text-white transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] pointer-events-auto flex items-center gap-2 group text-[0.95rem]";
+    }
 
-    // Reset del medidor de riesgo
-    document.getElementById('lab-risk-needle').style.transform = "rotate(65deg)";
-    document.getElementById('lab-risk-status-text').textContent = "CRITICAL RISK";
-    document.getElementById('lab-risk-status-text').className = "text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl";
+    // --- FIX AGUJA (Hacia Rojo) ---
+    const needle = document.getElementById('lab-risk-needle');
+    if (needle) {
+        // Mantenemos translateX(-50%) para que no pierda el eje central
+        needle.style.transform = "translateX(-50%) rotate(65deg)";
+    }
 
-    updateLabUI(); // Solo actualizamos visibilidad
+    const statusText = document.getElementById('lab-risk-status-text');
+    if (statusText) {
+        statusText.textContent = "CRITICAL RISK";
+        statusText.className = "text-red-500 font-bold font-mono mt-6 tracking-widest transition-colors duration-500 animate-pulse z-10 text-center text-xl";
+    }
+
+    updateLabUI();
 }
 
 function toggleLabRemediation() {
     if (isLabHardened) {
-        // Revertir a estado vulnerable reutilizando switchLab
         switchLab(currentLab);
         return;
     }
 
     isLabHardened = true;
     const toggleBtn = document.getElementById('lab-remediation-btn');
-    const labContainer = document.getElementById('breach-lab-content');
     const needle = document.getElementById('lab-risk-needle');
     const statusText = document.getElementById('lab-risk-status-text');
 
     if (isLabHardened) {
-        toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
-        toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
-
-        const breachLabMain = document.getElementById('breach-lab');
-        if (breachLabMain) {
-            breachLabMain.className = 'glass-panel md:col-span-12 mt-4 p-0 flex flex-col relative overflow-hidden transition-all duration-1000 bg-gradient-to-br from-[#064e3b] via-[#010a13] to-[#010a13] ring-2 ring-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.4)] border-2 border-emerald-500 lab-container-sec';
+        if (toggleBtn) {
+            toggleBtn.innerHTML = "SISTEMA SEGURO / FORTIFICADO";
+            toggleBtn.className = "font-display font-bold uppercase tracking-wider text-xs px-6 py-2 rounded border border-emerald-500 bg-emerald-900/40 text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.5)] cursor-not-allowed pointer-events-none";
         }
 
+        // --- FIX AGUJA (Hacia Verde) ---
+        if (needle) {
+            // Movimiento directo de 65deg a -65deg manteniendo el centro
+            needle.style.transform = "translateX(-50%) rotate(-65deg)";
+            needle.classList.add('pulse-success');
+            setTimeout(() => needle.classList.remove('pulse-success'), 1500);
+        }
+
+        if (statusText) {
+            statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
+            statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
+        }
+
+        // Cambiamos el color de la barra de progreso a verde
         const scrollBar = document.getElementById('scroll-progress-bar');
         if (scrollBar) {
             scrollBar.classList.remove('bg-red-500');
             scrollBar.classList.add('bg-emerald-500');
         }
-
-        labContainer.style.background = "";
-        labContainer.className = 'p-6 grid grid-cols-1 md:grid-cols-10 gap-6 relative z-10 rounded-xl transition-all duration-1000 bg-transparent';
-
-        needle.style.transition = 'transform 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-        needle.style.transform = "rotate(-70deg)";
-        needle.classList.add('pulse-success');
-        setTimeout(() => needle.classList.remove('pulse-success'), 1500);
-
-        const shield = document.getElementById('shield-icon');
-        if (shield) { shield.classList.remove('opacity-0', 'scale-50'); shield.classList.add('opacity-100', 'scale-100'); }
-
-        statusText.textContent = "SISTEMA FORTIFICADO (CIS/NIST)";
-        statusText.className = "text-emerald-400 text-center font-bold mt-4 text-xs tracking-widest transition-colors duration-500 z-10 font-display drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]";
     }
     updateLabUI();
-    renderDynamicLab();
 }
 
 // Iniciar lab
